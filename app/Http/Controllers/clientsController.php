@@ -27,6 +27,7 @@ class clientsController extends Controller
      */
     public function index() 
     {
+        echo "Test de git";
         // toArray() permet de transformer a en un tableau. mais pas intéressant car on ne poura pas utiliser les méthodes dessus.
         // $liste = clients::with('service')->get()->toArray();
 
