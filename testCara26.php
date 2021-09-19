@@ -1,0 +1,75 @@
+<?php 
+
+$fichier = fopen("caractere26.txt", "w+");
+$cc = (char) 26;
+echo $cc;
+fwrite($fichier, $cc);
+fclose($fichier);
+echo "<br>suscès";
+ ?>
+
+08:33:27.709 -> +COPN: "61203","Orange CI"
+
+AT+CSQ : Qualité du signal. // sans l'antenne GSM, il n'y a pas de signale
+AT+CGPSSTATUS? // POUR VERIFIER L'ENTENNE GPS
+
+AT+CMGF=1 // ACTIVE LE MODE TEXTE D ABORD
+AT+CMGS="+2250777762144"[,<toda>] // ENVOIE DE SMS
+
+→
+
+
+AT+CGMR // DONNE LA VERSION DU FIRMEWARE
++00225 // POUR COMMUNIQUER A L INTERNATIONNAL
++225 // POUR COMMUNIQUER EN L INTERNE
+
+  On peut commencer les commandes 
+08:15:02.910 ->  
+08:15:13.091 -> at
+08:15:13.091 -> ERROR
+08:15:19.045 -> AT
+08:15:19.045 -> OK
+08:15:41.241 -> AT+CMGF=1
+08:15:41.241 -> OK
+08:17:11.333 -> AT+CMGS="+2250777762144"
+08:17:11.380 -> > DIEU
+08:17:50.571 -> →
+08:20:52.809 ->  On peut commencer les commandes 
+08:20:52.809 ->  
+08:20:59.933 -> AT
+08:20:59.933 -> OK
+08:21:17.946 -> AT+CMGF=1
+08:21:17.946 -> OK
+08:21:29.428 -> AT+CMGS="+002250777762144" 
+08:21:29.482 -> > DIEU
+08:22:01.510 -> →
+08:22:59.036 -> 
+08:22:59.036 -> NORMAL POWER DOWN
+08:23:14.659 -> AT
+08:23:14.659 -> OK
+08:23:28.876 -> AT+CNUM
+08:23:28.924 -> OK
+08:27:47.908 -> AT+CHUP
+08:27:47.908 -> OK
+08:28:13.748 -> AT+CHU
+08:28:13.748 -> ERROR
+08:28:18.643 -> AT+CHUP
+08:28:18.643 -> OK
+08:30:20.502 -> AT+CGMI
+08:30:20.502 -> SIMCOM_Ltd
+08:30:20.502 -> 
+08:30:20.549 -> OK
+08:31:01.208 -> AT+CGMM
+08:31:01.208 -> SIMCOM_SIM808
+08:31:01.208 -> 
+08:31:01.208 -> OK
+08:31:49.580 -> AT+CGMR
+08:31:49.580 -> Revision:1418B04SIM808M32
+08:31:49.634 -> 
+08:31:49.634 -> OK
+08:32:22.084 -> AT+CGSN
+08:32:22.084 -> 865067024801998
+08:32:22.084 -> 
+08:32:22.084 -> OK
+08:33:10.117 -> AT+COPN
+

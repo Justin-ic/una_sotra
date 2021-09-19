@@ -1,0 +1,16 @@
+.MCenter{
+	text-align: center;
+}
+
+
+svg.w-5 {
+    vertical-align: middle;
+    width: 30px;
+    display: inline;
+}
+
+svg.h-5 {
+    vertical-align: middle;
+    width: 30px;
+    display: inline;
+}

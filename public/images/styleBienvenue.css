@@ -1,0 +1,213 @@
+body{
+	background-image: url('imgBienvenue.jpg');
+	background-repeat: no-repeat;
+}
+
+.MCenter{
+	text-align: center;
+}
+
+.choix{
+	font-size: 30px;
+
+}
+
+.service{
+	background-color: rgb(243, 214, 23);
+	margin: 20px;
+	border-radius: 40px;
+	font-size: 30px;
+}
+
+.enregistr_droit{
+	background-color: rgb(243, 214, 23);
+	border-radius: 40px;
+	margin-top: 5px;
+	font-size: 20px;
+}
+
+a{
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+}
+
+.separateur{
+	height: 50px;
+	/*background-color: orangered;*/
+}
+
+
+/*.parent{
+	background-color:black ;
+}
+.enfant1{
+	background-color: blue ;
+}
+.enfant2{
+	background-color:red ;
+}
+
+.form{
+	background-color: black;
+}*/
+.input-group{
+	margin-bottom: 8px;
+}
+
+.labelRadio1{
+	font-size: 25px;
+}
+.labelRadio2{
+	font-size: 25px;
+	margin-left: 10px;
+}
+
+
+
+
+
+/*xxxxxxxxxxxxxxxxxx  Appel xxxxxxxxxxxxxxxxxxxxxxxxx*/
+
+
+.contour{
+	border: 1px solid black;
+}
+
+.contourLigneAppel{
+	border-bottom: 1px solid orangered;
+}
+.contourLigneFile{
+	border-bottom: 3px solid rgb(128, 255, 128);
+}
+
+
+.logoUNA{
+	width: 100px;
+	margin: 0px;
+}
+
+
+#timer{
+
+	font-weight: bold;
+}
+
+.sectionFile{
+	background-color: rgb(128, 255, 128);
+}
+
+.sectionFileDroite{
+	background: white;
+	color: rgb(52, 166, 19);
+}
+
+
+
+/*xxxxxxxxxxxxxxxxxxxxxxxx serveur interfaceGuichrt xxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
+
+.serveurHaut{
+	background-color: silver;
+	font-size: 30px;
+	/*height: 55px;*/
+}
+
+.parentPhotoUser{
+	width: 100%;
+	border: 1px solid black;
+	font-size: 20px;
+	border-radius: 30px;
+}
+.photoUser{
+	background-color: beige;
+	height: 50px;
+	width: 50px;
+	border-radius: 50px;
+	padding: 0px;
+	margin: 0px;
+}
+
+
+.iconUser{
+	height: 50px;
+	width: 50px;
+	border-radius: 50px;
+	padding: 0px;
+	margin: 0px;
+}
+
+.infoClient{
+	font-size: 30px;
+}
+
+.milieux_Droite_Vertical{
+	height: 100%;
+}
+
+.imgSuivant{
+	height: 45px;
+	width: 100px;
+}
+
+
+.grosBouton{
+	height: 300px;
+	width: 100%;
+	border-radius: 700px;
+
+	border: 1px solid black;
+
+	background-color: threedshadow;
+
+	font-size: 30px;
+}
+
+
+/*  ***************** onnexion ************ */
+
+
+.connexionForme{
+    border: 1px solid #adb5bd;
+    border-radius: 6px;
+    box-shadow: 12px 12px  #adb5bd;
+    padding: 8px;
+    }
+/*
+fieldset{
+    border: 1px solid #adb5bd;
+    border-radius: 6px;
+    box-shadow: 5px 5px  #adb5bd;
+}*/
+
+.btnDeconnexion{
+	color: red;
+	font-size: 30px;
+}
+.connexionValide{
+	margin-top: 20px;
+}
+.connexionTitre{
+	margin-bottom: 9%;
+}
+
+
+/*  ***************** onnexion ************ */
+
+
+/*  ***************** geolocalisation ************ */
+#map{
+	height: 400px;
+	width: 100%;
+}
+/*  ***************** geolocalisation ************ */
+
+
+
+/*
+
+https://dashboard.heroku.com/apps
+
+justinfileattente
+JustUna21**
+
+*/
