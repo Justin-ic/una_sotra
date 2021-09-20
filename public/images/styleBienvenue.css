@@ -10,7 +10,6 @@ body{
 
 .choix{
 	font-size: 30px;
-
 }
 
 .service{
@@ -210,5 +209,19 @@ https://dashboard.heroku.com/apps
 
 justinfileattente
 JustUna21**
+
+
+
+
+postgres://lpzhdeznsgtwwz:2c21e11c34ba1b95cd7c9acd48b49703a97ce96eb62ba136a65b862b5b1e67e6@ec2-18-209-143-227.compute-1.amazonaws.com:5432/d1lld18n1vvvui
+
+le format est: 
+postgres://USER:PASS@HOST:PORT/NOM_BD
+
+user: lpzhdeznsgtwwz
+pass: 2c21e11c34ba1b95cd7c9acd48b49703a97ce96eb62ba136a65b862b5b1e67e6
+host: ec2-18-209-143-227.compute-1.amazonaws.com
+port: 5432
+bd: d1lld18n1vvvui
 
 */

@@ -12,8 +12,8 @@ class TrustProxies extends Middleware
      *
      * @var array|string|null
      */
-    protected $proxies;
-
+    // protected $proxies;
+    protected $proxies = '*'; // pour indiquer qu'on fait confiance à tous les proxis. sinon, on remplace par l'IP du server heroku
     /**
      * The headers that should be used to detect proxies.
      *
