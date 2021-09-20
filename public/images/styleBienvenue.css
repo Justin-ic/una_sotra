@@ -1,5 +1,5 @@
 body{
-	/*background-image: url('imgBienvenue.jpg');*/
+	background-image: url('imgBienvenue.jpg');
 
 	background-repeat: no-repeat;
 }
@@ -11,6 +11,10 @@ body{
 .choix{
 	font-size: 30px;
 
+}
+
+.add{
+	font-size: 17px;
 }
 
 .service{
