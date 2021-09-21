@@ -13,20 +13,22 @@ class CreateGuichetsTable extends Migration
      */
     public function up()
     {
+
+    // id  lettre_guichet  services_id     personnel_id
         Schema::create('guichets', function (Blueprint $table) {
             $table->id();
-            $table->integer('numero');
+            $table->char('lettre_guichet',2);
             
             // définition des cléef étrangères
-            $table->unsignedBigInteger('service');
-            $table->unsignedBigInteger('personnel');
-            $table->index('service');
-            $table->index('personnel');
+            $table->unsignedBigInteger('services_id');
+            $table->unsignedBigInteger('personnel_id');
+/*            $table->index('service');
+            $table->index('personnel');*/
             
  
             // définition des relations
-            $table->foreign('service')->references('id')->on('services');  
-            $table->foreign('personnel')->references('id')->on('personnels');
+            $table->foreign('services_id')->references('id')->on('services');  
+            $table->foreign('personnel_id')->references('id')->on('personnels');
             $table->timestamps();
         });
     }

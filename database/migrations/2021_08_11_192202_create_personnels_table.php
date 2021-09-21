@@ -13,13 +13,16 @@ class CreatePersonnelsTable extends Migration
      */
     public function up()
     {
+
+    // id  nom     prenom  dateNaissance   user    pass    type
         Schema::create('personnels', function (Blueprint $table) {
             $table->id();
             $table->char('nom',50);
-            $table->char('pernom',100);
+            $table->char('prenom',100);
             $table->date('dateNaissance');
             $table->char('user',100);
             $table->char('pass',100);
+            $table->char('type',50);
             $table->timestamps();
         });
     }

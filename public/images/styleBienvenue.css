@@ -207,6 +207,8 @@ fieldset{
 
 https://dashboard.heroku.com/apps
 
+https://dashboard.heroku.com/apps/glacial-everglades-43629/settings
+
 justinfileattente
 JustUna21**
 
@@ -224,4 +226,12 @@ host: ec2-18-209-143-227.compute-1.amazonaws.com
 port: 5432
 bd: d1lld18n1vvvui
 
+
+A chaque fois que je fait:  heroku addons:create heroku-postgresql, un nouveau URL est créé
+postgres://ycqtncnhhbuwrv:b1648c95cb12a638cdadd70c0ad89e8a84c5bb387faff4da17a45468296f879f@ec2-54-174-172-218.compute-1.amazonaws.com:5432/deav998feieb2g
+user: ycqtncnhhbuwrv
+pass: b1648c95cb12a638cdadd70c0ad89e8a84c5bb387faff4da17a45468296f879f
+host: ec2-54-174-172-218.compute-1.amazonaws.com
+port: 5432
+bd:   deav998feieb2g
 */

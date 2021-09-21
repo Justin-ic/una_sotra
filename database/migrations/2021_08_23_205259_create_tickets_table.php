@@ -13,12 +13,21 @@ class CreateTicketsTable extends Migration
      */
     public function up()
     {
+
+    // id  description     ticket  tAttenteEstime  nbClientAvant   clients_id
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
             $table->char('description',100); 
             $table->char('ticket',100);
             $table->time('tAttenteEstime');
             $table->integer('nbClientAvant');
+
+           // définition des cléef étrangères
+            $table->unsignedBigInteger('clients_id');
+ 
+            // définition des relations
+            $table->foreign('clients_id')->references('id')->on('clients');  
+
             $table->timestamps();
         });
     }

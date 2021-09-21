@@ -13,6 +13,9 @@ class CreateClientsTable extends Migration
      */
     public function up()
     {
+
+
+/*    id  nom     prenom  genre   numero  nce     debutService    finService  commentaire     servit */ 
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
             $table->char('nom',50);
@@ -20,15 +23,11 @@ class CreateClientsTable extends Migration
             $table->char('genre',2);
             $table->integer('numero');
             $table->char('nce',50);
+            $table->time('debutService');
+            $table->time('finService');
+            $table->char('commentaire',100);
             $table->integer('servit');
 
-// nom     prenom  genre   numero  nce     ticket_id   servit  created_at  updated_at  
-            // définition des cléef étrangères
-            $table->unsignedBigInteger('ticket_id');
-            $table->index('ticket_id');
-
-            // définition des relations
-            $table->foreign('ticket_id')->references('id')->on('ticket');
             $table->timestamps();
         });
     }

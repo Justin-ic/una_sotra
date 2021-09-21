@@ -13,6 +13,7 @@ class CreateDescriptionsTable extends Migration
      */
     public function up()
     {
+// id  detail  services_id    
         Schema::create('descriptions', function (Blueprint $table) {
             $table->id();
             $table->char('detail',200);

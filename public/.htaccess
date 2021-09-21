@@ -6,6 +6,7 @@
     RewriteEngine On
 
 
+# Redirriger tout le monde vers https s'il n'est pas en local
 RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
 RewriteCond %{HTTP:X-Forwarded-Proto} =""
 RewriteCond %{HTTPS} !=on
