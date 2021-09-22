@@ -296,9 +296,7 @@ class personnelsController extends Controller
         return redirect()->route('bienVenusAdmin')->with('message');
        
 //************ INSCRIPTION DE L'ADMIN ************************
-        // return  view('');
     }
-
 
 
 
