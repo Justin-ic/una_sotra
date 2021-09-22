@@ -293,7 +293,7 @@ class personnelsController extends Controller
             'type' => "admin"
         ]);
         $message = "Créer avec succsès!";
-        return redirect()->route('BienVenusAdmin')->with('message');
+        return redirect()->route('bienVenusAdmin')->with('message');
        
 //************ INSCRIPTION DE L'ADMIN ************************
         // return  view('');

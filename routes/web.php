@@ -62,9 +62,9 @@ Route::post('storAdmin', [personnelsController::class,'initBDStore'])->name('sto
 /******************   BienVenusAdmin   *********************/
 // Route::get('BienVenusAdmin', [personnelsController::class,'BienVenusAdmin'])->name('BienVenusAdmin');
 
-Route::get('BienVenusAdmin', function () {
+Route::get('bienVenusAdmin', function () {
     return view('BienVenusAdmin');
-})->name('BienVenusAdmin');
+})->name('bienVenusAdmin');
 /*****************************   BienVenusAdmin   ************************************/
 
 
