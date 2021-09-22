@@ -179,7 +179,7 @@ class personnelsController extends Controller
        echo "Liste des personnels:";
        print_r($personnels);
        echo "</pre>";
-       die();
+       // die();
 
        $personnel = personnels::where('user','=',$request->user)
                                 ->where('pass','=',$request->pass)->get()->first();
