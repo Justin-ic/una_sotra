@@ -67,6 +67,7 @@ Route::get('bienVenusAdmin', function () {
 })->name('bienVenusAdmin');
 /*****************************   BienVenusAdmin   ************************************/
 
+
 /******************authentificationPersonnel*********************/
 Route::get('deconnexion', [personnelsController::class,'deconnexion'])->name('deconnexion');
 
