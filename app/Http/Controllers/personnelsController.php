@@ -308,7 +308,7 @@ class personnelsController extends Controller
             </script>
             <?php
        return view('bienVenusAdmin');
-        // return redirect()->route('bienVenusAdmin')->with('message');
+        // return redirect()->route('bienVenusAdmin')->with('message'); bienVenusAdmin
        
 //************ INSCRIPTION DE L'ADMIN ************************
     }
