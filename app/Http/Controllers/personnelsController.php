@@ -294,19 +294,21 @@ class personnelsController extends Controller
         ]);
         $message = "Créer avec succsès!";
 
-              ?> 
-            <script type="text/javascript">
-            alert('Personnel Ajouter avec succcés');
-            </script>
-            <?php
-/*       $personnels = personnels::all();
+
+       $personnels = personnels::all();
        echo "<pre>";
        echo "Liste des personnels:";
        print_r($personnels);
        echo "</pre>";
-       die();*/
+       // die();
 
-        return redirect()->route('bienVenusAdmin')->with('message');
+                     ?> 
+            <script type="text/javascript">
+            alert('Personnel Ajouter avec succcés');
+            </script>
+            <?php
+       return view('bienVenusAdmin');
+        // return redirect()->route('bienVenusAdmin')->with('message');
        
 //************ INSCRIPTION DE L'ADMIN ************************
     }
