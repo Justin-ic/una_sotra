@@ -175,11 +175,11 @@ class personnelsController extends Controller
     public function authentification(Request $request)
     {
        $personnels = personnels::all();
-       /*echo "<pre>";
+       echo "<pre>";
        echo "Liste des personnels:";
        print_r($personnels);
        echo "</pre>";
-       die();*/
+       die();
 
        $personnel = personnels::where('user','=',$request->user)
                                 ->where('pass','=',$request->pass)->get()->first();
@@ -293,6 +293,19 @@ class personnelsController extends Controller
             'type' => "admin"
         ]);
         $message = "Créer avec succsès!";
+
+                    ?> 
+            <script type="text/javascript">
+            alert('Personnel Ajouter avec succcés');
+            </script>
+            <?php
+       $personnels = personnels::all();
+       echo "<pre>";
+       echo "Liste des personnels:";
+       print_r($personnels);
+       echo "</pre>";
+       die();
+
         return redirect()->route('bienVenusAdmin')->with('message');
        
 //************ INSCRIPTION DE L'ADMIN ************************
