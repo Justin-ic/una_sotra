@@ -20,5 +20,5 @@ class guichets extends Model
     }
 
     protected $fillable = ['lettre_guichet', 'service_id', 'personnel_id']; // On donne la permission de remplir ces champs
-
+// id  lettre_guichet  services_id     personnel_id    created_at  updated_at  
 }

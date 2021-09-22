@@ -20,6 +20,7 @@
 	
 <?php /*print_r($_SESSION) ; session_destroy();*/ ?>
 	<h1 class="MCenter connexionTitre">Bienvenue à SOTRA_UNA!</h1>
+<?php /*echo(isset($message)) ? "{$message}" :  "";*/  ?>
 
 
 <div class="container-fluid">
@@ -27,6 +28,12 @@
     
     <div class="col-12 col-md-6">
         <h1 class="MCenter">Connexion du Personnel</h1>
+        <?php if (isset($message)): ?>
+            <div class="bg-danger bg-opacity-50 MCenter">
+                {{$message}}
+            </div>
+        <?php endif ?>
+
         <form action="{{route('loginPersonnel')}}" method="POST" class="connexionForme">
             @csrf
             <div class="form-group">

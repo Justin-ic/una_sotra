@@ -10,12 +10,12 @@ class personnels extends Model
     use HasFactory;
 
     // Un personnel gère un et un seul guichet
-    public function guichet() {
+    public function guichets() {
         return $this->hasMany(guichets::class);
     }
 
     // On donne la permission de remplir ces champs
-    protected $fillable = ['nom', 'prenom', 'dateNaissance', 'user', 'pass']; 
+    protected $fillable = ['nom', 'prenom', 'dateNaissance', 'user', 'type', 'pass']; 
 }
 
-    // <!-- 'nom', 'pernom', 'dateNaissance', 'user', 'pass' -->
+    // <!-- 'nom', 'pernom', 'dateNaissance', 'user', 'pass', 'type',-->

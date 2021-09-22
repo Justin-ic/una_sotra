@@ -21,13 +21,13 @@ function horloge()
 </head>
 <body onload="horloge()">
 	@include('inclusions.header')
-	<label for="exampleColorInput" class="form-label">Color picker</label>
+<!-- 	<label for="exampleColorInput" class="form-label">Color picker</label>
 	<input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color"> <mark>math_tipe à ajouter sur le word</mark>
 
 	<?php
 /*header("Refresh:1");
 echo date('H:i:s Y-m-d');*/
-?>
+?> -->
 
 
 

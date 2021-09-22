@@ -189,6 +189,15 @@ fieldset{
 .connexionTitre{
 	margin-bottom: 9%;
 }
+.connexionTitreInitBD{
+	margin-bottom: 5%;
+}
+
+.btnInitBD{
+	margin-top: 7px;
+}
+
+
 
 
 /*  ***************** onnexion ************ */
@@ -234,4 +243,8 @@ pass: b1648c95cb12a638cdadd70c0ad89e8a84c5bb387faff4da17a45468296f879f
 host: ec2-54-174-172-218.compute-1.amazonaws.com
 port: 5432
 bd:   deav998feieb2g
+
+
+4087 CARACTERES
+INSERT INTO `guichets` (`id`, `lettre_guichet`, `services_id`,
 */

@@ -45,10 +45,28 @@ use App\Http\Controllers\ticket;
 
 
 /******************authentificationPersonnel*********************/
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('formulaires.connexion');
-})->name('connexion');
+})->name('connexion');*/
+
+Route::get('/', [personnelsController::class,'initBD'])->name('connexion');
+
 /*****************************authentificationPersonnel************************************/
+
+/******************   initBDStore   *********************/
+Route::post('storAdmin', [personnelsController::class,'initBDStore'])->name('storAdmin');
+
+/*****************************   initBDStore   ************************************/
+
+
+/******************   BienVenusAdmin   *********************/
+// Route::get('BienVenusAdmin', [personnelsController::class,'BienVenusAdmin'])->name('BienVenusAdmin');
+
+Route::get('BienVenusAdmin', function () {
+    return view('BienVenusAdmin');
+})->name('BienVenusAdmin');
+/*****************************   BienVenusAdmin   ************************************/
+
 
 /******************authentificationPersonnel*********************/
 Route::get('deconnexion', [personnelsController::class,'deconnexion'])->name('deconnexion');

@@ -15,6 +15,7 @@
                 <th>Date de Naissance</th>
                 <th>User</th>
                 <th>Mot de passe</th>
+                <th>Type</th>
                 <th>Date</th>
                 <th colspan="2">Action</th> 
                 <!-- nom 	pernom dateNaissance	 user	 pass	 	created_at 	updated_at 	 -->
@@ -34,6 +35,7 @@
                 <td>{{$personnel->dateNaissance}}</td>
                 <td>{{$personnel->user}}</td>
                 <td>{{$personnel->pass}}</td>
+                <td>{{$personnel->type}}</td>
                 <td>{{$personnel->created_at->format('d/m/Y')}}</td>
                 <td>
                     <a href="{{route('personnels.edit', $personnel->id)}}"><button class="btn btn-success">Modifier <span class="fas fa-edit"></span> </button>
@@ -58,6 +60,7 @@
             <th>Date de Naissance</th>
             <th>User</th>
             <th>Mot de passe</th>
+            <th>Type</th>
             <th>Date</th>
             <th colspan="2">Action</th>
         </tfoot>

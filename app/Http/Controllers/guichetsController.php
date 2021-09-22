@@ -18,7 +18,7 @@ class guichetsController extends Controller
     {
         $guichet = guichets::with('service', 'personnel')->get(); 
         // service et personnel sont les noms de  méthode du model guichets
-
+// dd($guichet);
         // $guichet = guichetsController::latest()->paginate(5);
         return view('guichet', compact('guichet'));
     }
@@ -30,8 +30,21 @@ class guichetsController extends Controller
      */
     public function create()
     {
-        $listeService = services::all();
-        $listePersonnel = personnels::all();
+        $listeService = services::all(); 
+        $listePersonnel = personnels::where('type','=',"personnel")->get();
+        $listePersonnel = personnels::with('guichets')
+                                      ->where('type','=',"personnel")->get();
+
+
+   /*    $listePersonnel = personnels::whereHas(
+        'guichets' , function($query) {
+            $query->where('ticket', 'like', ''.$nomGuichet.'-%');
+        })->where('created_at', '>', $dd.' 00:00:00')->with('tickets')
+          ->where('servit', '=', 0)->get();
+*/
+
+        dd($listePersonnel);
+        // dd($listePersonnel);
         return view('formulaires.guichets_creer', compact('listeService','listePersonnel'));
     }
 
@@ -55,7 +68,7 @@ class guichetsController extends Controller
         // dd($La_lettre); // Retourne un objet
         if ($La_lettre != null) {
             $listeService = services::all();
-            $listePersonnel = personnels::all();
+            $listePersonnel = personnels::where('type','=',"personnel")->get();
             return view('formulaires.guichets_creer', compact('listeService','listePersonnel'));
         } else {
             guichets::create([
@@ -95,7 +108,8 @@ class guichetsController extends Controller
     public function edit($id)
     {
         $listeService = services::all();
-        $listePersonnel = personnels::all();
+        $listePersonnel = personnels::with('guichet');
+        dd($listePersonnel);
         // guichet pour accéder au service et personnel qui était là 
         $guichet = guichets::with('service', 'personnel')->findOrFail($id); 
         return view('formulaires.guichets_modif',compact('guichet', 'listeService', 'listePersonnel'));

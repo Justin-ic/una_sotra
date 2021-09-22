@@ -51,7 +51,8 @@ class personnelsController extends Controller
             'prenom' => $request->prenom,
             'dateNaissance' => $request->dateNaissance,
             'user' => $request->user,
-            'pass' => $request->pass
+            'pass' => $request->pass,
+            'type' => "personnel"
         ]);
         $message = "Créer avec succsès!";
         return redirect()->route('personnels.index')->with('message');
@@ -127,7 +128,8 @@ class personnelsController extends Controller
                 'prenom' => $request->prenom,
                 'dateNaissance' => $request->dateNaissance,
                 'user' => $request->user,
-                'pass' => $request->pass
+                'pass' => $request->pass,
+                'type' => 'personnel'
             ]);
             $message = "Modifier avec succsès!";
             return redirect()->route('personnels.index')->with('message');
@@ -173,14 +175,20 @@ class personnelsController extends Controller
     public function authentification(Request $request)
     {
        $personnels = personnels::all();
-/*       echo "<pre>";
+       /*echo "<pre>";
+       echo "Liste des personnels:";
        print_r($personnels);
        echo "</pre>";
        die();*/
-       foreach ($personnels as $personnel) {
-           if ($personnel->user == $request->user && $personnel->pass == $request->pass) {
+
+       $personnel = personnels::where('user','=',$request->user)
+                                ->where('pass','=',$request->pass)->get()->first();
+// dd($personnel);
+       // foreach ($personnels as $personnel) {
+
+           if ($personnel != null) {
             if ($personnel->type == 'admin') {
-                return redirect()->route('homeAdmine');
+                return redirect()->route('BienVenusAdmin');
             } else if ($personnel->type == 'personnel') {
                 session_start();
 
@@ -198,12 +206,103 @@ class personnelsController extends Controller
 
 
                 return redirect()->route('interfaceGuichetPersonnel');
-            }else{
+            }/*else{
                 return view('formulaires.connexion');
             }
+*/
+        }else{return view('formulaires.connexion')->with(['message' => 'Coordonnées Non valide !']);}
+     // }
 
-        }
     }
 
-}
+
+
+    /**
+     * Initialisation de la base de données: 
+     * Création de l'admine à la première connexion
+     * Il doit créer des services en suite leurs descriptions et enfin le guichet.
+     * 
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function initBD()
+    {
+        $personnels = personnels::all();
+       /*echo "<pre>";
+       echo "Liste des personnels:";
+       print_r($personnels);
+       echo "</pre>";
+       die();*/
+       // dd(count($personnels));
+
+//************ INSCRIPTION DE L'ADMIN ************************
+       if (count($personnels) == 0) {
+           return  view('formulaires.initAdmin');
+       } else {
+           $typePersonnel = $personnels->where('type', '=', 'personnel');
+           if (count($typePersonnel) == 0) {
+            ?> 
+            <script type="text/javascript">
+            alert('Connectez-vous en tant que Administrateur pour indiquer des services, des descriptions et des guichets');
+            </script>
+            <?php
+               return  view('formulaires.connexion');
+           } else {
+               return view('formulaires.connexion');
+           }
+           
+       }
+       
+//************ INSCRIPTION DE L'ADMIN ************************
+        // return  view('');
+    }
+
+
+
+    /**
+     * Initialisation de la base de données: 
+     * Création de l'admine à la première connexion
+     * Il doit créer des services en suite leurs descriptions et enfin le guichet.
+     * 
+     * On stocke les informations de l'administrateur
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function initBDStore(Request $request)
+    {
+       // dd("Tout se passe bien !!");
+
+//************ INSCRIPTION DE L'ADMIN ************************
+    request()->validate([
+            'nom' => 'required',
+            'prenom' => 'required',
+            'dateNaissance' => 'required',
+            'user' => 'required',
+            'pass' => 'required'
+        ]);
+
+    // <!-- 'nom', 'prenom', 'dateNaissance', 'user', 'pass' -->
+        personnels::create([
+            'nom' => $request->nom,
+            'prenom' => $request->prenom,
+            'dateNaissance' => $request->dateNaissance,
+            'user' => $request->user,
+            'pass' => $request->pass,
+            'type' => "admin"
+        ]);
+        $message = "Créer avec succsès!";
+        return redirect()->route('BienVenusAdmin')->with('message');
+       
+//************ INSCRIPTION DE L'ADMIN ************************
+        // return  view('');
+    }
+
+
+
+
+
+
+
 }
