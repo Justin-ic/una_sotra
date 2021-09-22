@@ -63,10 +63,15 @@ Route::post('storAdmin', [personnelsController::class,'initBDStore'])->name('sto
 // Route::get('BienVenusAdmin', [personnelsController::class,'BienVenusAdmin'])->name('BienVenusAdmin');
 
 Route::get('bienVenusAdmin', function () {
+                  ?> 
+            <script type="text/javascript">
+            alert('Je m apprête à afficher  bienVenusAdmin');
+            </script>
+            <?php
     return view('bienVenusAdmin');
 })->name('bienVenusAdmin');
 /*****************************   BienVenusAdmin   ************************************/
-
+// bienVenusAdmin
 
 /******************authentificationPersonnel*********************/
 Route::get('deconnexion', [personnelsController::class,'deconnexion'])->name('deconnexion');
