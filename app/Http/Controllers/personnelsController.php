@@ -196,11 +196,12 @@ class personnelsController extends Controller
             </script>
             <?php
            if ($personnel != null) {
-                                                  ?> 
+                                                ?> 
             <script type="text/javascript">
             alert('Je Il y a bien un personne; on va voir s il est admin ou pas');
             </script>
             <?php
+            dd($personnel);
             if ($personnel->type == 'admin') {
                                   ?> 
             <script type="text/javascript">
