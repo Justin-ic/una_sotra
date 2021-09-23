@@ -195,13 +195,18 @@ class personnelsController extends Controller
             if ($personnel->type == 'admin') {
                                   ?> 
             <script type="text/javascript">
-            alert('Je vais faire la redirection vers bienVenusAdmin');
+            alert('Je vais faire la redirection vers bienVenusAdmin car ce sont les coordonnées de admin');
             </script>
             <?php
                 return redirect()->route('bienVenusAdmin');
             } else if ($personnel->type == 'personnel') {
                 session_start();
 
+                                 ?> 
+            <script type="text/javascript">
+            alert('Je vais prendre le guichets car ce sont les coordonnées de Personne');
+            </script>
+            <?php
                 $_SESSION['guichet'] = guichets::where('personnel_id', '=', $personnel->id)->first();
 
                 $_SESSION['personnel'] = $personnel;
@@ -238,6 +243,11 @@ class personnelsController extends Controller
      */
     public function initBD()
     {
+                                      ?> 
+            <script type="text/javascript">
+            alert('Etape 1: Je Suis dans initBD');
+            </script>
+            <?php
         $personnels = personnels::all();
        /*echo "<pre>";
        echo "Liste des personnels:";
@@ -282,6 +292,11 @@ class personnelsController extends Controller
      */
     public function initBDStore(Request $request)
     {
+                    ?> 
+            <script type="text/javascript">
+            alert('Je suis dans initBDStore pour le stockage');
+            </script>
+            <?php
        // dd("Tout se passe bien !!");
 
 //************ INSCRIPTION DE L'ADMIN ************************
@@ -313,12 +328,12 @@ class personnelsController extends Controller
        // die();*/
 
                      ?> 
-           <!--  <script type="text/javascript">
-            alert('Personnel Ajouter avec succcés');
-            </script> -->
+            <script type="text/javascript">
+            alert('Administrateur Ajouter avec succcés. Cette fois je fais une redirection vers bienVenusAdmin');
+            </script>
             <?php
-       return view('bienVenusAdmin');
-        // return redirect()->route('bienVenusAdmin')->with('message'); bienVenusAdmin
+       // return view('bienVenusAdmin');
+        return redirect()->route('bienVenusAdmin'); 
        
 //************ INSCRIPTION DE L'ADMIN ************************
     }
