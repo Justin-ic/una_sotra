@@ -20,7 +20,6 @@
 	
 <?php /*print_r($_SESSION) ; session_destroy();*/ ?>
 	<h1 class="MCenter connexionTitre">Bienvenue à SOTRA_UNA!</h1>
-<?php /*echo(isset($message)) ? "{$message}" :  "";*/  ?>
 
 
 <div class="container-fluid">

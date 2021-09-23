@@ -188,6 +188,11 @@ class personnelsController extends Controller
 
            if ($personnel != null) {
             if ($personnel->type == 'admin') {
+                                  ?> 
+            <script type="text/javascript">
+            alert('Je vais faire la redirection vers bienVenusAdmin');
+            </script>
+            <?php
                 return redirect()->route('bienVenusAdmin');
             } else if ($personnel->type == 'personnel') {
                 session_start();

@@ -64,9 +64,9 @@ Route::post('storAdmin', [personnelsController::class,'initBDStore'])->name('sto
 
 Route::get('bienVenusAdmin', function () {
                   ?> 
-            <!-- <script type="text/javascript">
+            <script type="text/javascript">
             alert('Je m apprête à afficher  bienVenusAdmin');
-            </script> -->
+            </script>
             <?php
     return view('bienVenusAdmin');
 })->name('bienVenusAdmin');
