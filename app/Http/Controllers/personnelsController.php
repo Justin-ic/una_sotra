@@ -174,6 +174,11 @@ class personnelsController extends Controller
      */
     public function authentification(Request $request)
     {
+                                      ?> 
+            <script type="text/javascript">
+            alert('Je Suis dans authentification');
+            </script>
+            <?php
        $personnels = personnels::all();
 /*       echo "<pre>";
        echo "Liste des personnels:";
