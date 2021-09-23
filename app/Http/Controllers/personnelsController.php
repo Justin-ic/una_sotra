@@ -186,16 +186,25 @@ class personnelsController extends Controller
        echo "</pre>";
        // die();*/
 
-       $personnel = personnels::where('user','=',$request->user)
-                                ->where('pass','=',$request->pass)->get()->first();
+       $personnel = personnels::where('user','=',$request->user)->where('pass','=',$request->pass)->get()->first();
 // dd($personnel);
        // foreach ($personnels as $personnel) {
 
+                                      ?> 
+            <script type="text/javascript">
+            alert('J ai recuperé le Personne');
+            </script>
+            <?php
            if ($personnel != null) {
+                                                  ?> 
+            <script type="text/javascript">
+            alert('Je Il y a bien un personne; on va voir s il est admin ou pas');
+            </script>
+            <?php
             if ($personnel->type == 'admin') {
                                   ?> 
             <script type="text/javascript">
-            alert('Je vais faire la redirection vers bienVenusAdmin car ce sont les coordonnées de admin');
+            alert('admin admin admin: Je vais faire la redirection vers bienVenusAdmin car ce sont les coordonnées de admin');
             </script>
             <?php
                 return redirect()->route('bienVenusAdmin');
