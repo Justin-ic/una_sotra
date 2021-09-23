@@ -19,7 +19,7 @@
                     <b>Service:</b>
                     <select class="form-control" required name="service_id">
                         <option value="" ></option>
-                        <?php foreach ($listeService as $service): ?>
+                        <?php foreach ($serviceLibre as $service): ?>
                                 <option value="{{$service->id}}">{{$service->nom}}</option>
                         <?php endforeach ?>
                     </select>
@@ -30,7 +30,7 @@
                     <b>Personnel:</b>
                     <select class="form-control" required name="personnel_id" >
                         <option value="" ></option>
-                        <?php foreach ($listePersonnel as $personnel): ?>
+                        <?php foreach ($personnelLibre as $personnel): ?>
                             <option value="{{$personnel->id}}" >
                                 {{$personnel->nom}} {{$personnel->prenom}}
                             </option>

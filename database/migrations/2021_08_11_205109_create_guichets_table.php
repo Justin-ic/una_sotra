@@ -20,14 +20,11 @@ class CreateGuichetsTable extends Migration
             $table->char('lettre_guichet',2);
             
             // définition des cléef étrangères
-            $table->unsignedBigInteger('service_id');
-            $table->unsignedBigInteger('personnel_id');
-/*            $table->index('service');
-            $table->index('personnel');*/
-            
+            $table->unsignedBigInteger('service_id'); // Relation One To One 
+            $table->unsignedBigInteger('personnel_id'); // Relation One to One 
  
             // définition des relations
-            $table->foreign('service_id')->references('id')->on('services');  
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade')->onUpdate('cascade');  
             $table->foreign('personnel_id')->references('id')->on('personnels');
             $table->timestamps();
         });

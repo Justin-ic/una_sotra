@@ -23,10 +23,10 @@ class CreateClientsTable extends Migration
             $table->char('genre',2);
             $table->integer('numero');
             $table->char('nce',50);
-            $table->time('debutService');
-            $table->time('finService');
-            $table->char('commentaire',100);
-            $table->integer('servit');
+            $table->time('debutService')->nullable();
+            $table->time('finService')->nullable();
+            $table->char('commentaire',100)->nullable();
+            $table->integer('servit')->nullable();
 
             $table->timestamps();
         });

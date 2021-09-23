@@ -16,11 +16,11 @@ class services extends Model
 
     // Un service peut avoir plusieurs descriptions. anisi, dans la table description, l'ID de la table services doit être services_id; service avec s, le _ forcement. cela permet d'automatiser les choses. Normalement, le nom des tables ne doivent pas avoir des s
     public function descriptions() {
-        return $this->hasMany(descriptions::class);
+        return $this->hasMany(descriptions::class); // Relation One To Many: service est le père
     }
     // Un service est attribuer à un et un seul guichet
-    public function guichets() {
-        return $this->hasMany(guichets::class);
+    public function guichet() {
+        return $this->hasOne(guichets::class,'service_id'); // Relation One To One père
     }
 
 /*    public function guichet() {

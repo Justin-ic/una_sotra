@@ -18,7 +18,7 @@ class guichetsController extends Controller
     {
         $guichet = guichets::with('service', 'personnel')->get(); 
         // service et personnel sont les noms de  méthode du model guichets
-// dd($guichet);
+        // dd($guichet);
         // $guichet = guichetsController::latest()->paginate(5);
         return view('guichet', compact('guichet'));
     }
@@ -32,20 +32,52 @@ class guichetsController extends Controller
     {
         $listeService = services::all(); 
         $listePersonnel = personnels::where('type','=',"personnel")->get();
-        $listePersonnel = personnels::with('guichets')
+
+        $i=0;$personnelLibre;
+        foreach ($listePersonnel as $personnel) {
+            $idp = $personnel->id;
+            $guichet = guichets::where('personnel_id','=',$idp)->get();
+
+            if (count($guichet) == 0) {
+                // Il n'a pas de gichet encror donc on peut le prendre
+                $personnelLibre[$i++] = $personnel;
+            }            
+        }
+
+        $i=0;$serviceLibre;
+        foreach ($listeService as $service) {
+            $ids = $service->id;
+            $guichet = guichets::where('service_id','=',$ids)->get();
+
+            if (count($guichet) == 0) {
+                // Il n'a pas de gichet encror donc on peut le prendre
+                $serviceLibre[$i++] = $service;
+            }            
+        }
+// dd($serviceLibre);
+
+/*        $listePersonnel = personnels::with('guichets')
                                       ->where('type','=',"personnel")->get();
 
 
-   /*    $listePersonnel = personnels::whereHas(
-        'guichets' , function($query) {
-            $query->where('ticket', 'like', ''.$nomGuichet.'-%');
-        })->where('created_at', '>', $dd.' 00:00:00')->with('tickets')
-          ->where('servit', '=', 0)->get();
-*/
+$listePersonnel = personnels::whereHas(
+        'guichet' , function($query) {
+            $query->whereNotNull('id','<>',"");
+        })->where('type','=',"personnel")->with('guichet')->get();
 
-        dd($listePersonnel);
-        // dd($listePersonnel);
-        return view('formulaires.guichets_creer', compact('listeService','listePersonnel'));
+*/
+/* l'idée est de recupérer seul les personnels qui ont des guichets.
+ Pour faire simple, je passe par le fils qui est guchets. 
+Chaque ligne du guichet a un seul personnel associé.
+ */
+/*     faire le contraire de ce code
+       $listeGuichet = guichets::whereHas(
+        'personnel' , function($query) {
+            $query->where('type','=',"personnel");
+        })->with('personnel')->get();
+*/
+// $listeGuichet->first()
+        return view('formulaires.guichets_creer', compact('serviceLibre','personnelLibre'));
     }
 
     /**
@@ -108,8 +140,8 @@ class guichetsController extends Controller
     public function edit($id)
     {
         $listeService = services::all();
-        $listePersonnel = personnels::with('guichet');
-        dd($listePersonnel);
+        $listePersonnel = personnels::with('guichet')->where('type','=',"personnel")->get();
+        // dd($listePersonnel);
         // guichet pour accéder au service et personnel qui était là 
         $guichet = guichets::with('service', 'personnel')->findOrFail($id); 
         return view('formulaires.guichets_modif',compact('guichet', 'listeService', 'listePersonnel'));

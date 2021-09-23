@@ -9,9 +9,9 @@ class bilanClients extends Model
 {
     use HasFactory;
 
-    // un bilanClient concerne un et un seul client
+    // un bilanClient concerne un et un seul client car il y a son id dessus
     public function client() {
-        return $this->belongsTo(clients::class);
+        return $this->belongsTo(clients::class); // Relation One to Many: bilanClients est le fils
     }
     
     // On donne la permission de remplir ces champs 

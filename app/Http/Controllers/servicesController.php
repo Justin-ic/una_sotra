@@ -156,11 +156,11 @@ class servicesController extends Controller
     public function LeServiceDemander($id)
     {
         $LeService = services::with('descriptions')->find($id);
-        $LeGuichet = services::with('guichets')->find($id);
+        $LeGuichet = services::with('guichet')->find($id);
 
-// dd($LeGuichet->guichets->first()->lettre_guichet);
+// dd($LeGuichet->guichet->lettre_guichet); // guichet est le nom de la relation
 
-        $nomGuichet = $LeGuichet->guichets->first()->lettre_guichet;
+        $nomGuichet = $LeGuichet->guichet->lettre_guichet;
         // dd($nomGuichet);
         $dd = date("Y-m-d");
 
@@ -199,5 +199,6 @@ class servicesController extends Controller
 /************************** Les fonctions spécifiques ***********************************/
 
 }
+
 
 

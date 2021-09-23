@@ -9,9 +9,9 @@ class personnels extends Model
 {
     use HasFactory;
 
-    // Un personnel gère un et un seul guichet
-    public function guichets() {
-        return $this->hasMany(guichets::class);
+    // Un personnel gère un et un seul guichet et personnel est le père
+    public function guichet() {
+        return $this->hasOne(guichets::class); // Relation One To One père
     }
 
     // On donne la permission de remplir ces champs

@@ -9,11 +9,18 @@ class descriptions extends Model
 {
     use HasFactory;
 
+    // protected $table = "descriptions"; // Retourne tous le contenu de la table spécifier seulement
     public function service() {
-        return $this->belongsTo(services::class);
+        return $this->belongsTo(services::class,'services_id'); // Relation On to many description est le fils. 
+        // Il a donc un seul père.
     }
 
-    protected $fillable = ['detail', 'service_id']; // On donne la permission de remplir ces champs
+    protected $fillable = ['detail', 'services_id']; // On donne la permission de remplir ces champs
 
 }
 
+
+/*
+
+
+*/

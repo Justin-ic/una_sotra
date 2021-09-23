@@ -16,7 +16,14 @@ class descriptionsController extends Controller
      */
      public function index() 
     {
+
+        // $service = services::with('descriptions')->get();
+/*        // $liste = descriptions::all();
+        $liste = descriptions::with('service')->get();
+        dd($service);
+*/
         $liste = descriptions::with('service')->paginate(5);
+        
         return view('descriptions', compact('liste'));
     }
 
@@ -43,10 +50,10 @@ class descriptionsController extends Controller
             'detail' => 'required',
             'service_id' => 'required'
         ]);
-// detail  service_id  created_at  updated_at  
+// detail  services_id  created_at  updated_at  
          descriptions::create([
             'detail' => $request->detail,
-            'service_id' => $request->service_id
+            'services_id' => $request->service_id
         ]);
         $message = "Créer avec succsès!";
         return redirect()->route('descriptions.index')->with('message');
@@ -101,7 +108,7 @@ class descriptionsController extends Controller
         $description = descriptions::find($request->id);
         $description->update([
             'detail' => $request->detail,
-            'service_id' => $request->service_id
+            'services_id' => $request->service_id
         ]);
         $message = "Modifier avec succsès!";
         return redirect()->route('descriptions.index')->with('message');

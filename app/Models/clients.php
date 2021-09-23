@@ -28,16 +28,15 @@ class clients extends Model
     }
 
 
-    // un client a un et un seul bilan
-    public function bilanClient() {
-        return $this->belongsTo(bilanClients::class);
+    // un client a un et un seul bilan par jour. Mais s'il revient une autre fois, on va stocker un autre bilanlient pour lui.
+    public function bilanClients() {
+        return $this->hasMany(bilanClients::class); // Relation One to Many: client est le père
     }
 
 
     // un client a plus tickrts; il peut en prendre aujourd'hui et revenir demeain
     public function tickets() {
-        return $this->hasMany(ticket::class);
-        // return $this->hasOne(ticket::class); POUR One to One
+        return $this->hasMany(ticket::class); // Relation One to Many: client est le père
     }
     // nom     prenom  genre   numero  nce     ticket_id   servit  created_at  updated_at          
 

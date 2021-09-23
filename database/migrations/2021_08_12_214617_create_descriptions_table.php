@@ -17,8 +17,8 @@ class CreateDescriptionsTable extends Migration
         Schema::create('descriptions', function (Blueprint $table) {
             $table->id();
             $table->char('detail',200);
-            $table->unsignedBigInteger('services_id');
-            $table->foreign('services_id')->references('id')->on('services');
+            $table->unsignedBigInteger('services_id'); // Relation One to Many
+            $table->foreign('services_id')->references('id')->on('services')->onDelete('cascade');
             $table->timestamps();
             // pour un service, on peut avoir plusieurs descriptions . Ainsi, la clé étrangère de service doit avoir ce format: nomTables (avec s à la fin) _ et id. Ex: services_id normalement le nom d'une table en laravel ne prend pas de s
         });

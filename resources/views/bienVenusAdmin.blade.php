@@ -1,10 +1,10 @@
-<!-- @extends('layouts.app')
+@extends('layouts.app')
 
-@section('contenu') -->
+@section('contenu')
 <div class="BienvenusAdmin  d-flex justify-content-center align-items-center">
 	<h1>Bienvénus Administrateur </h1>
 </div>
-<!-- @endsection   -->
+@endsection  
 
 
 <!-- 
@@ -19,10 +19,10 @@ git push heroku master
 
 
 
-
+heroku pg:reset DATABASE_URL --confirm glacial-everglades-43629
 heroku run php artisan migrate 
 
-heroku pg:reset DATABASE_URL --confirm glacial-everglades-43629
+
 
 
  -->

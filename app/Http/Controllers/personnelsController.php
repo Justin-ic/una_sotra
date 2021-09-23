@@ -175,11 +175,11 @@ class personnelsController extends Controller
     public function authentification(Request $request)
     {
        $personnels = personnels::all();
-       echo "<pre>";
+/*       echo "<pre>";
        echo "Liste des personnels:";
        print_r($personnels);
        echo "</pre>";
-       // die();
+       // die();*/
 
        $personnel = personnels::where('user','=',$request->user)
                                 ->where('pass','=',$request->pass)->get()->first();
@@ -296,16 +296,16 @@ class personnelsController extends Controller
 
 
        $personnels = personnels::all();
-       echo "<pre>";
+/*       echo "<pre>";
        echo "Liste des personnels:";
        print_r($personnels);
        echo "</pre>";
-       // die();
+       // die();*/
 
                      ?> 
-            <script type="text/javascript">
+           <!--  <script type="text/javascript">
             alert('Personnel Ajouter avec succcés');
-            </script>
+            </script> -->
             <?php
        return view('bienVenusAdmin');
         // return redirect()->route('bienVenusAdmin')->with('message'); bienVenusAdmin

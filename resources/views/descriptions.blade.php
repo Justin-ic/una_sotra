@@ -26,8 +26,8 @@
                 <?php foreach ($liste as $description): ?>
             <tr  class="MCenter">
                 <td><?=$i++ ?></td>
-                <td>{{$description->detail}}</td> 
                 <td>{{$description->service->nom}}</td>
+                <td>{{$description->detail}}</td> 
                 <td>{{$description->created_at->format('d/m/Y')}}</td>
                 <td>
                     <a href="{{route('descriptions.edit', $description->id)}}"><button class="btn btn-success">Modifier <span class="fas fa-edit"></span> </button>

@@ -26,7 +26,7 @@ class CreateTicketsTable extends Migration
             $table->unsignedBigInteger('clients_id');
  
             // définition des relations
-            $table->foreign('clients_id')->references('id')->on('clients');  
+            $table->foreign('clients_id')->references('id')->on('clients')->onDelete('cascade')->onUpdate('cascade');  
 
             $table->timestamps();
         });

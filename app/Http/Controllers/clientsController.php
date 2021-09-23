@@ -200,7 +200,7 @@ class clientsController extends Controller
             'debutService' => $request->debutService,
             'finService' => $finService,
             'commentaire' => $request->commentaireserveur,
-            'servit' => 0
+            'servit' => 1
         ]);
 
         /* On écrit le numéro du client suivant*/
@@ -374,6 +374,7 @@ class clientsController extends Controller
             // 'ticket_id' => $dernierTicket->id,
             'servit' => '0'
         ]);
+
 $dernierclient = clients::latest()->first();
 /************** enregistrement du client *********************************/
 

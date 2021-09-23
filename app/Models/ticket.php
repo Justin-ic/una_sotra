@@ -13,7 +13,7 @@ class ticket extends Model
 
     // un ticket est pour un et un seul client  et un client a plus tickrts; il peut en prendre aujourd'hui et revenir demeain
     public function client() {
-        return $this->belongsTo(clients::class);
+        return $this->belongsTo(clients::class); // Relation One to Many: ticket est le fils
     }
 
 
