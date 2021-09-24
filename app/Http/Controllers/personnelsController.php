@@ -202,8 +202,12 @@ class personnelsController extends Controller
             <?php
            if ($personnel != null) {
 
-            echo "Nom formater: request->user=X".$request->user."X Formater=X".$user."X<br>";
-            echo "personnel->type =X".$personnel->type."X<br>";
+            // echo "Nom formater: request->user=X".$request->user."X Formater=X".$user."X<br>";
+            echo "A cause de toi; Petit espace la. <br>personnel->type =X".$personnel->type."X || X".$request->user."X <br>";
+
+            echo "<br><br>";
+            $typeBd = str_replace(' ', '', $personnel->type);
+            echo "Correction: XX".$typeBd."XX || XX".$request->user;
 
             ?> 
             <script type="text/javascript">
