@@ -201,12 +201,15 @@ class personnelsController extends Controller
             </script>
             <?php
            if ($personnel != null) {
-                                                ?> 
+
+            echo "Nom formater: request->user=X".$request->user."X Formater=X".$user."X<br>";
+            echo "$personnel->type =X".$personnel->type."X<br>";
+
+            ?> 
             <script type="text/javascript">
             alert('Je Il y a bien un personne; on va voir s il est admin ou pas');
             </script>
             <?php
-            dd($personnel);
             if ($personnel->type == 'admin') {
                                   ?> 
             <script type="text/javascript">
@@ -307,7 +310,7 @@ class personnelsController extends Controller
      */
     public function initBDStore(Request $request)
     {
-                    ?> 
+             ?> 
             <script type="text/javascript">
             alert('Je suis dans initBDStore pour le stockage');
             </script>
@@ -324,11 +327,12 @@ class personnelsController extends Controller
         ]);
 
     // <!-- 'nom', 'prenom', 'dateNaissance', 'user', 'pass' -->
-                        ?> 
+            ?> 
             <script type="text/javascript">
             alert('Netoyage des données request');
             </script>
             <?php
+
         $nom = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->nom);
         $prenom = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->prenom);
         $dateNaissance = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->dateNaissance);
@@ -336,13 +340,14 @@ class personnelsController extends Controller
         $pass = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->pass);
  
  
- 
+ echo  " nom=".$nom  ."X prenom=".$prenom ."X dateNaissance=".$dateNaissance  ."X user=".$user ."X pass=".$pass
             ?> 
             <script type="text/javascript">
-            alert("Netoyage OK: nom=X" +$nom+"X prenom=X" +$prenom+"X dateNaissance=X" +$dateNaissance+"X user=X" +$user+"X pass=X" +$pass+"X");
+            alert("Netoyage OK: nom=X");
             </script>
             <?php
  
+             // dd("Tout se passe bien !!");
 
         personnels::create([
             'nom' => $nom,
