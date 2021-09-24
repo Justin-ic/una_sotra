@@ -52,7 +52,7 @@ class personnelsController extends Controller
             'dateNaissance' => $request->dateNaissance,
             'user' => $request->user,
             'pass' => $request->pass,
-            'type' => "personnel"
+            'type' => 'personnel'
         ]);
         $message = "Créer avec succsès!";
         return redirect()->route('personnels.index')->with('message');
@@ -192,7 +192,7 @@ class personnelsController extends Controller
  
  */
        $personnel = personnels::where('user','=',$request->user)->where('pass','=',$request->pass)->get()->first();
-dd($personnel);
+// dd($personnel);
        // foreach ($personnels as $personnel) {
 
                                       ?> 
@@ -225,7 +225,7 @@ dd($personnel);
             <?php
             // dd('J arrive ici pour dir que je sui admin');
                 return redirect()->route('bienVenusAdmin');
-            } else if ($personnel->type == 'personnel') {
+            } else if ($typeBd == 'personnel') {
                 session_start();
 
                                  ?> 
