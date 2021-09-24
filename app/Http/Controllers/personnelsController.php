@@ -210,7 +210,7 @@ class personnelsController extends Controller
             $typeBd = str_replace(' ', '', $personnel->type);
             echo "CORRECTION: XXXX".$typeBd."XXXX <br>";
 
-            echo "5h pour trouver <br>"
+            echo "5h pour trouver <br>";
 
             ?> 
             <script type="text/javascript">
