@@ -187,8 +187,8 @@ class personnelsController extends Controller
        // die();*/
 
        // Nétoyage
-        $user = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->user;);
-        $pass = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->pass;);
+        $user = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->user);
+        $pass = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->pass);
  
  
        $personnel = personnels::where('user','=',$user)->where('pass','=',$pass)->get()->first();
@@ -329,11 +329,11 @@ class personnelsController extends Controller
             alert('Netoyage des données request');
             </script>
             <?php
-        $nom = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->nom;);
-        $prenom = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->prenom;);
-        $dateNaissance = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->dateNaissance;);
-        $user = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->user;);
-        $pass = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->pass;);
+        $nom = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->nom);
+        $prenom = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->prenom);
+        $dateNaissance = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->dateNaissance);
+        $user = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->user);
+        $pass = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->pass);
  
  
  
