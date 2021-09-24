@@ -203,14 +203,14 @@ class personnelsController extends Controller
            if ($personnel != null) {
 
             echo "Nom formater: request->user=X".$request->user."X Formater=X".$user."X<br>";
-            echo "$personnel->type =X".$personnel->type."X<br>";
+            echo "personnel->type =X".$personnel->type."X<br>";
 
             ?> 
             <script type="text/javascript">
             alert('Je Il y a bien un personne; on va voir s il est admin ou pas');
             </script>
             <?php
-            if ($personnel->type == 'admin') {
+            if ($personnel->type == "admin") {
                                   ?> 
             <script type="text/javascript">
             alert('admin admin admin: Je vais faire la redirection vers bienVenusAdmin car ce sont les coordonnées de admin');
@@ -334,13 +334,15 @@ class personnelsController extends Controller
             <?php
 
         $nom = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->nom);
-        $prenom = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->prenom);
+        $prenom = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->->prenom);
         $dateNaissance = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->dateNaissance);
         $user = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->user);
         $pass = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->pass);
  
  
- echo  " nom=".$nom  ."X prenom=".$prenom ."X dateNaissance=".$dateNaissance  ."X user=".$user ."X pass=".$pass
+ echo  "Nom formater=== nom=".$request->nom  ."X prenom=".$request->prenom ."X dateNaissance=".$request->dateNaissance  ."X user=".$request->user ."X pass=".$request->pass."X";
+
+ echo  " nom=".$nom  ."X prenom=".$prenom ."X dateNaissance=".$dateNaissance  ."X user=".$user ."X pass=".$pass."X";
             ?> 
             <script type="text/javascript">
             alert("Netoyage OK: nom=X");
