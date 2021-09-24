@@ -240,7 +240,7 @@ class personnelsController extends Controller
 
 
                 return redirect()->route('interfaceGuichetPersonnel');
-            }else{echo "En faite L'espace était mon problème"}
+            }else{echo "En faite L'espace était mon problème";}
 
         }else{return view('formulaires.connexion')->with(['message' => 'Coordonnées Non valide !']);}
      // }
