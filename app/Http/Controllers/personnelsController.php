@@ -186,12 +186,12 @@ class personnelsController extends Controller
        echo "</pre>";
        // die();*/
 
-       // Nétoyage
+/*       // Nétoyage
         $user = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->user);
         $pass = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->pass);
  
- 
-       $personnel = personnels::where('user','=',$user)->where('pass','=',$pass)->get()->first();
+ */
+       $personnel = personnels::where('user','=',$request->user)->where('pass','=',$request->pass)->get()->first();
 // dd($personnel);
        // foreach ($personnels as $personnel) {
 
@@ -216,6 +216,7 @@ class personnelsController extends Controller
             alert('admin admin admin: Je vais faire la redirection vers bienVenusAdmin car ce sont les coordonnées de admin');
             </script>
             <?php
+            dd('J arrive ici pour dir que je sui admin');
                 return redirect()->route('bienVenusAdmin');
             } else if ($personnel->type == 'personnel') {
                 session_start();
@@ -239,10 +240,8 @@ class personnelsController extends Controller
 
 
                 return redirect()->route('interfaceGuichetPersonnel');
-            }/*else{
-                return view('formulaires.connexion');
-            }
-*/
+            }else{echo "En faite L'espace était mon problème"}
+
         }else{return view('formulaires.connexion')->with(['message' => 'Coordonnées Non valide !']);}
      // }
 
@@ -333,7 +332,7 @@ class personnelsController extends Controller
             </script>
             <?php
 
-        $nom = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->nom);
+ /*       $nom = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->nom);
         $prenom = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->prenom);
         $dateNaissance = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->dateNaissance);
         $user = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->user);
@@ -344,6 +343,9 @@ class personnelsController extends Controller
 
  echo  " nom=".$nom  ."X prenom=".$prenom ."X dateNaissance=".$dateNaissance  ."X user=".$user ."X pass=".$pass."X";
  die();
+
+                                TOUT EST BIEN FORMATER
+ */
             ?> 
             <script type="text/javascript">
             alert("Netoyage OK: nom=X");
@@ -353,11 +355,11 @@ class personnelsController extends Controller
              // dd("Tout se passe bien !!");
 
         personnels::create([
-            'nom' => $nom,
-            'prenom' => $prenom,
-            'dateNaissance' => $dateNaissance,
-            'user' => $user,
-            'pass' => $pass,
+            'nom' => $request->nom,
+            'prenom' => $request->prenom,
+            'dateNaissance' => $request->dateNaissance,
+            'user' => $request->user,
+            'pass' => $request->pass,
             'type' => "admin"
         ]);
         $message = "Créer avec succsès!";
