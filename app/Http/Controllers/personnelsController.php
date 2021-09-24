@@ -217,13 +217,13 @@ class personnelsController extends Controller
             alert('Je Il y a bien un personne; on va voir s il est admin ou pas');
             </script>
             <?php
-            if ( $personnel->type == "admin") {
+            if ( $typeBd == "admin") {
                                   ?> 
             <script type="text/javascript">
             alert('admin admin admin: Je vais faire la redirection vers bienVenusAdmin car ce sont les coordonnées de admin');
             </script>
             <?php
-            dd('J arrive ici pour dir que je sui admin');
+            // dd('J arrive ici pour dir que je sui admin');
                 return redirect()->route('bienVenusAdmin');
             } else if ($personnel->type == 'personnel') {
                 session_start();
