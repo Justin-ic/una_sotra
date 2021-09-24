@@ -470,7 +470,7 @@ $dernierclient = clients::latest()->first();
         'tickets' , function($query) use ($nomGuichet) {
             $query->where('ticket', 'like', ''.$nomGuichet.'-%');
         })->where('created_at', '>', $dd.' 00:00:00')->with('tickets')
-          ->where('servit', '=', 0)->get();
+          ->where('servit', '=', '0 ')->get();
 /********** ON RECUPERE LES CLIENTS ET LEUR TICKTE DONT LE NOM-TICKET COMMENCE PAR A- servit ******/
 
 

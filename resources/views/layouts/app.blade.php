@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/bootstrap/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/style.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/fontawesome/css/all.css') }}">
-	<title>una_sotra</title>
+	<title>una_scolarite</title>
 
 	<script type="text/javascript">
 function horloge()

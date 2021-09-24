@@ -281,7 +281,7 @@ function showPosition(position) {
 
 			<div class="col-11 d-flex align-items-center justify-content-center">
 				<div class="">
-					<h1>FILE D’ATTENTE POUR LES CARTES DE BUS</h1>
+					<h1>FILE D’ATTENTE A LA SCOLARITE</h1>
 				</div>
 			</div>
 		</div>

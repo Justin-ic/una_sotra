@@ -18,7 +18,7 @@
 <!-- xxxxxxxxxxxxxxxx  nav bar xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
 	
 
-	<h1 class="MCenter">Bienvenue à SOTRA_UNA!</h1>
+	<h1 class="MCenter">Bienvenue à UNA_SCOLARITE!</h1>
 	<div class="row MCenter">
 		<div class="col-12 choix">Choisir un service</div>
 	</div>
