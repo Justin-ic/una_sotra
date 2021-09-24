@@ -203,11 +203,14 @@ class personnelsController extends Controller
            if ($personnel != null) {
 
             // echo "Nom formater: request->user=X".$request->user."X Formater=X".$user."X<br>";
-            echo "A cause de toi; Petit espace la. <br>personnel->type =X".$personnel->type."X || X".$request->user."X <br>";
+            echo "A cause de toi; Petit espace la. "
+            echo "ERREUR: <br>personnel->type =XXXX".$personnel->type."XXXX <br>";
 
-            echo "<br><br>";
+            echo "<br>";
             $typeBd = str_replace(' ', '', $personnel->type);
-            echo "Correction: XX".$typeBd."XX || XX".$request->user;
+            echo "CORRECTION: XXXX".$typeBd."XXXX <br>";
+
+            echo "5h pour trouver <br>"
 
             ?> 
             <script type="text/javascript">
