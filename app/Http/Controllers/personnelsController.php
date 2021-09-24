@@ -385,7 +385,7 @@ echo "request->type XX". $request->type."XX";
             <script type="text/javascript">
             alert('Administrateur Ajouter avec succcés. Cette fois je fais une redirection vers bienVenusAdmin');
             </script>
-            <?php die();
+            <?php 
        // return view('bienVenusAdmin');
         return redirect()->route('bienVenusAdmin'); 
        
