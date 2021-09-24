@@ -1,6 +1,6 @@
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	alert('Je vien d arriver dans  bienVenusAdmin');
-</script>
+</script> -->
 @extends('layouts.app')
 @section('contenu')
 

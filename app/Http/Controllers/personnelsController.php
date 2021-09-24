@@ -267,10 +267,10 @@ class personnelsController extends Controller
      */
     public function initBD()
     {
-                                      ?> 
-            <script type="text/javascript">
+              ?> 
+         <!--    <script type="text/javascript">
             alert('Etape 1: Je Suis dans initBD');
-            </script>
+            </script> -->
             <?php
         $personnels = personnels::all();
        /*echo "<pre>";
