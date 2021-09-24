@@ -367,7 +367,8 @@ class personnelsController extends Controller
             'dateNaissance' => $request->dateNaissance,
             'user' => $request->user,
             'pass' => $request->pass,
-            'type' => "admin"
+            'type' => $request->type
+            // 'type' => "admin" Cette manière ajoute un espace unitile à la fin du taxte
         ]);
         $message = "Créer avec succsès!";
 

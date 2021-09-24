@@ -57,6 +57,7 @@
                 <b>Comfirmer:</b>
                 <input class="form-control" required type="password" value="" name="passConfirme">
             </div>
+            <input required type="hidden" value="admin" name="type">
 
             <!-- <button type="submit" class="btn btn-success">Valider</button>  -->
             <div class="d-grid gap-2 col-6 mx-auto">
