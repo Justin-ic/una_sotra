@@ -232,7 +232,8 @@ class clientsController extends Controller
         // dd($_SESSION['personnel']->id);
         $id = $_SESSION['personnel']->id;
         $LeGuichet = guichets::where('personnel_id', '=', $id)->first();
-        $nomGuichet = $LeGuichet->lettre_guichet; 
+
+        $nomGuichet = str_replace(' ', '', $LeGuichet->lettre_guichet); 
 // on trouvera le guichet en fonction du personne
 
         
@@ -254,7 +255,6 @@ class clientsController extends Controller
           ->where('servit', '=', 0)->get();
 dd($nomGuichet);
 /****** ON RECUPERE LES CLIENTS ET LEUR TICKTE DONT LE NOM-TICKET COMMENCE PAR A- non servit *****/
-
 
 
 /********** ON RECUPERE LES CLIENTS ET LEUR TICKTE DONT LE NOM-TICKET COMMENCE PAR A- servit ******/
