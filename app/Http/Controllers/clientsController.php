@@ -253,7 +253,7 @@ class clientsController extends Controller
             $query->where('ticket', 'like', ''.$nomGuichet.'-%');
         })->where('created_at', '>', $dd.' 00:00:00')->with('tickets')
           ->where('servit', '=', 0)->get();
-dd($nomGuichet);
+dd($ClientsNonServie);
 /****** ON RECUPERE LES CLIENTS ET LEUR TICKTE DONT LE NOM-TICKET COMMENCE PAR A- non servit *****/
 
 
