@@ -372,7 +372,7 @@ class personnelsController extends Controller
         ]);
         $message = "Créer avec succsès!";
 
-echo "request->type XX". $request->type."XX"
+echo "request->type XX". $request->type."XX";
 
        $personnels = personnels::all();
 /*       echo "<pre>";
