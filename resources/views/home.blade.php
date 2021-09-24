@@ -33,7 +33,7 @@
                 <td>{{$client->prenom}}</td>
                 <td>{{$client->numero}}</td>
                 <td>{{$client->commentaire}}</td>
-                <td>{{$client->tickets->ticket}}</td>
+                <td>{{$client->tickets->first()->ticket}}</td>
                 <!-- <td></td> -->
                 <td>{{$client->created_at->format('d/m/Y')}}</td>
                 <td>
