@@ -192,7 +192,7 @@ class personnelsController extends Controller
  
  */
        $personnel = personnels::where('user','=',$request->user)->where('pass','=',$request->pass)->get()->first();
-// dd($personnel);
+dd($personnel);
        // foreach ($personnels as $personnel) {
 
                                       ?> 
@@ -287,11 +287,11 @@ class personnelsController extends Controller
            $typePersonnel = $personnels->where('type', '=', 'personnel');
            if (count($typePersonnel) == 0) {
             ?> 
-            <script type="text/javascript">
+<!--             <script type="text/javascript">
             alert('Connectez-vous en tant que Administrateur pour indiquer des services, des descriptions et des guichets');
-            </script>
+            </script> -->
             <?php
-               return  view('formulaires.connexion');
+               return  view('formulaires.connexion')->with(['message' => 'Connectez-vous en tant que Administrateur pour indiquer des services, des descriptions et des guichets.']);
            } else {
                return view('formulaires.connexion');
            }
