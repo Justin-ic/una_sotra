@@ -204,7 +204,7 @@ class personnelsController extends Controller
 
             // echo "Nom formater: request->user=X".$request->user."X Formater=X".$user."X<br>";
             echo "A cause de toi; Petit espace la. ";
-            echo "ERREUR: <br>personnel->type =XXXX".$personnel->type."XXXX <br>";
+            echo "<br>ERREUR: <br>personnel->type =XXXX".$personnel->type."XXXX <br>";
 
             echo "<br>";
             $typeBd = str_replace(' ', '', $personnel->type);
@@ -372,6 +372,7 @@ class personnelsController extends Controller
         ]);
         $message = "Créer avec succsès!";
 
+echo "request->type XX". $request->type."XX"
 
        $personnels = personnels::all();
 /*       echo "<pre>";
@@ -384,7 +385,7 @@ class personnelsController extends Controller
             <script type="text/javascript">
             alert('Administrateur Ajouter avec succcés. Cette fois je fais une redirection vers bienVenusAdmin');
             </script>
-            <?php
+            <?php die();
        // return view('bienVenusAdmin');
         return redirect()->route('bienVenusAdmin'); 
        
