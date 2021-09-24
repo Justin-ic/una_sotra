@@ -11,9 +11,10 @@
             <tr class="MCenter">
                 <th>N°</th>
                 <th>Nom</th>
+                <th>Prénom</th>
                 <th>Numéro</th>
                 <th>Commentair</th>
-                <th>Service</th>
+                <th>Ticket</th>
                 <th>Date</th>
                 <th colspan="2">Action</th>
             </tr>
@@ -29,10 +30,11 @@
             <tr  class="MCenter">
                 <td><?=$i++ ?></td>
                 <td>{{$client->nom}}</td>
+                <td>{{$client->prenom}}</td>
                 <td>{{$client->numero}}</td>
                 <td>{{$client->commentaire}}</td>
-                <!-- <td>$client->service->nom}}</td> -->
-                <td></td>
+                <td>{{$client->tickets->ticket}}</td>
+                <!-- <td></td> -->
                 <td>{{$client->created_at->format('d/m/Y')}}</td>
                 <td>
                     <a href="{{route('clients.edit', $client->id)}}"><button class="btn btn-success">Modifier <span class="fas fa-edit"></span> </button>
@@ -53,9 +55,10 @@
         <tfoot  class="MCenter">
             <th>N°</th>
             <th>Nom</th>
+            <th>Prénom</th>
             <th>Numéro</th>
             <th>Commentair</th>
-            <th>Service</th>
+            <th>Ticket</th>
             <th>Date</th>
             <th colspan="2">Action</th>
         </tfoot>

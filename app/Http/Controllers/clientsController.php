@@ -33,7 +33,7 @@ class clientsController extends Controller
 
         // le with() permet de lier la table de relation
         // 
-        $liste = clients::with('service')->get();
+        $liste = clients::with('tickets')->get();
         $liste = clients::latest()->simplePaginate(5);
         // DB::table('users')->orderBy('id')->cursorPaginate(15);
         
