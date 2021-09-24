@@ -210,7 +210,7 @@ class personnelsController extends Controller
             alert('Je Il y a bien un personne; on va voir s il est admin ou pas');
             </script>
             <?php
-            if ($personnel->type == "admin") {
+            if ( $personnel->type == "admin") {
                                   ?> 
             <script type="text/javascript">
             alert('admin admin admin: Je vais faire la redirection vers bienVenusAdmin car ce sont les coordonnées de admin');
@@ -343,6 +343,7 @@ class personnelsController extends Controller
  echo  "Nom formater=== nom=".$request->nom  ."X prenom=".$request->prenom ."X dateNaissance=".$request->dateNaissance  ."X user=".$request->user ."X pass=".$request->pass."X";
 
  echo  " nom=".$nom  ."X prenom=".$prenom ."X dateNaissance=".$dateNaissance  ."X user=".$user ."X pass=".$pass."X";
+ die();
             ?> 
             <script type="text/javascript">
             alert("Netoyage OK: nom=X");
