@@ -186,7 +186,12 @@ class personnelsController extends Controller
        echo "</pre>";
        // die();*/
 
-       $personnel = personnels::where('user','=',$request->user)->where('pass','=',$request->pass)->get()->first();
+       // Nétoyage
+        $user = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->user;);
+        $pass = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->pass;);
+ 
+ 
+       $personnel = personnels::where('user','=',$user)->where('pass','=',$pass)->get()->first();
 // dd($personnel);
        // foreach ($personnels as $personnel) {
 
@@ -319,12 +324,32 @@ class personnelsController extends Controller
         ]);
 
     // <!-- 'nom', 'prenom', 'dateNaissance', 'user', 'pass' -->
+                        ?> 
+            <script type="text/javascript">
+            alert('Netoyage des données request');
+            </script>
+            <?php
+        $nom = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->nom;);
+        $prenom = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->prenom;);
+        $dateNaissance = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->dateNaissance;);
+        $user = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->user;);
+        $pass = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->pass;);
+ 
+ 
+ 
+            ?> 
+            <script type="text/javascript">
+            alert("Netoyage OK: nom=X" +$nom+"X prenom=X" +$prenom+"X dateNaissance=X" +$dateNaissance+"X user=X" +$user+"X pass=X" +$pass+"X");
+            </script>
+            <?php
+ 
+
         personnels::create([
-            'nom' => $request->nom,
-            'prenom' => $request->prenom,
-            'dateNaissance' => $request->dateNaissance,
-            'user' => $request->user,
-            'pass' => $request->pass,
+            'nom' => $nom,
+            'prenom' => $prenom,
+            'dateNaissance' => $dateNaissance,
+            'user' => $user,
+            'pass' => $pass,
             'type' => "admin"
         ]);
         $message = "Créer avec succsès!";
