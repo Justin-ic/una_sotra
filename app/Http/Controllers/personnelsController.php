@@ -195,10 +195,10 @@ class personnelsController extends Controller
 // dd($personnel);
        // foreach ($personnels as $personnel) {
 
-                                      ?> 
-            <script type="text/javascript">
+             ?> 
+            <!-- <script type="text/javascript">
             alert('J ai recuperé le Personne');
-            </script>
+            </script> -->
             <?php
            if ($personnel != null) {
 
@@ -213,15 +213,15 @@ class personnelsController extends Controller
             echo "5h pour trouver <br>";
 
             ?> 
-            <script type="text/javascript">
-            alert('Je Il y a bien un personne; on va voir s il est admin ou pas');
-            </script>
+            <!-- <script type="text/javascript">
+             alert('Je Il y a bien un personne; on va voir s il est admin ou pas');
+            </script>  -->
             <?php
             if ( $typeBd == "admin") {
                                   ?> 
-            <script type="text/javascript">
+           <!--  <script type="text/javascript">
             alert('admin admin admin: Je vais faire la redirection vers bienVenusAdmin car ce sont les coordonnées de admin');
-            </script>
+            </script> -->
             <?php
             // dd('J arrive ici pour dir que je sui admin');
                 return redirect()->route('bienVenusAdmin');
@@ -229,9 +229,9 @@ class personnelsController extends Controller
                 session_start();
 
                                  ?> 
-            <script type="text/javascript">
+            <!-- <script type="text/javascript">
             alert('Je vais prendre le guichets car ce sont les coordonnées de Personne');
-            </script>
+            </script> -->
             <?php
                 $_SESSION['guichet'] = guichets::where('personnel_id', '=', $personnel->id)->first();
 
