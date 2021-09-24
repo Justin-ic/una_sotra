@@ -334,7 +334,7 @@ class personnelsController extends Controller
             <?php
 
         $nom = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->nom);
-        $prenom = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->->prenom);
+        $prenom = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->prenom);
         $dateNaissance = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->dateNaissance);
         $user = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->user);
         $pass = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->pass);
