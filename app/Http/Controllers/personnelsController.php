@@ -203,7 +203,7 @@ class personnelsController extends Controller
            if ($personnel != null) {
 
             // echo "Nom formater: request->user=X".$request->user."X Formater=X".$user."X<br>";
-            echo "A cause de toi; Petit espace la. "
+            echo "A cause de toi; Petit espace la. ";
             echo "ERREUR: <br>personnel->type =XXXX".$personnel->type."XXXX <br>";
 
             echo "<br>";
