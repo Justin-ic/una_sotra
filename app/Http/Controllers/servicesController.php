@@ -163,7 +163,7 @@ class servicesController extends Controller
         $nomGuichet = $LeGuichet->guichet->lettre_guichet;
         // Nétoyage
             $nomGuichet = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$nomGuichet);
-        // dd($nomGuichet);
+        // dd($nomGuichet); nomGuichet Corrigé avec succès
         $dd = date("Y-m-d");
 
 // on veut recupérer la liste  client en fonction du guichet qui est parqué par le nom du ticket
