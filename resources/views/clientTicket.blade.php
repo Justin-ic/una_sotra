@@ -82,9 +82,9 @@ function APIclients_locationsUpdate(){
 		};
 		// url = "route('APIclients_locationsUpdate',["+idClient+","+coordsClient[0]+","+coordsClient[1]+"])";
 		// Je ne trouve pas le moyen d'utiliser l'annotation .blade avec les variables de javeScripte
-		url = "https://localhost/una_sotra/public/ClientLocation/"+idClient+"/"+coordonnees[0]+"/"+coordonnees[1];
+		// url = "https://localhost/una_sotra/public/ClientLocation/"+idClient+"/"+coordonnees[0]+"/"+coordonnees[1];
 		// En ligne
-		// url = "https://glacial-everglades-43629.herokuapp.com/ClientLocation/"+idClient+"/"+coordonnees[0]+"/"+coordonnees[1];
+		url = "https://glacial-everglades-43629.herokuapp.com/ClientLocation/"+idClient+"/"+coordonnees[0]+"/"+coordonnees[1];
 		console.log(url);
 
 		xhttp.open("GET", url , true);
