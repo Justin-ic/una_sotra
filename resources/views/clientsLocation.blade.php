@@ -174,7 +174,7 @@ var DonneesBD = new Array();
 // !!!!!!!!!!!!!!!!!!!!!!  Actualisation de la page REDIRECTION IMPECABLE !!!!!!!!!!!!!!!!!
 
 function redirection(){
-    setInterval(direction,8000); // Chaque 8secondes
+    setInterval(direction,90000); // Chaque 8secondes
 
 // location.href="http://localhost/una_sotra/public/clientBienvenue";
 }
