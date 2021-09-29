@@ -7,7 +7,7 @@ use App\Http\Controllers\guichetsController;
 use App\Http\Controllers\personnelsController;
 use App\Http\Controllers\servicesController;
 use App\Http\Controllers\bilanClientController;
-use App\Http\Controllers\ticket;
+use App\Http\Controllers\ClientLocationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -189,6 +189,11 @@ Route::POST('clientTicket', [clientsController::class,'autoSotreClient'])->name(
 /*****************************clientTicket************************************/
 
 
+/******************InterfaceclientTicket***********************************************/
+Route::POST('clientTicketInterface', [ClientLocationController::class,'ApiTempsRestant'])->name('reConnectClient');
+/*****************************InterfaceclientTicket************************************/
+
+
 /******************clientAppele*********************/
 
 Route::get('clientAppele', function () {
@@ -222,6 +227,35 @@ Route::get('APIclientInfoFile', [clientsController::class,'clientDuJour'])->name
 Route::get('APIclientAppel', [clientsController::class,'APIclientAppel'])->name('APIclientAppel');
 /*****************************clientInfoFile************************************/
 
+
+
+
+/******************API_clients_locationsUpdate*********************/
+Route::get('ClientLocation/{id}/{latitude}/{longitude}', [ClientLocationController::class,'APIclients_locationsUpdate'])->name('APIclients_locationsUpdate');
+/*****************************API_clients_locationsUpdate************************************/
+
+
+
+
+/******************API_AdminVewClientLocation********************/
+Route::get('AdminVewClientLocation', [ClientLocationController::class,'AdminVewClientLocation'])->name('AdminVewClientLocation');
+/*****************************API_AdminVewClientLocation***********************************/
+
+
+
+
+
+/******************clientDeconnecter********************/
+Route::get('clientDeconnecter', [clientsController::class,'clientDeconnecter'])->name('clientDeconnecter');
+/*****************************clientDeconnecter***********************************/
+
+
+
+
+
+/******************APIMarqueurs********************/
+Route::get('APIMarqueurs', [ClientLocationController::class,'APIMarqueurs'])->name('APIMarqueurs');
+/*****************************APIMarqueurs***********************************/
 
 
 /*

@@ -16,7 +16,7 @@ body{
 	background-color: rgb(243, 214, 23);
 	margin: 20px;
 	border-radius: 40px;
-	font-size: 30px;
+	font-size: calc(1.0rem + 1.3vw); /*Adapte la taille de l'écriture en fonction de la taille de la finêtre*/
 }
 
 .enregistr_droit{
@@ -73,6 +73,19 @@ a{
 .contour{
 	border: 1px solid black;
 }
+
+.contour {
+  /*font-size: calc(1.525rem + 3.3vw);*/
+  /*font-size: calc(1.525rem + 3.3vw);*/
+}
+
+/*@media (min-width: 1200px) {
+  .contour {
+    font-size: 4rem;
+  }
+}*/
+
+
 
 .contourLigneAppel{
 	border-bottom: 1px solid orangered;

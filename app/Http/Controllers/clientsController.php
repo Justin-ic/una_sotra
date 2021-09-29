@@ -10,6 +10,7 @@ use App\Models\services;
 use App\Models\ticket;
 use App\Models\guichets;
 use App\Models\personnels;
+use App\Models\clientsLocation;
 
 
 
@@ -371,7 +372,6 @@ class clientsController extends Controller
             'genre' => $request->genre,
             'numero' => $request->numero,
             'nce' => $request->nce,
-            // 'ticket_id' => $dernierTicket->id,
             'servit' => 0
         ]);
 
@@ -395,9 +395,6 @@ $dernierclient = clients::latest()->first();
         'nbClientAvant' => $request->nbClientAvant
     ]);
 
-     
-
-
 
      // dd($dernierTicket);
 // description     ticket  tAttenteEstime  nbClientAvant   created_at  updated_at  
@@ -405,7 +402,24 @@ $dernierclient = clients::latest()->first();
 
 
 
+//**************************** Stockage des infos pour la géolocalisation *********************
+    if ($request->genre == 'H') {
+       $genre = "Mr.";
+   } else {
+       $genre = "Mme.";
+   }
+        clientsLocation::create([
+            'clientId' => $dernierclient->id, // Pour le update
+            'clientNumero' => $dernierclient->numero, // Pour reconnecte
+            'clientTicket' => $ticket,  // Pour reconnecte et infos
+            'nom' => $request->nom,  // Pour infos
+            'prenom' => $request->prenom,  // Pour infos
+            'genre' => $genre,  // Pour infos
+            'nbClientAvant' => $request->nbClientAvant, // Pour infos. Sera mis à jours
+            'tAttenteEstime' => $request->tAttenteEstime // Pour infos. Sera mis à jours
+        ]);
 
+//**************************** Stockage des infos pour la géolocalisation *********************
 
 
     // nom     prenom  genre   numero  nce     ticket_id   servit  created_at  updated_at 
@@ -414,16 +428,17 @@ $dernierclient = clients::latest()->first();
     $nbClientAvant = $request->nbClientAvant; 
     $tAttenteEstime = $request->tAttenteEstime;
     $ticket; 
-    if ($request->genre == 'H') {
-             $genre = "Mr.";
-         } else {
-             $genre = "Mme.";
-         }
-              
-        return view('clientTicket', compact('nom', 'prenom',  'nbClientAvant',  'tAttenteEstime',  'ticket',  'genre'));
+
+   
+   session_start();
+    $_SESSION['idClient']= $dernierclient->id;
+
+    $infosClient = clientsLocation::where('clientId','=',$_SESSION['idClient'])->get()->first();
+    // dd($infosClient->genre);
+        return view('clientTicket', compact('infosClient'));
     }
 
-
+// infosClient ==> clientId clientNumero clientTicket nom prenom genre nbClientAvant tAttenteEstime
 
 
 
@@ -497,9 +512,6 @@ $dernierclient = clients::latest()->first();
     public function APIclientAppel()
     {
 
-
-
-
         
         $reponse = array(); $cpt=0;
         $contenu = scandir('temporaires/');
@@ -554,7 +566,25 @@ $dernierclient = clients::latest()->first();
 
 
 
-    
+
+
+
+
+
+    /**
+     * clientDeconnecter
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function clientDeconnecter()
+    {
+        $fichier = fopen('clientDeconnecter.txt', 'a+');
+        fwrite($fichier, 'Le client est clientDeconnecter');
+        fclose($fichier);
+    }
+
+
+
 
 }/* FIN DE LA CLASS*/
 

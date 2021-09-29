@@ -61,7 +61,7 @@
 
 <div class="container-fluid">
 <form action="{{route('clientTicket')}}" method="POST" class="form">
-	<h1 class="MCenter">SOTRA_UNA</h1>
+	<h1 class="MCenter">UNA_SCOLARITE</h1>
 
 	<div class="row MCenter d-flex justify-content-center">
 		<div class="col-12 service"><div class="col-12 ">{{$LeService->nom}}</div></div>

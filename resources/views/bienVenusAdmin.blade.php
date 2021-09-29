@@ -13,6 +13,8 @@
 
 <!-- 
 
+cd C:\xampp\htdocs\una_sotra
+
 git status
 git add *
 git commit -m ""

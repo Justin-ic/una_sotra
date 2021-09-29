@@ -30,6 +30,9 @@
           <li class="nav-item">
               <a class="nav-link" href="clientBienvenue">clientBienvenue</a> 
           </li>
+          <li class="nav-item">
+              <a class="nav-link" href="AdminVewClientLocation">AdminVewClientLocation</a> 
+          </li>
       </ul>
       <span class="navbar-text">
         <form class="d-flex">

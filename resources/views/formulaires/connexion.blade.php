@@ -19,7 +19,7 @@
 <!-- xxxxxxxxxxxxxxxx  nav bar xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
 	
 <?php /*print_r($_SESSION) ; session_destroy();*/ ?>
-	<h1 class="MCenter connexionTitre">Bienvenue à SOTRA_UNA!</h1>
+	<h1 class="MCenter connexionTitre">Bienvenue à UNA_SCOLARITE!</h1>
 
 
 <div class="container-fluid">

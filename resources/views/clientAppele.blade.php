@@ -368,4 +368,4 @@ function showPosition(position) {
 
 
 
-AT+SGNSPWR=1 ERROR
+<!-- AT+SGNSPWR=1 ERROR -->

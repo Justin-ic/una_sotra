@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/fontawesome/css/all.css') }}">
 	<title>una_scolarite</title>
 
-	<script type="text/javascript">
+<!-- 	<script type="text/javascript">
 function horloge()
 {
         var tt = new Date().toLocaleTimeString();// hh:mm:ss
@@ -16,10 +16,11 @@ function horloge()
         document.getElementById("timer").innerHTML = tt;
         setTimeout(horloge, 1000); // mise à jour du contenu "timer" toutes les secondes
 }
-</script> 
+</script>  -->
 
 </head>
-<body onload="horloge()">
+<!-- <body onload="horloge()"> -->
+<body>
 	@include('inclusions.header')
 <!-- 	<label for="exampleColorInput" class="form-label">Color picker</label>
 	<input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color"> <mark>math_tipe à ajouter sur le word</mark>
