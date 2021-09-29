@@ -161,6 +161,8 @@ class servicesController extends Controller
 // dd($LeGuichet->guichet->lettre_guichet); // guichet est le nom de la relation
 
         $nomGuichet = $LeGuichet->guichet->lettre_guichet;
+        // Nétoyage
+            $nomGuichet=preg_replace("#\n|\t|\r#","",$nomGuichet);
         // dd($nomGuichet);
         $dd = date("Y-m-d");
 
