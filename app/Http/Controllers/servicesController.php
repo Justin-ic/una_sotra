@@ -162,7 +162,7 @@ class servicesController extends Controller
 
         $nomGuichet = $LeGuichet->guichet->lettre_guichet;
         // Nétoyage
-            $nomGuichet=preg_replace("#\n|\t|\r#","",$nomGuichet);
+            $nomGuichet = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$nomGuichet);
         // dd($nomGuichet);
         $dd = date("Y-m-d");
 
