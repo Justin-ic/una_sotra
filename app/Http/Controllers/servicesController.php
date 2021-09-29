@@ -169,7 +169,7 @@ class servicesController extends Controller
 
        $listeClientJour = clients::whereHas(
         'tickets' , function($query) use ($nomGuichet) {
-            $query->where('ticket', 'like', ''.$nomGuichet.'-%');
+            $query->where('ticket', 'like', $nomGuichet.'-%');
         })->where('created_at', '>', $dd.' 00:00:00')->with('tickets')
           ->get();
 
@@ -181,7 +181,7 @@ class servicesController extends Controller
 
        $listeClientAvant = clients::whereHas(
         'tickets' , function($query) use ($nomGuichet) {
-            $query->where('ticket', 'like', ''.$nomGuichet.'-%');
+            $query->where('ticket', 'like', $nomGuichet.'-%');
         })->where('created_at', '>', $dd.' 00:00:00')->with('tickets')
           ->where('servit', '=', 0)
           ->get();
