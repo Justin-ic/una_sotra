@@ -187,7 +187,10 @@ class servicesController extends Controller
           ->get();
 
 /*!!!!!!!!!!!!!!!!!!!!!!!! clients non servit du jour guichet !!!!!!!!!!!!!!!!!!!!!!!!!!!**/
-
+echo 'nomGuichet=='.$nomGuichet.'==';
+echo 'Nb Clients avant '.count($listeClientAvant);
+echo ' Nb Clients listeClientJour '.count($listeClientJour) ;
+        dd($listeClientAvant);
         $nbClientAvant = count($listeClientAvant);
         $nbClientDuJour = count($listeClientJour);
 // dd($nbClientDuJour);

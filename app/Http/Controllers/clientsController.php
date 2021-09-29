@@ -160,7 +160,7 @@ class clientsController extends Controller
     public function destroy($id)
     {
          $client = clients::find($id)->delete();
-        return redirect()->route('home')->with('message');
+        return redirect()->route('clients.index')->with('message');
     }
 
 
@@ -434,7 +434,7 @@ $dernierclient = clients::latest()->first();
     $_SESSION['idClient']= $dernierclient->id;
 
     $infosClient = clientsLocation::where('clientId','=',$_SESSION['idClient'])->get()->first();
-    // dd($infosClient->genre);
+    // dd($_SESSION['idClient']);
         return view('clientTicket', compact('infosClient'));
     }
 
@@ -488,7 +488,7 @@ $dernierclient = clients::latest()->first();
           ->where('servit', '=', 0)->get();
 /********** ON RECUPERE LES CLIENTS ET LEUR TICKTE DONT LE NOM-TICKET COMMENCE PAR A- servit ******/
 
-
+        
             $infoFile[$i++] = array('nom' => $guichet->lettre_guichet, 'nbClient' =>  count($nbClient) );
         }
 
