@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/bootstrap/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('images/styleBienvenue.css') }}">
 
-	<title>una_sotra</title>
+	<title>una_Scolatité</title>
 
 <!-- xxxxxxxxxxxxxxxxxxxx le timine xxxxxxxxxxxxxxxxxxxxxxxxxx -->
 <script type="text/javascript">

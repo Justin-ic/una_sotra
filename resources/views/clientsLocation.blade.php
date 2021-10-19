@@ -2,20 +2,11 @@
 
 @section('contenu')
 
-<script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYV20HH1FvJ0MOASehxOx0DsJ9IWrnFPg&callback=initMap">
-</script>
-
-<script type="text/javascript">
-
-
-</script>
-
 <!-- <button onclick="viderTableau()">xxxxx</button> -->
 <!-- <button onclick="">AfficherTableau</button> -->
 
 <div class="table-responsive">
-    <h1 class="MCenter">La liste des guichets de l'entreprise</h1>
+    <h1 class="MCenter">La liste des étudiants en attente</h1>
     <table class="table table-bordered" id="MonTableau">
         <thead>
             <tr class="MCenter">
@@ -28,6 +19,7 @@
                 <th>genre</th>
                 <th>clientLatitude</th>
                 <th>clientLongitude</th>
+                <th>Distace</th>
 
                 <!-- <th colspan="2">Action</th> -->
             </tr>
@@ -93,6 +85,7 @@ $i=0;
             <th>genre</th>
             <th>clientLatitude</th>
             <th>clientLongitude</th>
+            <th>Distace</th>
         	<!-- <th colspan="2">Action</th> -->
         </tfoot>
     </table>
@@ -134,6 +127,11 @@ $i=0;
         
 
 
+
+
+<script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYV20HH1FvJ0MOASehxOx0DsJ9IWrnFPg&callback=initMap">
+</script>
 
 
 
@@ -228,10 +226,11 @@ function setMarkers(map,locations){
         }) (i);
 
         (function(i){
-            google.maps.event.addListener(marker, "click", function(){
+            google.maps.event.addListener(marker, "click", function(){ 
                 var info = locations[i];
+                let distance = parseInt(info[10]).toFixed(1);
                 infoWindow.close();
-                infoWindow.setContent("<div>"+info[5]+" "+info[6]+"<br />Ticket: "+info[2]+"</div>");
+                infoWindow.setContent("<div>"+info[5]+" "+info[6]+"<br>Ticket: "+info[2]+"<br>Distance= "+distance+"m </div>");
                 infoWindow.open(map, this);
             });
         }) (i);
@@ -282,6 +281,7 @@ TrTd +='                <td>' +infoLigne[6]+ '</td>';
 TrTd +='                <td>' +infoLigne[7]+ '</td>';
 TrTd +='                <td>' +infoLigne[8]+ '</td>';
 TrTd +='                <td>' +infoLigne[9]+ '</td>';
+TrTd +='                <td>' +infoLigne[10]+ '</td>';
 TrTd +='       </tr>';
 TrTd +='';
 TrTd +='';

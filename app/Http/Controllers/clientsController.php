@@ -204,6 +204,33 @@ class clientsController extends Controller
             'servit' => 1
         ]);
 
+
+
+/********************** UPDATE DE LA SALLE D'ATTENTE CLIENT **************************/
+$liste = clientsLocation::all();
+foreach ($liste as $ligne) {
+    if ($ligne->clientId == $id) {
+        $client = clientsLocation::where('clientId', '=', $id)->delete();
+    } 
+// pas de updadte. cette information nous servira à se souvenir de ce qu'on avait dit
+    else {
+        $client = clientsLocation::where('clientId', '=', $ligne->clientId)->first();
+        // dd($client);
+        $client->update([
+            'nbClientAvant' => $ligne->nbClientAvant - 1
+            // 'tAttenteEstime' => ($ligne->nbClientAvant - 1)*30*60 // Aussi dans autoEnregistreClient.blade
+        ]);
+    }
+    
+}
+
+/********************** UPDATE DE LA SALLE D'ATTENTE CLIENT **************************/
+
+
+
+
+
+
         /* On écrit le numéro du client suivant*/
         if ($request->numeroClintSuivant != 0) {
             $fichier = fopen('temporaires/'.$request->nomGuichet.".txt", 'w+'); 
@@ -363,6 +390,18 @@ class clientsController extends Controller
 
 
 
+// *************************** CONTROLE DE DUPLICATION *******************
+        $numExiste  = clients::where('numero', '=', $request->numero)->first();
+        if ($numExiste != null) {
+            ?> <script type="text/javascript"> 
+                alert('Ce numéro a déjà un ticket ou vous vous êtes trompé! Veuillez reprendre SVP!');  
+                </script> <?php
+            return redirect()->route('clientBienvenue');
+            // return redirect()->route('clientBienvenue')->with('message' =>'Ce numéro a déjà un ticket ou vous vous êtes trompé!');
+        }
+        
+// *************************** CONTROLE DE DUPLICATION *******************
+
 
 /************** enregistrement du client *********************************/
 // dd("j'arrive ici");
@@ -433,7 +472,7 @@ $dernierclient = clients::latest()->first();
    session_start();
     $_SESSION['idClient']= $dernierclient->id;
 
-    $infosClient = clientsLocation::where('clientId','=',$_SESSION['idClient'])->get()->first();
+    $infosClient = clientsLocation::where('clientId','=',$_SESSION['idClient'])->first();
     // dd($_SESSION['idClient']);
         return view('clientTicket', compact('infosClient'));
     }

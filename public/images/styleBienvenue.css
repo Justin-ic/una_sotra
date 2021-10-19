@@ -1,6 +1,7 @@
 body{
-	background-image: url('imgBienvenue.jpg');
-	background-repeat: no-repeat;
+	/*background-image: url('imgBienvenue.jpg');*/
+	/*background-repeat: no-repeat;*/
+	background-color: #dee9ff;
 }
 
 .MCenter{
@@ -210,9 +211,29 @@ fieldset{
 	margin-top: 7px;
 }
 
-
-
-
+.zone_reconnect{
+	/*background-color: white;*/
+	box-shadow: 3px 3px 30px white, -3px -3px 30px white;
+	/*padding: 20px;*/
+}
+  
+.CB_entete{
+	background-color: rgb(186, 186, 186);
+}
+    
+  
+#home-tab{
+	border-radius: 30px;
+}
+     
+#profile-tab{
+	border-radius: 30px;
+}
+    
+.AEn_droite{
+	/*background-color: white;*/
+	/*padding: 5px;*/
+}
 /*  ***************** onnexion ************ */
 
 

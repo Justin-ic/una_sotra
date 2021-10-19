@@ -33,7 +33,9 @@ class guichetsController extends Controller
         $listeService = services::all(); 
         $listePersonnel = personnels::where('type','=',"personnel")->get();
 
-        $i=0;$personnelLibre;
+        $i=0;$personnelLibre=null; // Initialisé à null au cas où il n'iy a pas de personnel
+                                    // On prend null pour pouvoir le transforme en un un tableau
+       
         foreach ($listePersonnel as $personnel) {
             $idp = $personnel->id;
             $guichet = guichets::where('personnel_id','=',$idp)->get();
@@ -44,7 +46,9 @@ class guichetsController extends Controller
             }            
         }
 
-        $i=0;$serviceLibre;
+        $i=0;$serviceLibre=null; // Initialisé à 0 au cas où il n'iy a pas de service
+                                // On prend null pour pouvoir le transforme en un un tableau
+
         foreach ($listeService as $service) {
             $ids = $service->id;
             $guichet = guichets::where('service_id','=',$ids)->get();
@@ -54,7 +58,8 @@ class guichetsController extends Controller
                 $serviceLibre[$i++] = $service;
             }            
         }
-// dd($serviceLibre);
+/*dd($serviceLibre);
+         dd($personnelLibre);*/
 
 /*        $listePersonnel = personnels::with('guichets')
                                       ->where('type','=',"personnel")->get();

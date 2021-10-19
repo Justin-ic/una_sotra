@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/fontawesome/css/all.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/bootstrap/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('images/styleBienvenue.css') }}">
-	<title>una_sotra</title>
+	<title>una_Scolatité</title>
 
 <style type="text/css">
 	 body{
@@ -143,7 +143,7 @@
 
 
 </head>
-<body  onload="horloge(), debutService()">
+<body  onload="horloge(), debutService(), APIClientEnLigne()">
 
 
 <!-- 
@@ -162,6 +162,8 @@
 <button class="btn btn-success" onclick="AllumerLED()">Allumer</button>
 <button class="btn btn-danger" onclick="EteindreLED()">Eteindre</button>
 
+
+<br><br><br><br>
 <?php $id = ($nbClientAttent>0) ? "{$clientEnCours->id}" :  "0" ?>
 <form action="{{route('clientSuivant', $id )}}" method="POST">
 	<!--  Je fait un update de client -->
@@ -169,7 +171,7 @@
 
 <!-- d-flex justify-content-center -->
 	<div class="row serveurHaut d-flex align-items-center "> <!-- Alignement vertical -->
-		<div class="col-12 col-md-8 ">UNA Sotra</div>
+		<div class="col-12 col-md-8 ">UNA Scolarité</div>
 		<div class="col-12 col-md-4">
 			<div class="row">
 				<div class="col-5 contour">Guichet <?=$_SESSION['guichet']->lettre_guichet ?></div>
@@ -237,9 +239,17 @@ nbClientServit -->
 			<?php $nbClient = $nbClientAttent-1; ?>
 			<div class="col-12 service MCenter">Clients en attente: <?php echo($nbClientAttent>0) ? "{$nbClient}" : "0";  ?> </div>
 			<div class="col-12 service MCenter">Clients servit: {{$nbClientServit}}</div>
-			<div class="col-12 service MCenter">Client suivant: <br><?php echo($nbClientAttent>1) ? "{$genre2} {$leClientSuivant->nom} : Dans la file" : "Personne";  ?> </div>
+			<div class="col-12 service MCenter">Client suivant: 
+				<br><?php 
+				if ($nbClientAttent>1) {
+				  echo "{$genre2} {$leClientSuivant->nom} : <br>"; ?><span id="ReponseStatus"></span>  <?php 
+				}else{
+					echo "Personne";
+				}
+			   ?> 
 		</div>
-	</div><!-- Fin milieux Droite -->
+		</div>
+	</div><!-- Fin milieux Droite --> 
 </div>
 
 <!-- ***************************** Block milieux ************************* -->
@@ -247,6 +257,8 @@ nbClientServit -->
 <div class="d-grid gap-2 col-12 mx-auto">
   <button onsubmit="finService()" id="suivant"  <?php echo($nbClientAttent>0) ? "" : "disabled";  ?> class="btn btn-primary service" type="submit">Suivant <img src="{{ asset('images/suivant.png') }}" alt="" class="imgSuivant"></button>
 </div>
+
+<br><br><br><br>
 
 <!-- <div id="debutService"></div>
 <div id="finService"></div> -->
@@ -259,10 +271,55 @@ nbClientServit -->
 <?php $ticket = ($nbClientAttent>1) ? $leClientSuivant->tickets->first()->ticket : "0" ?>
 <input type="text" name="ticket" value="<?php echo $ticket  ?>" id="">
 
+<?php $idClient = ($nbClientAttent>1) ? $leClientSuivant->id : "0" ?>
+<input type="text" name="idClient" value="<?=$idClient?>" id="idClient">
+
  </form>
 </div><!--  -->
 
 	<script type="text/javascript" src="{{  asset('styles/js/jquery3.4.1.js')  }}"></script>
+
+<script type="text/javascript">
+	
+		function APIClientEnLigne(){
+
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+		       // Typical action to be performed when the document is ready:
+		       document.getElementById("ReponseStatus").innerHTML = xhttp.responseText;
+		       // alert("Je suis ici");
+		     }
+		   };
+
+
+
+		   // URL en local
+	    var idClient = document.getElementById("idClient").value; // Ne doit pas être dans le if
+
+				// URL En production
+		   url = "https://glacial-everglades-43629.herokuapp.com/APIEnLigne/"+idClient;
+
+
+		   url = 'https://localhost/una_sotra/public/APIEnLigne/'+idClient;
+		   console.log(url);
+
+	   xhttp.open("GET", url, true);
+	   xhttp.send();
+
+	   setTimeout(APIClientEnLigne, 1000); // mise à jour du contenu "timer" toutes les secondes
+
+			}
+
+// window.onload()
+
+		   
+		   // alert(idClient);
+		   
+
+</script>
+
+
 <?php /*session_destroy();*/ ?>
 </body>
 </html>

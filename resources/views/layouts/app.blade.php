@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/bootstrap/bootstrap.min.css') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/icons/favicon.png') }}"/>
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/style.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/fontawesome/css/all.css') }}">
 	<title>una_scolarite</title>

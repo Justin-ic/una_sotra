@@ -10,6 +10,14 @@ $formulaire = new Formulaire();
 die($ss);
 {{ sset('../una_sotra/app/Http/Controllers/Formulaire.php') }}*/
 ?>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+  $('#birth-date').mask('00/00/0000');
+  $('#numero').mask('0000000000');
+ })
+</script>
+
 <div class="row">
     <div class="col-3"></div>
     
@@ -24,7 +32,7 @@ die($ss);
 
             <div class="form-group">
                 <b>Numero:</b>
-                <input class="form-control" required type="number" name="numero">
+                <input class="form-control" required type="number" name="numero" id="numero">
             </div>
 
             <div class="form-group">

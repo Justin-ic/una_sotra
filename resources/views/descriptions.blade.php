@@ -6,7 +6,7 @@
 
 <div class="table-responsive">
     <h1 class="MCenter">La liste des descriptions de services</h1>
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped">
         <thead>
             <tr class="MCenter">
                 <th>N°</th>

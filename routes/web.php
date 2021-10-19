@@ -189,8 +189,15 @@ Route::POST('clientTicket', [clientsController::class,'autoSotreClient'])->name(
 /*****************************clientTicket************************************/
 
 
+
 /******************InterfaceclientTicket***********************************************/
-Route::POST('clientTicketInterface', [ClientLocationController::class,'ApiTempsRestant'])->name('reConnectClient');
+Route::get('clientTicketInterface/{idClient}', [ClientLocationController::class,'ApiTempsRestantReel']);
+/*****************************InterfaceclientTicket************************************/
+
+
+
+/******************InterfaceclientTicket***********************************************/
+Route::post('clientTicketInterface', [ClientLocationController::class,'ReconnectionClient'])->name('reConnectClient');
 /*****************************InterfaceclientTicket************************************/
 
 
@@ -231,7 +238,7 @@ Route::get('APIclientAppel', [clientsController::class,'APIclientAppel'])->name(
 
 
 /******************API_clients_locationsUpdate*********************/
-Route::get('ClientLocation/{id}/{latitude}/{longitude}', [ClientLocationController::class,'APIclients_locationsUpdate'])->name('APIclients_locationsUpdate');
+Route::get('ClientLocation/{id}/{latitude}/{longitude}/{distance}', [ClientLocationController::class,'APIclients_locationsUpdate'])->name('APIclients_locationsUpdate');
 /*****************************API_clients_locationsUpdate************************************/
 
 
@@ -256,6 +263,39 @@ Route::get('clientDeconnecter', [clientsController::class,'clientDeconnecter'])-
 /******************APIMarqueurs********************/
 Route::get('APIMarqueurs', [ClientLocationController::class,'APIMarqueurs'])->name('APIMarqueurs');
 /*****************************APIMarqueurs***********************************/
+
+
+
+/******************APIEnLigne********************/
+Route::get('APIEnLigne/{idClient}', [ClientLocationController::class,'APIEnLigne'])->name('APIEnLigne');
+/*****************************APIEnLigne***********************************/
+
+
+
+
+/****************** Route général pour ClientLocationController ************************/
+Route::resource('ClientLocation', ClientLocationController::class); 
+/****************** Route général pour ClientLocationController ************************/
+
+
+
+
+
+/******************Definir_IP_ESP8266********************/
+Route::get('EditeIPESP8266', [ClientLocationController::class,'EditeIPESP8266'])->name('EditeIPESP8266');
+/*****************************Definir_IP_ESP8266***********************************/
+
+
+
+/******************Definir_IP_ESP8266********************/
+Route::POST('StoreIPESP8266', [ClientLocationController::class,'StoreIPESP8266'])->name('StoreIPESP8266');
+/*****************************Definir_IP_ESP8266***********************************/
+
+
+
+/******************API_IPESP8266********************/
+Route::get('API_IPESP8266', [ClientLocationController::class,'API_IPESP8266'])->name('API_IPESP8266');
+/*****************************API_IPESP8266***********************************/
 
 
 /*

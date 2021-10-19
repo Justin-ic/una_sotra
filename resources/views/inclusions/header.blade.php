@@ -10,7 +10,7 @@
       <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{route('clients.index')}}">clients</a>
+                <a class="nav-link active" aria-current="page" href="{{route('clients.index')}}">Eudiants</a>
           </li>
           <li class="nav-item">
               <a class="nav-link" href="{{route('services.index')}}">Servie</a>
@@ -24,14 +24,15 @@
           <li class="nav-item">
               <a class="nav-link" href="{{route('descriptions.index')}}">Descriptions</a> 
           </li>
-          <li class="nav-item">
-              <a class="nav-link" href="{{route('bilan_clients.index')}}">Bilan clients</a> 
-          </li>
+
           <li class="nav-item">
               <a class="nav-link" href="clientBienvenue">clientBienvenue</a> 
           </li>
           <li class="nav-item">
               <a class="nav-link" href="AdminVewClientLocation">AdminVewClientLocation</a> 
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('EditeIPESP8266')}}">IP_ESP8266</a> 
           </li>
       </ul>
       <span class="navbar-text">

@@ -6,7 +6,7 @@
 
 <div class="table-responsive">
     <h1 class="MCenter">La liste des clients du jour</h1>
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped">
         <thead>
             <tr class="MCenter">
                 <th>N°</th>
@@ -112,3 +112,5 @@ En utilisant simplePaginate() dans le controleur, on n'a pas besoin du style
 -->
 <br><br>
 @endsection   
+
+

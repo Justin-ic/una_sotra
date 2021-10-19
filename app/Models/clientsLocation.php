@@ -9,7 +9,7 @@ class clientsLocation extends Model
 {
     use HasFactory;
 
-    protected $fillable= ['clientId', 'clientNumero', 'clientTicket','nbClientAvant','tAttenteEstime','nom','prenom','genre','clientLatitude', 'clientLongitude'];
+    protected $fillable= ['clientId', 'clientNumero', 'clientTicket','nbClientAvant','tAttenteEstime','nom','prenom','genre','clientLatitude', 'clientLongitude','distance'];
 }
 
 

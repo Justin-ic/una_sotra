@@ -7,15 +7,15 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/bootstrap/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('images/styleBienvenue.css') }}">
 
-	<title>una_sotra</title>
+	<title>una_scolarite</title>
 </head>
 <body>
 
 <!-- xxxxxxxxxxxxxxxx  nav bar xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
-<a href="{{route('clientBienvenue')}}">clientBienvenue</a>
+<!-- <a href="{{route('clientBienvenue')}}">clientBienvenue</a>
 <a href="clientAppele">clientAppele</a>
 <a href="clientInfoFile">clientInfoFile</a>
-<a href="interfaeGuichetPersonnel"> interfaeGuichetPersonnel</a>
+<a href="interfaeGuichetPersonnel"> interfaeGuichetPersonnel</a> -->
 <!-- xxxxxxxxxxxxxxxx  nav bar xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
 	
 <?php /*print_r($_SESSION) ; session_destroy();*/ ?>
@@ -56,4 +56,7 @@
 
 </body>
 </html>
+
+
+
 

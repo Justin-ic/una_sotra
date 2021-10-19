@@ -33,6 +33,7 @@ class CreateClientsLocationsTable extends Migration
             $table->char('genre',10);// pour l'affichage
             $table->char('clientLatitude',30)->nullable(); // Car venant du java scripte
             $table->char('clientLongitude',30)->nullable();
+            $table->char('distance',30)->nullable(); // distance entre le client et le guichet
             $table->timestamps();
         });
     }

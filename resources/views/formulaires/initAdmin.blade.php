@@ -11,10 +11,10 @@
 <body>
 
 <!-- xxxxxxxxxxxxxxxx  nav bar xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
-<a href="{{route('clientBienvenue')}}">clientBienvenue</a>
+<!-- <a href="{{route('clientBienvenue')}}">clientBienvenue</a>
 <a href="clientAppele">clientAppele</a>
 <a href="clientInfoFile">clientInfoFile</a>
-<a href="interfaeGuichetPersonnel"> interfaeGuichetPersonnel</a>
+<a href="interfaeGuichetPersonnel"> interfaeGuichetPersonnel</a> -->
 <!-- xxxxxxxxxxxxxxxx  nav bar xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
 	
 <?php /*print_r($_SESSION) ; session_destroy();*/ ?>

@@ -7,7 +7,7 @@
     <div class="col-3"></div>
     
     <div class="col-6">
-        <h1 class="MCenter">Formulaire des personnels de l'entreprise</h1>
+        <h1 class="MCenter">Formulaire des personnels de la scolarité</h1>
         <form action="{{route('personnels.store')}}" method="POST">
             @csrf
             <div class="form-group">

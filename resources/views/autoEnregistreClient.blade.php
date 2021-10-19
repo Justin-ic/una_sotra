@@ -47,16 +47,24 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/bootstrap/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('images/styleBienvenue.css') }}">
 
-	<title>una_sotra</title>
+	<title>una_Scolatité</title>
+
+	<script type="text/javascript">
+    $(document).ready(function(){
+  $('#birth-date').mask('00/00/0000');
+  $('#numero').mask('0000000000');
+ })
+</script>
+
 </head>
 <body>
 <!-- xxxxxxxxxxxxxxxx  nav bar xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
-<a href="clientBienvenue">clientBienvenue</a>
+<!-- <a href="clientBienvenue">clientBienvenue</a>
 <a href="autoEnregistreClient"> autoEnregistreClient</a>
 <a href="clientTicket"> clientTicket</a>
 <a href="clientAppele"> clientAppele</a>
 <a href="clientInfoFile"> clientInfoFile</a>
-<a href="interfaceGuichetPersonnel"> interfaceGuichetPersonnel</a>
+<a href="interfaceGuichetPersonnel"> interfaceGuichetPersonnel</a> -->
 <!-- xxxxxxxxxxxxxxxx  nav bar xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
 
 <div class="container-fluid">
@@ -68,7 +76,7 @@
 	</div>
 
 	<div class="row parent">
-		<div class="col-12 col-md-5 enfant1 ">
+		<div class="col-12 col-md-5 enfant1 AEn_droite">
 
 <!-- vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv -->
 					<h3 class="MCenter">Cocher</h3>
@@ -101,7 +109,7 @@
 					<div class="row MCenter d-flex justify-content-center enregistr_droit">
 						<div class="col-12"><div class="col-12 ">Temps estimé: 
 							<?php 
-								$tmoyen=30*60;
+								$tmoyen=30*60; // Le temps moyen est défini ici à 30 minutes. aussi dans clientsControleur
 								// si 0, renvoie 1 pour la multiplication
 								// $nbc = ($nbClientAvant==0) ? 1:$nbClientAvant; // 
 								if ($nbClientAvant==0) {
@@ -146,7 +154,7 @@
 
 					<div class="input-group flex-nowrap">
 						<span class="input-group-text" ><b>Numéro:</b></span>
-						<input type="number" class="form-control" required placeholder="Votre numéro" name="numero" value="{{old('numero')}}" autocomplete="true">
+						<input type="number" class="form-control" required placeholder="Votre numéro" name="numero" id="numero" value="{{old('numero')}}" autocomplete="true">
 					</div>
 					<div class="input-group flex-nowrap">
 						<span class="input-group-text" ><b>NCE:</b></span>

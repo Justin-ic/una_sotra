@@ -13,6 +13,15 @@
 
 <!-- 
 
+
+Avant  de mettre en production, je dois remplacer 	
+url="https://localhost/una_sotra/public/ClientLocation/"+idClient+"/"+coordonnees[0]+"/"+coordonnees[1];
+
+Par url = "https://glacial-everglades-43629.herokuapp.com/ClientLocation/"+idClient+"/"+coordonnees[0]+"/"+coordonnees[1];
+Dans clientTicket.blade.php ligne 87
+
+
+
 cd C:\xampp\htdocs\una_sotra
 
 git status

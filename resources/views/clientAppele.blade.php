@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/bootstrap/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('images/styleBienvenue.css') }}">
 
-	<title>una_sotra</title>
+	<title>una_Scolatité</title>
 
 <!-- xxxxxxxxxxxxxxxxxxxx le timine xxxxxxxxxxxxxxxxxxxxxxxxxx -->
 <script type="text/javascript">
@@ -30,6 +30,7 @@ Content-Type: text/html; charset=utf-8*/
 
 
 var iii=0;
+
 
 function APIclientAppel(){
 iii++;
@@ -69,6 +70,8 @@ xhttp.onreadystatechange = function() {
 creerDiv(leId); /* Je l'appelle en précisant le id*/
 document.getElementById(leId).innerHTML = div;
 addTimeLine(leId);
+
+
 
 /* On envoi les données au ESP*/
 Envoi_Au_ESP(myArr[i].ticket, myArr[i].guichet, myArr[i].numero);
@@ -179,6 +182,33 @@ Pour chaque ligne du tableau reçu, on doit créer une div, lui associer un id u
 */
 
 
+// var IPDuEsp8266;
+/******************** Recuperer ID ESP8266***********************/
+
+    function IPEsp8266(){
+    	var xhttp = new XMLHttpRequest();
+    	xhttp.onreadystatechange = function() {
+    		if (this.readyState == 4 && this.status == 200) {
+		       // Typical action to be performed when the document is ready:
+		       var laReponse = this.responseText; /* Je recupère la réponse en string*/
+		       console.log('ID du ESP est:'+laReponse);
+		       alert('ID du ESP est:'+laReponse)
+		       document.getElementById("IDEsp").value = laReponse;
+		   }
+		};
+
+		// En production
+		// url = "https://glacial-everglades-43629.herokuapp.com/public/API_IPESP8266";
+		url = "https://localhost/una_sotra/public/API_IPESP8266";
+		// alert(url);
+		xhttp.open("GET", url, true);
+		xhttp.send();
+	}
+/******************** Recuperer ID ESP8266***********************/
+
+
+
+
 
 /******************** TRANSFERT DES DONNEES VERS LE ESP8266***********************/
 
@@ -188,12 +218,15 @@ Pour chaque ligne du tableau reçu, on doit créer une div, lui associer un id u
     		if (this.readyState == 4 && this.status == 200) {
 		       // Typical action to be performed when the document is ready:
 		       var laReponse = this.responseText; /* Je recupère la réponse en string*/
-		      console.log(laReponse);
+		       console.log(laReponse);
 		       document.getElementById("reponseEsp").innerHTML = laReponse;
 		   }
 		};
-		url = "http://192.168.137.244/?ticket="+ticketClientEnCours+"&guichet="+guichet+"&numero="+numeroClientProchain;
-		// alert(url);
+		
+		IPDuEsp8266 = document.getElementById("IDEsp").value;
+
+		url = "http://"+IPDuEsp8266+"/?ticket="+ticketClientEnCours+"&guichet="+guichet+"&numero="+numeroClientProchain;
+		alert(url);
 		xhttp.open("GET", url, true);
 		xhttp.send();
 	}
@@ -233,7 +266,7 @@ function showPosition(position) {
 
 
 </head>
-<body onload="horloge(), APIclientAppel(), getLocation()">
+<body onload="horloge(), APIclientAppel(), getLocation(), IPEsp8266()">
 
 <div class="container-fluid">
 
@@ -250,6 +283,11 @@ function showPosition(position) {
 
 <!-- ----------------------------------------------------------- -->
 <h1>lA POSITION DU CLIENT EST: <span id="demo">cc</span></h1>
+<!-- ----------------------------------------------------------- -->
+
+
+<!-- ----------------------------------------------------------- -->
+<input type="text" name="" id="IDEsp">
 <!-- ----------------------------------------------------------- -->
 
 
