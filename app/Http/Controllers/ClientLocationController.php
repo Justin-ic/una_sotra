@@ -274,6 +274,9 @@ $dd = date("Y-m-d");
             // echo '<br>updated_at= '.strtotime($data->updated_at);
 
             // echo '<br>distance= '.$data->distance;
+            if ($data->distance = 'NaN') {
+                return 'Localisation non autoriée';
+            }
             $LaDistance = round($data->distance);
             $LaDistance = intval($LaDistance);
 
