@@ -244,7 +244,10 @@ idClient:
 
 
 </script>
-
+	
+	<script type="text/javascript">
+		APIclients_locationsUpdate(); TempsRestant(); Envoi_Au_ESP(); Envoi_A_IMPRIMANTE(); 
+	</script>
 
 
 @endsection

@@ -299,7 +299,7 @@ http://localhost/una_sotra/public/escpos_printer/example/interface/windows-usb.p
 
 // ********************** Client Ticket **************************************** 
 
-    APIclients_locationsUpdate(); TempsRestant(); Envoi_Au_ESP(); Envoi_A_IMPRIMANTE(); 
+    // APIclients_locationsUpdate(); TempsRestant(); Envoi_Au_ESP(); Envoi_A_IMPRIMANTE(); 
 
 // ********************** Client Ticket ****************************************
 // </script>
