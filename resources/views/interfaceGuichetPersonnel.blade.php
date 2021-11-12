@@ -192,7 +192,7 @@ nbClientServit -->
 
 
 		   url = 'http://localhost/una_sotra/public/APIEnLigne/'+idClient;
-		   url = "http://glacial-everglades-43629.herokuapp.com/APIEnLigne/"+idClient;
+		   url = "https://glacial-everglades-43629.herokuapp.com/APIEnLigne/"+idClient;
 		   console.log(url);
 
 	   xhttp.open("GET", url, true);
