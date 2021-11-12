@@ -272,7 +272,7 @@ Route::get('clientDeconnecter', [clientsController::class,'clientDeconnecter'])-
 
 
 
-/******************APIMarqueurs********************/
+/******************APIMarqueurs********************/ 
 Route::get('APIMarqueurs', [ClientLocationController::class,'APIMarqueurs'])->name('APIMarqueurs');
 /*****************************APIMarqueurs***********************************/
 

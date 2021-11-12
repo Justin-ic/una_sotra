@@ -239,7 +239,7 @@ $dd = date("Y-m-d");
                 '10' => $client->distance
             ];
         }
-        return $coordonnees;
+        return $coordonnees; 
     }
 // clientId clientNumero clientTicket nbClientAvant tAttenteEstime clientLatitude clientLongitude
  // clientId clientNumero clientTicket nbClientAvant tAttenteEstime nom prenom genre clientLatitude clientLongitude

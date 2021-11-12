@@ -218,8 +218,10 @@ function AfficheMarqueurs(){
            }
         };
 
-        url = "{{route('APIMarqueurs')}}";
+        // url = "{{route('APIMarqueurs')}}"; /*Pas de {{ }} ici car ce n'est pas un blade*/
+        url = "http://localhost/una_sotra/public/APIMarqueurs";
         url = "https://glacial-everglades-43629.herokuapp.com/public/APIMarqueurs";
+        // alert(url);
         xhttp.open("GET",url , true);
         xhttp.send();
 
