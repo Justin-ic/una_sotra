@@ -151,7 +151,7 @@ function APIclients_locationsUpdate(){
 		// Je ne trouve pas le moyen d'utiliser l'annotation .blade avec les variables de javeScripte
 		url = "http://localhost/una_sotra/public/ClientLocation/"+idClient+"/"+coordonnees[0]+"/"+coordonnees[1]+"/"+laDistance_En_m;
 		// En ligne
-		// url = "https://glacial-everglades-43629.herokuapp.com/ClientLocation/"+idClient+"/"+coordonnees[0]+"/"+coordonnees[1]+"/"+laDistance_En_m;
+		url = "https://glacial-everglades-43629.herokuapp.com/ClientLocation/"+idClient+"/"+coordonnees[0]+"/"+coordonnees[1]+"/"+laDistance_En_m;
 		dateTime = console.log(url);
 
 		xhttp.open("GET", url , true);
@@ -288,8 +288,8 @@ http://localhost/una_sotra/public/escpos_printer/example/interface/windows-usb.p
 		};
 
 		// En production
-		// url = "https://glacial-everglades-43629.herokuapp.com/public/API_IPESP8266";
 		url = "http://localhost/una_sotra/public/API_IPESP8266";
+		url = "https://glacial-everglades-43629.herokuapp.com/public/API_IPESP8266";
 		// alert(url);
 		xhttp.open("GET", url, true);
 		xhttp.send();

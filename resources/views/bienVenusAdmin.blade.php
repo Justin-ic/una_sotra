@@ -24,6 +24,12 @@ Dans clientTicket.blade.php ligne 87
 
 cd C:\xampp\htdocs\una_sotra
 
+coordonnées heroku:
+user: gnjustin.ic@gmail.com
+pass: JustUna21**
+
+heroku login: pour s'	authentifier via le terminal
+
 git status
 git add *
 git commit -m ""
