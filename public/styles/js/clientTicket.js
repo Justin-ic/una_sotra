@@ -67,6 +67,7 @@ console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Resolu OKOK TAttenteEstimeSeconde='
 		   };
 		   		var idClient = document.getElementById("idClient").value; // Ne doit pas être dans le if
 		   url = 'http://localhost/una_sotra/public/clientTicketInterface/'+idClient;
+		   url = 'https://glacial-everglades-43629.herokuapp.com/clientTicketInterface/'+idClient;
 		   // alert(idClient);
 		   console.log(url);
 	   xhttp.open("GET", url, true);

@@ -233,8 +233,8 @@ idClient:
 		};
 
 		// En production
-		// url = "https://glacial-everglades-43629.herokuapp.com/public/API_IPESP8266";
 		url = "http://localhost/una_sotra/public/API_IPESP8266";
+		// url = "https://glacial-everglades-43629.herokuapp.com/public/API_IPESP8266";
 		// alert(url);
 		xhttp.open("GET", url, true);
 		xhttp.send();
