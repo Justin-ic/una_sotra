@@ -28,19 +28,26 @@ try {
     // $connector = null;
     $connector = new WindowsPrintConnector("printtickets");
 
+    $nom = $_GET['nom'];
+    $prenom = $_GET['prenom'];
+    $ticketClient = $_GET['ticketClient'];
+    $nbClientAvant = $_GET['nbClientAvant'];
+    $tAttenteEstime = $_GET['tAttenteEstime'];
+    $DateAndTime = $_GET['date'];
+
     /* Print a "Hello world" receipt" */
     $printer = new Printer($connector);
     $img = EscposImage::load("../../../images/logoUNA.png"); 
     $printer -> bitImage($img);
-    $printer -> text("      UNA SCOLARITE\n");
-    $printer -> text("Bienvenu Dr. PINATIBI\n");
+    $printer -> text("......UNA SCOLARITE......\n");
+    $printer -> text("Bienvenu ".$nom." ".$prenom." \n");
     // $printer -> text("Bienvénu Mr. OUATTARA\n");
-    $printer -> text("Ticket: A-369\n");
-    $printer -> text("Clients avant vous: 14\n");
-    $printer -> text("Temps estime: 00:38min\n");
+    $printer -> text("Ticket: ".$ticketClient."\n");
+    $printer -> text("Clients avant vous: ".$nbClientAvant."\n");
+    $printer -> text("Temps estime: ".$tAttenteEstime."min\n");
     $printer -> text("Merci de patienter SVP\n");
     $printer -> text("\n");
-    $printer -> text("03/10/2021 05:37\n");
+    $printer -> text($DateAndTime."\n");
     // $printer -> graphics($img);
     $printer -> text("\n\n\n");
     $printer -> cut();
@@ -50,3 +57,12 @@ try {
 } catch (Exception $e) {
     echo "Couldn't print to this printer: " . $e -> getMessage() . "\n";
 }
+
+
+
+/*nom
+prenom
+ticketClient
+guichet
+nbClientAvant
+tAttenteEstime*/

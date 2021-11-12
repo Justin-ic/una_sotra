@@ -172,14 +172,26 @@ Route::get('bilan_clients/destroy_bilan_clients/{id}', [personnelsController::cl
 
 
 
+                        /*+++++++++++++  CONNEXION ETUDIANT +++++++++++++*/
 
-/*****************************clientBienvenue: accueil client**********************************/
-Route::get('clientBienvenue', [servicesController::class,'ListeService'])->name('clientBienvenue');
+/*****************************clientBienvenue: connexion etudiant**********************************/
+Route::get('clientBienvenue', [clientsController::class,'clientConnexion'])->name('clientBienvenue');
 /*****************************clientBienvenue************************************/
+
+/*****************************clientBienvenue: connexion etudiant**********************************/
+Route::post('Connexion', [clientsController::class,'Connexion'])->name('loginClient');
+/*****************************clientBienvenue************************************/
+
+                        /*+++++++++++++  CONNEXION ETUDIANT +++++++++++++*/
+
+
+/***************************** choix client **********************************/
+Route::get('demandeEtudiant/{idEtu}', [servicesController::class,'ListeService'])->name('demandeEtudiant');
+/*****************************  choix client ************************************/
 
 
 /******************autoEnregistreClient*********************/
-Route::get('autoEnregistreClient/{id}', [servicesController::class,'LeServiceDemander'])->name('autoEnregistreClient');
+Route::get('autoEnregistreClient/{idService}/{idEtu}', [servicesController::class,'LeServiceDemander'])->name('autoEnregistreClient');
 
 /*****************************autoEnregistreClient************************************/
 
@@ -205,7 +217,7 @@ Route::post('clientTicketInterface', [ClientLocationController::class,'Reconnect
 
 Route::get('clientAppele', function () {
     return view('clientAppele');
-});
+})->name('clientAppele');
 /*****************************clientAppele************************************/
 
 
@@ -213,7 +225,7 @@ Route::get('clientAppele', function () {
 
 Route::get('clientInfoFile', function () {
     return view('clientInfoFile');
-});
+})->name('clientInfoFile');
 /*****************************clientInfoFile************************************/
 
 

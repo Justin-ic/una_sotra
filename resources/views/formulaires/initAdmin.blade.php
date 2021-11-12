@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
@@ -9,7 +9,10 @@
 	<title>una_sotra</title>
 </head>
 <body>
+     -->
+@extends('layouts.app')
 
+@section('contenu')
 <!-- xxxxxxxxxxxxxxxx  nav bar xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
 <!-- <a href="{{route('clientBienvenue')}}">clientBienvenue</a>
 <a href="clientAppele">clientAppele</a>
@@ -74,6 +77,9 @@
 </div>
 
 
-</body>
-</html>
+
+@endsection
+
+<!-- </body>
+</html> -->
 

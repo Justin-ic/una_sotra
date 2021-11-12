@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/bootstrap/bootstrap.min.css') }}">
-    <link rel="icon" type="image/png" href="{{ asset('images/icons/favicon.png') }}"/>
+  <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}"/>
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/style.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/fontawesome/css/all.css') }}">
+
+  <link rel="stylesheet" type="text/css" href="{{ asset('images/styleBienvenue.css') }}">
+
 	<title>una_scolarite</title>
 
 <!-- 	<script type="text/javascript">
@@ -22,14 +25,19 @@ function horloge()
 </head>
 <!-- <body onload="horloge()"> -->
 <body>
-	@include('inclusions.header')
+
+<!-- <?php if (isset($_SESSION['sessionClient'])): ?>
+  include('inclusions.header2')
+<?php else: ?>
+  
+<?php endif ?> -->
+
+@include('inclusions.header')
+
 <!-- 	<label for="exampleColorInput" class="form-label">Color picker</label>
 	<input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color"> <mark>math_tipe à ajouter sur le word</mark>
 
-	<?php
-/*header("Refresh:1");
-echo date('H:i:s Y-m-d');   */
-?> -->
+ -->
 
 
 
@@ -80,15 +88,46 @@ echo date('H:i:s Y-m-d');   */
 
 
 
-	@yield('contenu')
+<div class="container-fluid">
+    @yield('contenu')
+</div>
 
 
 
 	@include('inclusions.footer')
-	<!-- popper pour dropdown et doit être placer avant les bootstraps.js-->
-	<script type="text/javascript" src="{{  asset('styles/js/popper.min.js')  }}"></script> 
-	<script type="text/javascript" src="{{  asset('styles/js/jquery3.4.1.js')  }}"></script>
-	<script type="text/javascript" src="{{  asset('styles/js/bootstrap.min.js')  }}"></script>
+
+
+  <!-- popper pour dropdown et doit être placer avant les bootstraps.js-->
+
+  <script type="text/javascript" src="{{  asset('styles/js/popper.min.js')  }}"></script> 
+  <script type="text/javascript" src="{{  asset('styles/js/jquery3.4.1.js')  }}"></script>
+  <script type="text/javascript" src="{{  asset('styles/js/bootstrap.min.js')  }}"></script>
+
+
+<!-- ********************** Client Appel **************************************** -->
+  <script type="text/javascript" src="{{  asset('styles/js/TweenMax.min.js')  }}"></script> 
+<!-- ********************** Client Appel **************************************** -->
+
+  
+<!-- ********************** Client Demande **************************************** -->
+  <script type="text/javascript" src="{{  asset('styles/bootstrap/bootstrap.bundle.min.js')  }}"></script>
+<!-- ********************** Client Demande **************************************** -->
+
+
+  
+<!-- ********************** Client info File **************************************** -->
+<!-- ********************** Client info File **************************************** -->
+
+
+  
+<!-- ********************** Client Ticket **************************************** -->
+  <!-- popper pour dropdown et doit être placer avant les bootstraps.js-->
+  <script type="text/javascript">
+    APIclients_locationsUpdate(); TempsRestant(); Envoi_Au_ESP(); Envoi_A_IMPRIMANTE(); 
+  </script>
+<!-- ********************** Client Ticket **************************************** -->
+
+
 
 
 </body>

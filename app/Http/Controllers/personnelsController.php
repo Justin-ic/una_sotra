@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\personnels;
-use App\Models\guichets;
+use App\Models\personnel;
+use App\Models\guichet;
 
 class personnelsController extends Controller
 {
@@ -15,7 +15,7 @@ class personnelsController extends Controller
      */
      public function index() 
     {
-        $liste = personnels::latest()->paginate(5);
+        $liste = personnel::latest()->paginate(5);
         return view('personnels', compact('liste'));
     }
 
@@ -46,7 +46,7 @@ class personnelsController extends Controller
         ]);
 
     // <!-- 'nom', 'prenom', 'dateNaissance', 'user', 'pass' -->
-        personnels::create([
+        personnel::create([
             'nom' => $request->nom,
             'prenom' => $request->prenom,
             'dateNaissance' => $request->dateNaissance,
@@ -66,7 +66,7 @@ class personnelsController extends Controller
      */
     public function show($id)
     {
-          $le_client = personnels::findOrFail($id);  
+          $le_client = personnel::findOrFail($id);  
       // OrFail: Il cherche le client; s'il ne le retrouve pas, il renvoie un 404.
 
       return view('detail_personnel',compact('le_personnel'));
@@ -82,7 +82,7 @@ class personnelsController extends Controller
      */
     public function edit($id)
     {
-        $personnel = personnels::findOrFail($id);
+        $personnel = personnel::findOrFail($id);
         // with('service'): service est la méthode service() du model
         // dd($listeService->find(1)->nom);
         return view('formulaires.personnels_modif',compact('personnel'));
@@ -107,7 +107,7 @@ class personnelsController extends Controller
         ]);
     
 
-            $personnels = personnels::all();
+            $personnels = personnel::all();
             // $nom = $personnels->find($id);
             // $nom = $personnels->where(['nom','prenom'], '=', [$request->nom, $request->prenom])->get();
             // dd($nom);
@@ -147,7 +147,7 @@ class personnelsController extends Controller
      */
     public function destroy($id)
     {
-         $personnel = personnels::find($id)->delete();
+         $personnel = personnel::find($id)->delete();
         return redirect()->route('personnels.index')->with('message');
     }
 
@@ -179,7 +179,7 @@ class personnelsController extends Controller
             alert('Je Suis dans authentification');
             </script>
             <?php
-       $personnels = personnels::all();
+       $personnels = personnel::all();
 /*       echo "<pre>";
        echo "Liste des personnels:";
        print_r($personnels);
@@ -191,7 +191,7 @@ class personnelsController extends Controller
         $pass = preg_replace("#^[\t\f\v ]+|[\t\f\v ]+$#m",'',$request->pass);
  
  */
-       $personnel = personnels::where('user','=',$request->user)->where('pass','=',$request->pass)->get()->first();
+       $personnel = personnel::where('user','=',$request->user)->where('pass','=',$request->pass)->get()->first();
 // dd($personnel);
        // foreach ($personnels as $personnel) {
 
@@ -233,7 +233,7 @@ class personnelsController extends Controller
             alert('Je vais prendre le guichets car ce sont les coordonnées de Personne');
             </script> -->
             <?php
-                $_SESSION['guichet'] = guichets::where('personnel_id', '=', $personnel->id)->first();
+                $_SESSION['guichet'] = guichet::where('personnel_id', '=', $personnel->id)->first();
 
                 $_SESSION['personnel'] = $personnel;
                 // dd($_SESSION['personnel']);
@@ -272,7 +272,7 @@ class personnelsController extends Controller
             alert('Etape 1: Je Suis dans initBD');
             </script> -->
             <?php
-        $personnels = personnels::all();
+        $personnels = personnel::all();
        /*echo "<pre>";
        echo "Liste des personnels:";
        print_r($personnels);
@@ -361,7 +361,7 @@ class personnelsController extends Controller
  
              // dd("Tout se passe bien !!");
 
-        personnels::create([
+        personnel::create([
             'nom' => $request->nom,
             'prenom' => $request->prenom,
             'dateNaissance' => $request->dateNaissance,
@@ -374,7 +374,7 @@ class personnelsController extends Controller
 
 echo "request->type XX". $request->type."XX";
 
-       $personnels = personnels::all();
+       $personnels = personnel::all();
 /*       echo "<pre>";
        echo "Liste des personnels:";
        print_r($personnels);

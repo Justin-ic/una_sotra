@@ -4,8 +4,8 @@
 
 
 
-<div class="table-responsive">
-    <h1 class="MCenter">La liste du personnel de l'entreprise</h1>
+<div class="table-responsive" style="margin: 10px;">
+    <h1 class="MCenter">La liste du personnel de la scolarité</h1>
     <table class="table table-bordered table-striped">
         <thead>
             <tr class="MCenter">
@@ -26,7 +26,7 @@
 // print_r($liste);
  ?></pre> -->
         <tbody>
-            <?php $i=1; if ($liste->count() > 0): ?>
+            <?php $i=1; if ($liste->count() > 0):   if (isset($_GET['page'])) { $i=$_GET['page']*5 - 4;}  ?>
                 <?php foreach ($liste as $personnel): ?>
             <tr  class="MCenter">
                 <td><?=$i++ ?></td>
@@ -38,11 +38,11 @@
                 <td>{{$personnel->type}}</td>
                 <td>{{$personnel->created_at->format('d/m/Y')}}</td>
                 <td>
-                    <a href="{{route('personnels.edit', $personnel->id)}}"><button class="btn btn-success">Modifier <span class="fas fa-edit"></span> </button>
+                    <a href="{{route('personnels.edit', $personnel->id)}}"><button class="btn btn-success modif_sup">Modif <span class="fas fa-edit"></span> </button>
                     </a>
                 </td>
                 <td>
-                    <a href="{{route('destroy_personnel',$personnel->id)}}"><button class="btn btn-danger">Supprimer <span class="fas fa-times-circle"></button></a>
+                    <a href="{{route('destroy_personnel',$personnel->id)}}"><button class="btn btn-danger modif_sup">Sup <span class="fas fa-times-circle"></button></a>
                 </td>
 
             </tr> 
@@ -69,7 +69,7 @@
 
 </div>
 
-<nav aria-label="Page navigation example">
+<!-- <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
     <li class="page-item disabled">
       <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
@@ -81,33 +81,10 @@
       <a class="page-link" href="#">Next</a>
     </li>
   </ul>
-</nav>
+</nav> -->
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-<br>
-<span>
-    {{$liste->links()}}
-</span>
-<style >
-svg.w-5 {
-    /*vertical-align: middle;*/
-    width: 30px;
-    display: inline;
-}
-</style>
-<br><br>
 @endsection   

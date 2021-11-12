@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\descriptions;
-use App\Models\services;
+use App\Models\description;
+use App\Models\service;
 
 
 class descriptionsController extends Controller
@@ -22,7 +22,7 @@ class descriptionsController extends Controller
         $liste = descriptions::with('service')->get();
         dd($service);
 */
-        $liste = descriptions::with('service')->paginate(5);
+        $liste = description::with('service')->simplePaginate(5);
         
         return view('descriptions', compact('liste'));
     }
@@ -34,7 +34,7 @@ class descriptionsController extends Controller
      */
     public function create()
     {
-        $listeService = services::all();
+        $listeService = service::all();
         return view('formulaires.descriptions_creer', compact('listeService'));
     }
 
@@ -51,7 +51,7 @@ class descriptionsController extends Controller
             'service_id' => 'required'
         ]);
 // detail  services_id  created_at  updated_at  
-         descriptions::create([
+         description::create([
             'detail' => $request->detail,
             'services_id' => $request->service_id
         ]);
@@ -67,7 +67,7 @@ class descriptionsController extends Controller
      */
     public function show($id)
     {
-          $le_description = descriptions::findOrFail($id);  
+          $le_description = description::findOrFail($id);  
       // OrFail: Il cherche le client; s'il ne le retrouve pas, il renvoie un 404.
 
       return view('detail_description',compact('le_description'));
@@ -83,8 +83,8 @@ class descriptionsController extends Controller
      */
     public function edit($id)
     {
-        $description = descriptions::findOrFail($id);
-        $listeService = services::all();
+        $description = description::findOrFail($id);
+        $listeService = service::all();
         // with('service'): service est la méthode service() du model
         // dd($listeService->find(1)->nom);
         return view('formulaires.descriptions_modif',compact('description','listeService'));
@@ -105,7 +105,7 @@ class descriptionsController extends Controller
             'service_id' => 'required'
         ]);
 
-        $description = descriptions::find($request->id);
+        $description = description::find($request->id);
         $description->update([
             'detail' => $request->detail,
             'services_id' => $request->service_id
@@ -122,7 +122,7 @@ class descriptionsController extends Controller
      */
     public function destroy($id)
     {
-         $description = descriptions::find($id)->delete();
+         $description = description::find($id)->delete();
         return redirect()->route('descriptions.index')->with('message');
     }
 }

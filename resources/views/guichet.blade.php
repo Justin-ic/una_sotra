@@ -4,8 +4,13 @@
 
 
 
+<div class="row d-flex justify-content-center align-items-center">
+    <div class="col-12 col-md-9">
+        
+
+
 <div class="table-responsive">
-    <h1 class="MCenter">La liste des guichets de l'entreprise</h1>
+    <h1 class="MCenter">La liste des guichets de la scolarité</h1>
     <table class="table table-bordered table-striped">
         <thead>
             <tr class="MCenter">
@@ -24,7 +29,7 @@
 guichet_personnel*/ 
  ?></pre> -->
         <tbody>
-            <?php $i=1; if ($guichet->count() > 0): ?>
+            <?php $i=1; if ($guichet->count() > 0):  if (isset($_GET['page'])) { $i=$_GET['page']*5 - 4;} ?>
                 <?php foreach ($guichet as $Le_guichet): /*dd($Le_guichet->service);*/ ?>
             <tr  class="MCenter">
 
@@ -35,11 +40,11 @@ guichet_personnel*/
                 <td>{{$Le_guichet->personnel->nom}} {{$Le_guichet->personnel->prenom}}</td>
                 <td>{{$Le_guichet->updated_at->format('d/m/Y')}}</td>
                 <td>
-                    <a href="{{route('guichets.edit', $Le_guichet->id)}}"><button class="btn btn-success">Modifier <span class="fas fa-edit"></span> </button>
+                    <a href="{{route('guichets.edit', $Le_guichet->id)}}"><button class="btn btn-success modif_sup">Modif <span class="fas fa-edit"></span> </button>
                     </a>
                 </td>
                 <td>
-                    <a href="{{route('destroy_guichet',$Le_guichet->id)}}"><button class="btn btn-danger">Supprimer <span class="fas fa-times-circle"></button></a>
+                    <a href="{{route('destroy_guichet',$Le_guichet->id)}}"><button class="btn btn-danger modif_sup">Sup <span class="fas fa-times-circle"></button></a>
                 </td>
 
             </tr> 
@@ -65,6 +70,9 @@ personnel_id -->
 
 </div>
 
+    </div> <!-- fin  -->
+</div> <!-- fin row -->
+<!-- 
 <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
     <li class="page-item disabled">
@@ -78,6 +86,7 @@ personnel_id -->
     </li>
   </ul>
 </nav>
+ -->
 
 
 
@@ -94,16 +103,16 @@ personnel_id -->
 
 
 
-<br>
+<!-- <br>
 <span>
-    <!-- $liste->links() -->
+    $liste->links()
 </span>
 <style >
 svg.w-5 {
-    /*vertical-align: middle;*/
+    vertical-align: middle;
     width: 30px;
     display: inline;
 }
 </style>
-<br><br>
+<br><br> -->
 @endsection   

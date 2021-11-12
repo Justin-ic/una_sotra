@@ -12,7 +12,7 @@
             @csrf
             <div class="form-group">
                 <b>Détail:</b>
-                <input class="form-control" required type="text" name="detail">
+                <input class="form-control" required type="text" name="detail" value="{{old('detail')}}">
             </div>
 
             <div class="form-group">

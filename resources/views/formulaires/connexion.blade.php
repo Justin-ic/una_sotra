@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
@@ -10,6 +10,27 @@
 	<title>una_scolarite</title>
 </head>
 <body>
+ -->
+
+
+
+
+@extends('layouts.app')
+
+@section('contenu')
+
+
+<style type="text/css">
+    body{
+    /*background-image: url('imgBienvenue.jpg');*/
+    /*background-repeat: no-repeat;*/
+    background-color: #dee9ff;
+}
+</style>
+
+
+
+
 
 <!-- xxxxxxxxxxxxxxxx  nav bar xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
 <!-- <a href="{{route('clientBienvenue')}}">clientBienvenue</a>
@@ -53,9 +74,10 @@
 
 </div>
 
+@endsection
 
-</body>
-</html>
+<!-- </body>
+</html> -->
 
 
 

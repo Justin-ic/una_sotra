@@ -16,7 +16,7 @@ class CreateBilanClientsTable extends Migration
         Schema::create('bilan_clients', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('clients_id');
-            $table->foreign('clients_id')->references('id')->on('clients')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreign('clients_id')->references('id')->on('clients')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('etat');
             $table->char('commentaire',100)->nullable();
             $table->time('tempsArrive');

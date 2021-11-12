@@ -12,7 +12,7 @@
             @csrf
             <div class="form-group">
                 <b>Nom:</b>
-                <input class="form-control" required type="text" name="nom">
+                <input class="form-control" required type="text" name="nom" value="{{old('nom')}}">
             </div>
 
             <button type="submit" class="btn btn-success">Valider</button> 

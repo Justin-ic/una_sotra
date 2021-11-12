@@ -1,7 +1,7 @@
 body{
 	/*background-image: url('imgBienvenue.jpg');*/
 	/*background-repeat: no-repeat;*/
-	background-color: #dee9ff;
+	/*background-color: #dee9ff;*/
 }
 
 .MCenter{
@@ -14,10 +14,16 @@ body{
 }
 
 .service{
-	background-color: rgb(243, 214, 23);
+	/*background-color: rgb(243, 214, 23);*/
+	background-color: rgba(86, 115, 154, 0.58); /*(132, 109, 151, 0.18)*/
 	margin: 20px;
 	border-radius: 40px;
-	font-size: calc(1.0rem + 1.3vw); /*Adapte la taille de l'écriture en fonction de la taille de la finêtre*/
+	font-size: calc(1.0rem + 1.0vw); /*Adapte la taille de l'écriture en fonction de la taille de la finêtre*/
+}
+
+.leFontSize{
+	/*background-color: rgb(243, 214, 23);*/
+	font-size: calc(1.0rem + 1.0vw); /*Adapte la taille de l'écriture en fonction de la taille de la finêtre*/
 }
 
 .enregistr_droit{
@@ -25,6 +31,10 @@ body{
 	border-radius: 40px;
 	margin-top: 5px;
 	font-size: 20px;
+}
+
+.form-check .form-check-input { /*pour positionner les chickbox*/
+    margin-left: -1.0em;
 }
 
 a{

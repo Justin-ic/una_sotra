@@ -5,7 +5,8 @@
 	<meta charset="UTF-8">
 	<!-- <meta http-equiv="refresh" content="30" name="viewport" content="width=device-width, initial-scale=1.0">  http-equiv="refresh" content="30": permet de rafraichire toutes les 30s-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="{{ asset('styles/fontawesome/css/all.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('styles/fontawesome/css/all.css') }}">  
+	<link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}"/>
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/bootstrap/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('images/styleBienvenue.css') }}">
 	<title>una_Scolatité</title>
@@ -18,127 +19,12 @@
 
 <!-- xxxxxxxxxxxxxxxxxxxx le timine xxxxxxxxxxxxxxxxxxxxxxxxxx -->
 <script type="text/javascript">
-	var compteur=0;
-	var widthCouleur = 0;
-	var compterCouleur = 0;
-	function horloge()
-	{
-		var Heure = new Date().toLocaleTimeString();// hh:mm:ss
-		compteur++;
-		ecouler=toTimeString(compteur);
-		document.getElementById("timer").innerHTML = ecouler;
-		document.getElementById("Heure").innerHTML = Heure;
-		// document.getElementById("progress-bar").innerHTML = ecouler;
-		/***************** condition pour la partie verte, orange et rouge *****************/
-
-		//  Normalement on fait 30 minute par client
-// à 15min, on passe à orange: si compteur< 900s, progresVert: width=  (compteur*50)/900
-// en effet, à 15min, on doit parcourir 50% de toute la bar de progression
-// à 25min, on passe à Rouge
-
-// 30min         100
-// 25            ?   ->x=83.3 ->83; le width Maxi de orange doit être 83.3 - 50 = 33.3 ->33
-
-// Le width Maxi de rouge est 100 -(50+33)=17
-
-// 900         100
-// compteur     ?
-
-/*************************   gestion de la bar de progression *********************** */
-				// if (compteur<=900) {
-				// 	compterCouleur++;
-				// 	widthCouleur =  (compterCouleur*50)/900;
-				// 	document.getElementById('progressVert').style.width = widthCouleur + '%';
-				// 	if (compteur==900) {compterCouleur=0; widthCouleur=0;} /*remise à zéro*/
-				// }else if (compteur>900 && compteur<=1500) { /* Entre 15 et 25min */
-				// 	compterCouleur++;
-				// 	widthCouleur =  (compterCouleur*25)/600;  /*On fait 10min= 600s */
-				// 	document.getElementById('progressOrange').style.width = widthCouleur + '%';
-				// 	if (compteur==1500) {compterCouleur=0; widthCouleur=0;} /*remise à zéro*/
-				// }else if (compteur>1500 && compteur<=1800){  /* Entre 25 et 30min */
-				// 	compterCouleur++;
-				// 	widthCouleur =  (compterCouleur*25)/300; /*On fait 5min= 300s */
-				// 	document.getElementById('progressRouge').style.width = widthCouleur + '%';
-				// 	if (compteur==1800) {compterCouleur=0; widthCouleur=0;} /*remise à zéro*/	
-				// }
-/*************************   gestion de la bar de progression *********************** */
-
-
-/*************************   Un test de la bar de progression *********************** */
-
-// On supose que le tems maxi est 3min
-//  à 1 minute, on passe à orange
-// à 2min on passe à rouge
-
-				if (compteur<=60) {
-					compterCouleur++;
-					widthCouleur =  (compterCouleur*50)/60;
-					document.getElementById('progressVert').style.width = widthCouleur + '%';
-					if (compteur==60) {compterCouleur=0; widthCouleur=0;} /*remise à zéro*/
-				}else if (compteur>60 && compteur<=120) {
-					compterCouleur++;
-					widthCouleur =  (compterCouleur*25)/60;
-					document.getElementById('progressOrange').style.width = widthCouleur + '%';
-					if (compteur==120) {compterCouleur=0; widthCouleur=0;} /*remise à zéro*/
-				}else if (compteur>120 && compteur<=180){
-					compterCouleur++;
-					widthCouleur =  (compterCouleur*25)/60;
-					document.getElementById('progressRouge').style.width = widthCouleur + '%';
-					if (compteur==180) {compterCouleur=0; widthCouleur=0;} /*remise à zéro*/	
-				}
-/*************************   Un test de la bar de progression *********************** */
-
-        setTimeout(horloge, 1000); // mise à jour du contenu "timer" toutes les secondes
-  }
-    function toTimeString(seconds) {
-   		 return (new Date(seconds * 1000)).toUTCString().match(/(\d\d:\d\d:\d\d)/)[0];
-			}
-
-
-
-		function AllumerLED(){
-
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-		       // Typical action to be performed when the document is ready:
-		       document.getElementById("demo").innerHTML = xhttp.responseText;
-		       // alert("Je suis ici");
-		     }
-		   };
-	   xhttp.open("GET", "http://192.168.137.108/switchLedOff", true);
-	   xhttp.send();
-			}
-
-			function EteindreLED(){
-
-				var xhttp = new XMLHttpRequest();
-				xhttp.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200) {
-		       // Typical action to be performed when the document is ready:
-		       document.getElementById("demo").innerHTML = xhttp.responseText;
-		       // alert("Je suis ici");
-		     }
-		   };
-		   xhttp.open("GET", "http://192.168.137.125/switchLedOn", true);
-		   xhttp.send();
-		 }
-
-
-
-		 function debutService(){
-		 	var Heure = new Date().toLocaleTimeString();// hh:mm:ss
-		 	document.getElementById("debutService").value = Heure;
-		 }
-
-
-		 function finService(){
-		 	var Heure = new Date().toLocaleTimeString();// hh:mm:ss
-		 	document.getElementById("finService").value = Heure;
-		 }
-
+	
 </script> 
- 
+
+ <!-- ********************** Client interfaceGuichetPersonnel **************************************** -->
+  <script type="text/javascript" src="{{  asset('styles/js/interfaceGuichetPersonnel.js')  }}"></script> 
+<!-- ********************** Client interfaceGuichetPersonnel **************************************** -->
 <!-- xxxxxxxxxxxxxxxxxxxx le timine xxxxxxxxxxxxxxxxxxxxxxxxxx -->
 
 
@@ -151,10 +37,10 @@
 </script> </div> -->
 
 <!-- xxxxxxxxxxxxxxxx  nav bar xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
-<a href="clientBienvenue">clientBienvenue</a>
+<!-- <a href="clientBienvenue">clientBienvenue</a>
 <a href="clientAppele"> clientAppele</a>
 <a href="clientInfoFile"> clientInfoFile</a>
-<a href="{{route('interfaceGuichetPersonnel',$_SESSION['personnel']->id)}}"> interfaeGuichetPersonnel</a>
+<a href="{{route('interfaceGuichetPersonnel',$_SESSION['personnel']->id)}}"> interfaeGuichetPersonnel</a> -->
 <!-- xxxxxxxxxxxxxxxx  nav bar xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
 
 <div class="container-fluid">
@@ -164,7 +50,8 @@
 
 
 <br><br><br><br>
-<?php $id = ($nbClientAttent>0) ? "{$clientEnCours->id}" :  "0" ?>
+<?php /*dd($clientEnCours);*/ ?>
+<?php $id = ($nbClientAttent>0) ? "{$clientEnCours->etudiant->id}" :  "0" ?>
 <form action="{{route('clientSuivant', $id )}}" method="POST">
 	<!--  Je fait un update de client -->
      @csrf <!-- si non, on obtient une erreur de type: 419 Page Expired -->
@@ -209,23 +96,23 @@
 			</div>
 		</div><!-- Fin milieux Gauche Haut-->
 
-		<div class="row contour infoClient"><!-- Début milieux Gauche Bas-->
+		<div class="row contour infoClient leFontSize"><!-- Début milieux Gauche Bas-->
 			<h1 class="MCenter">Le client en cours de service</h1>
-			<div class="col-12">
-				<b>Nom:</b> <?php echo($nbClientAttent>0) ? "{$genre1} {$clientEnCours->nom} {$clientEnCours->prenom}" :  "";  ?> 
+			<div class="col-12 leFontSize">
+				<b>Nom:</b> <?php echo($nbClientAttent>0) ? "{$genre1} {$clientEnCours->etudiant->nom} {$clientEnCours->etudiant->prenom}" :  "";  ?> 
 			</div>
-			<div class="col-12">
-				<b>Numéro:</b> <?php echo($nbClientAttent>0) ? "{$clientEnCours->numero}" :  "";  ?>  
+			<div class="col-12 leFontSize">
+				<b>Numéro:</b> <?php echo($nbClientAttent>0) ? "{$clientEnCours->etudiant->numero}" :  "";  ?>  
 			</div>
-			<div class="col-12">
-				<b>NCE:</b> <?php echo($nbClientAttent>0) ? "{$clientEnCours->nce}" :  "";  ?>  
+			<div class="col-12 leFontSize">
+				<b>NCE:</b> <?php echo($nbClientAttent>0) ? "{$clientEnCours->etudiant->nce}" :  "";  ?>  
 			</div>
-			<div class="col-12">
-				<b>Démande du client:</b> <?php echo($nbClientAttent>0) ?  "{$clientEnCours->tickets->first()->description}" :  "";  ?> 
+			<div class="col-12 leFontSize">
+				<b>Démande du client:</b><br> <?php echo($nbClientAttent>0) ?  "{$clientEnCours->demande}" :  "";  ?> 
 			</div>
-			<div class="col-12">
-				Ajouter un commentaire: <br>
-				<textarea  name="commentaireserveur" id="" style="font-size:20px;"></textarea>
+			<div class="col-12 leFontSize">
+				<b>Ajouter un commentaire:</b> <br>
+				<textarea  name="commentaireserveur" id="" style="font-size:20px;">RAS</textarea>
 			</div>
 		</div><!-- Fin milieux Gauche Bas-->
 	</div><!-- Fin milieux Gauche -->
@@ -242,7 +129,7 @@ nbClientServit -->
 			<div class="col-12 service MCenter">Client suivant: 
 				<br><?php 
 				if ($nbClientAttent>1) {
-				  echo "{$genre2} {$leClientSuivant->nom} : <br>"; ?><span id="ReponseStatus"></span>  <?php 
+				  echo "{$genre2} {$leClientSuivant->etudiant->nom} : <br>"; ?><span id="ReponseStatus"></span>  <?php 
 				}else{
 					echo "Personne";
 				}
@@ -265,13 +152,16 @@ nbClientServit -->
 <input type="text" name="debutService" id="debutService">
 <!-- <input type="text" name="finService" id="finService">  On va recuperer le temps dans le controller-->
 <!--  C'est le numéro du client que nous allons appeler.  -->
-<input type="text" name="numeroClintSuivant" value="<?php echo($nbClientAttent>1) ? "$leClientSuivant->numero" : "0";  ?>" id="">
+
+<?php $LeNumero = ($nbClientAttent>1) ? $leClientSuivant->etudiant->numero : "0" ?>
+<input type="text" name="numeroClintSuivant" value="<?php echo $LeNumero;  ?>" id="">
+
 <input type="text" name="nomGuichet" value="<?=$_SESSION['guichet']->lettre_guichet ?>" id="">
 
-<?php $ticket = ($nbClientAttent>1) ? $leClientSuivant->tickets->first()->ticket : "0" ?>
+<?php $ticket = ($nbClientAttent>1) ? $leClientSuivant->ticket : "0" ?>
 <input type="text" name="ticket" value="<?php echo $ticket  ?>" id="">
 
-<?php $idClient = ($nbClientAttent>1) ? $leClientSuivant->id : "0" ?>
+<?php $idClient = ($nbClientAttent>1) ? $leClientSuivant->etudiant->id : "0" ?>
 <input type="text" name="idClient" value="<?=$idClient?>" id="idClient">
 
  </form>
@@ -288,7 +178,8 @@ nbClientServit -->
 				if (this.readyState == 4 && this.status == 200) {
 		       // Typical action to be performed when the document is ready:
 		       document.getElementById("ReponseStatus").innerHTML = xhttp.responseText;
-		       // alert("Je suis ici");
+		       //alert(xhttp.responseText);
+		       console.log(xhttp.responseText);
 		     }
 		   };
 
@@ -298,10 +189,10 @@ nbClientServit -->
 	    var idClient = document.getElementById("idClient").value; // Ne doit pas être dans le if
 
 				// URL En production
-		   url = "https://glacial-everglades-43629.herokuapp.com/APIEnLigne/"+idClient;
+		   url = "http://glacial-everglades-43629.herokuapp.com/APIEnLigne/"+idClient;
 
 
-		   url = 'https://localhost/una_sotra/public/APIEnLigne/'+idClient;
+		   url = 'http://localhost/una_sotra/public/APIEnLigne/'+idClient;
 		   console.log(url);
 
 	   xhttp.open("GET", url, true);

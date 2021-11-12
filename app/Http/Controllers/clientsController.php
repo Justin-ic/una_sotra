@@ -4,12 +4,12 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB; // pour utiliser les requêtes personnalisées
 use Illuminate\Http\Request;
-use App\Models\clients;
-use App\Models\descriptions;
-use App\Models\services;
-use App\Models\ticket;
-use App\Models\guichets;
-use App\Models\personnels;
+use App\Models\etudiant;
+// use App\Models\descriptions;
+use App\Models\service;
+use App\Models\bilanEtudiant;
+use App\Models\guichet;
+// use App\Models\personnels;
 use App\Models\clientsLocation;
 
 
@@ -28,20 +28,19 @@ class clientsController extends Controller
      */
     public function index() 
     {
-        echo "Test de git";
         // toArray() permet de transformer a en un tableau. mais pas intéressant car on ne poura pas utiliser les méthodes dessus.
-        // $liste = clients::with('service')->get()->toArray();
+        // $liste = etudiant::with('service')->get()->toArray();
 
         // le with() permet de lier la table de relation
         // 
-        $liste = clients::with('tickets')->get();
-        $liste = clients::latest()->simplePaginate(5);
+        $liste = etudiant::with('bilanEtudiants')->get();
+        $liste = etudiant::latest()->simplePaginate(5);
         // DB::table('users')->orderBy('id')->cursorPaginate(15);
         
-        // $liste = clients::latest()->cursorPaginate(5);
+        // $liste = etudiant::latest()->cursorPaginate(5);
 
-        // $liste = clients::all(); //  IDEME
-        // $liste = DB::table('clients')->get(); // IDEME
+        // $liste = etudiant::all(); //  IDEME
+        // $liste = DB::table('etudiant')->get(); // IDEME
         // dd( $liste->find(2) );
         // dd( $liste );
 
@@ -58,7 +57,7 @@ class clientsController extends Controller
      */
     public function create()
     {
-        $listeService = services::all();
+        $listeService = service::all();
         return view('formulaires.clients_creer', compact('listeService'));
     }
 
@@ -73,22 +72,24 @@ class clientsController extends Controller
     {
         request()->validate([
             'nom' => 'required',
-            'numero' => 'required',
-            'ticket' => 'required',
-            'commentaire' => 'required',
-            'service_id' => 'required'
+            'prenom' => 'required',
+            'genre' => 'required',
+            'nce' => 'required',
+            'dateNaissance' => 'required',
+            'numero' => 'required'
         ]);
 
 
-        clients::create([
+        etudiant::create([
             'nom' => $request->nom,
+            'prenom' => $request->prenom,
+            'genre' => $request->genre,
             'numero' => $request->numero,
-            'ticket' => $request->ticket,
-            'commentaire' => $request->commentaire,
-            'service_id' => $request->service_id
+            'nce' => $request->nce,
+            'dateNaissance' => $request->dateNaissance
         ]);
         $message = "Créer avec succsès!";
-        return redirect()->route('home')->with('message');
+        return redirect()->route('clients.index')->with('message');
     }
 
     /**
@@ -99,7 +100,7 @@ class clientsController extends Controller
      */
     public function show($id)
     {
-          $le_client = clients::findOrFail($id);  
+          $le_client = etudiant::findOrFail($id);  
       // OrFail: Il cherche le client; s'il ne le retrouve pas, il renvoie un 404.
 
       return view('detail_client',compact('le_client'));
@@ -116,8 +117,8 @@ class clientsController extends Controller
     public function edit($id)
     {
         // $retVal = (condition) ? a : b ;
-        $listeService = services::all(); // Liste de tous les services pour le formulaire
-        $client = clients::with('service')->find($id);
+        $listeService = service::all(); // Liste de tous les services pour le formulaire
+        $client = etudiant::with('service')->find($id);
         // with('service'): service est la méthode service() du model
         // dd($listeService->find(1)->nom);
         return view('formulaires.clients_modif',compact('listeService','client'));
@@ -135,20 +136,25 @@ class clientsController extends Controller
     {
         request()->validate([
             'nom' => 'required',
+            'prenom' => 'required',
+            'genre' => 'required',
             'numero' => 'required',
-            'commentaire' => 'required',
-            'service_id' => 'required'
+            'nce' => 'required',
+            'dateNaissance' => 'required'
         ]);
+// <!-- nom     prenom  genre   numero  nce     dateNaissance -->
 
-        $client = clients::find($request->id);
+        $client = etudiant::find($request->id);
         $client->update([
             'nom' => $request->nom,
+            'prenom' => $request->prenom,
+            'genre' => $request->genre,
             'numero' => $request->numero,
-            'commentaire' => $request->commentaire,
-            'service_id' => $request->service_id
+            'nce' => $request->nce,
+            'dateNaissance' => $request->dateNaissance
         ]);
         $message = "Modifier avec succsès!";
-        return redirect()->route('home')->with('message');
+        return redirect()->route('clients.index')->with('message');
     }
 
     /**
@@ -159,7 +165,7 @@ class clientsController extends Controller
      */
     public function destroy($id)
     {
-         $client = clients::find($id)->delete();
+         $client = etudiant::find($id)->delete();
         return redirect()->route('clients.index')->with('message');
     }
 
@@ -196,15 +202,17 @@ class clientsController extends Controller
             'numeroClintSuivant' => 'required'
             // 'finService' => 'required'
         ]);
-        $client = clients::find($id);
+
+        
+        $client = bilanEtudiant::where('etudiants_id', '=', $id);
         $client->update([
             'debutService' => $request->debutService,
             'finService' => $finService,
             'commentaire' => $request->commentaireserveur,
-            'servit' => 1
+            'etat' => 1
         ]);
 
-
+    //     services_id     ticket  tAttenteEstime  nbClientAvant   debutService    finService  commentaire     etat    etudiants_id    
 
 /********************** UPDATE DE LA SALLE D'ATTENTE CLIENT **************************/
 $liste = clientsLocation::all();
@@ -259,7 +267,7 @@ foreach ($liste as $ligne) {
         session_start();
         // dd($_SESSION['personnel']->id);
         $id = $_SESSION['personnel']->id;
-        $LeGuichet = guichets::where('personnel_id', '=', $id)->first();
+        $LeGuichet = guichet::where('personnel_id', '=', $id)->first();
 
         $nomGuichet = str_replace(' ', '', $LeGuichet->lettre_guichet); 
 // on trouvera le guichet en fonction du personne
@@ -276,21 +284,33 @@ foreach ($liste as $ligne) {
 
 
 /******* ON RECUPERE LES CLIENTS ET LEUR TICKTE DONT LE NOM-TICKET COMMENCE PAR A-non servit ***/
-       $ClientsNonServie = clients::whereHas(
-        'tickets' , function($query) use ($nomGuichet) {
-            $query->where('ticket', 'like', ''.$nomGuichet.'-%');
-        })->where('created_at', '>', $dd.' 00:00:00')->with('tickets')
-          ->where('servit', '=', 0)->get();
+$ClientsNonServie = bilanEtudiant::with('etudiant')
+                  ->where('ticket', 'like', $nomGuichet.'-%')
+                  ->where('created_at', '>', $dd.' 00:00:00')
+                  ->where('etat', '=', 0)
+                  ->get();
+
+/*       $ClientsNonServie = etudiant::whereHas(
+        'bilanEtudiants' , function($query) use ($nomGuichet) {
+            $query->where('ticket', 'like', ''.$nomGuichet.'-%')
+                  ->where('etat', '=', 0);
+        })->where('created_at', '>', $dd.' 00:00:00')->with('bilanEtudiants')->get();*/
 // dd($ClientsNonServie);
 /****** ON RECUPERE LES CLIENTS ET LEUR TICKTE DONT LE NOM-TICKET COMMENCE PAR A- non servit *****/
 
 
 /********** ON RECUPERE LES CLIENTS ET LEUR TICKTE DONT LE NOM-TICKET COMMENCE PAR A- servit ******/
-       $ClientsServie = clients::whereHas(
-        'tickets' , function($query) use ($nomGuichet) {
-            $query->where('ticket', 'like', ''.$nomGuichet.'-%');
-        })->where('created_at', '>', $dd.' 00:00:00')->with('tickets')
-          ->where('servit', '=', 1)->get();
+$ClientsServie = bilanEtudiant::with('etudiant')
+                  ->where('ticket', 'like', $nomGuichet.'-%')
+                  ->where('created_at', '>', $dd.' 00:00:00')
+                  ->where('etat', '=', 1)
+                  ->get();
+
+/*       $ClientsServie = etudiant::whereHas(
+        'bilanEtudiants' , function($query) use ($nomGuichet) {
+            $query->where('ticket', 'like', ''.$nomGuichet.'-%')
+                  ->where('etat', '=', 1);
+        })->where('created_at', '>', $dd.' 00:00:00')->with('bilanEtudiants')->get();*/
 
 /********** ON RECUPERE LES CLIENTS ET LEUR TICKTE DONT LE NOM-TICKET COMMENCE PAR A- servit ******/
 
@@ -309,6 +329,7 @@ foreach ($liste as $ligne) {
        $ClientsNonServie = $lesClient->where('servit', '=', 0)->get(); Qui ne sont pas servit
        $ClientsNonss = $lesClient->where('servit', '=', 1)->get(); Qui ne sont pas servit*/
 
+// dd($ClientsNonServie[0]->etudiant->genre);
 
         if ( count($ClientsNonServie) == 0) {
              /*On a besoin des deux premiers*/
@@ -320,7 +341,7 @@ foreach ($liste as $ligne) {
         } else if ( count($ClientsNonServie) == 1){
                 // code...
              /*On a besoin des deux premiers*/
-             if ($ClientsNonServie[0]->genre == 'H') {
+             if ($ClientsNonServie[0]->etudiant->genre == 'H') {
                  $genre1 = "Mr.";
              } else {
                  $genre1 = "Mme";
@@ -331,13 +352,13 @@ foreach ($liste as $ligne) {
              $leClientSuivant = null;
         }else{
              /*On a besoin des deux premiers*/
-             if ($ClientsNonServie[0]->genre == 'H') {
+             if ($ClientsNonServie[0]->etudiant->genre == 'H') {
                  $genre1 = "Mr.";
              } else {
                  $genre1 = "Mme";
              }
 
-             if ($ClientsNonServie[1]->genre == 'H') {
+             if ($ClientsNonServie[1]->etudiant->genre == 'H') {
                  $genre2 = "Mr.";
              } else {
                  $genre2 = "Mme";
@@ -345,9 +366,9 @@ foreach ($liste as $ligne) {
              $clientEnCours = $ClientsNonServie[0];
              $leClientSuivant = $ClientsNonServie[1];
         }
+
         // ON EST SUR QU'UN CLIENT PEUT AVOIR PLUSIEURS TICKETS. MAIS LE MÊME JOUR, IL A UN ET UN SEUL TICKTE. ON PEUT DONC UTILISER first()
 
-// dd($clientEnCours);
 // dd($clientEnCours->tickets->first()->description);
 
        $nbClientAttent = count($ClientsNonServie);
@@ -376,36 +397,37 @@ foreach ($liste as $ligne) {
     public function autoSotreClient(Request $request)
     {
         request()->validate([
-            'nom' => 'required',
+            'choix' => 'required',
+            /*'nom' => 'required',
             'prenom' => 'required',
             'genre' => 'required',
             'numero' => 'required',
-            'choix' => 'required',
-            'nce' => 'required',
+            'nce' => 'required',*/
 
             'nomGuichet' => 'required',
             'tAttenteEstime' => 'required',
+            'idEtu' => 'required',
             'nbClientAvant' => 'required'
         ]);
 
 
 
 // *************************** CONTROLE DE DUPLICATION *******************
-        $numExiste  = clients::where('numero', '=', $request->numero)->first();
+/*        $numExiste  = etudiant::where('numero', '=', $request->numero)->first();
         if ($numExiste != null) {
             ?> <script type="text/javascript"> 
                 alert('Ce numéro a déjà un ticket ou vous vous êtes trompé! Veuillez reprendre SVP!');  
                 </script> <?php
-            return redirect()->route('clientBienvenue');
+            //return redirect()->route('clientBienvenue');
             // return redirect()->route('clientBienvenue')->with('message' =>'Ce numéro a déjà un ticket ou vous vous êtes trompé!');
-        }
+        }*/
         
 // *************************** CONTROLE DE DUPLICATION *******************
 
 
 /************** enregistrement du client *********************************/
 // dd("j'arrive ici");
-        clients::create([
+/*        etudiant::create([
             'nom' => $request->nom,
             'prenom' => $request->prenom,
             'genre' => $request->genre,
@@ -414,7 +436,7 @@ foreach ($liste as $ligne) {
             'servit' => 0
         ]);
 
-$dernierclient = clients::latest()->first();
+$dernierclient = etudiant::latest()->first();*/
 /************** enregistrement du client *********************************/
 
 
@@ -422,37 +444,42 @@ $dernierclient = clients::latest()->first();
 /************************** Création du ticket ******************/
     $description="";
     foreach ($request->choix as $detail) {
-        $description = $description.";".$detail;
+        $description = $description."; ".$detail;
     }
      $description = substr($description, 1); /* Enlève le premier caractère qui est ;*/
      $ticket = $request->nomGuichet.'-'.($request->nbClientDuJour+1);
-     ticket::create([
-        'description' => $description,
+     bilanEtudiant::create([
+        'demande' => $description,
         'ticket' => $ticket,
         'tAttenteEstime' => $request->tAttenteEstime,
-        'clients_id' => $dernierclient->id,
-        'nbClientAvant' => $request->nbClientAvant
+        'nbClientAvant' => $request->nbClientAvant,
+        'etudiants_id' => $request->idEtu,
+        'services_id' => $request->idServ,
+        'etat' => "0"
     ]);
 
 
      // dd($dernierTicket);
-// description     ticket  tAttenteEstime  nbClientAvant   created_at  updated_at  
+// bilanEtudiant
+ // demande     ticket  tAttenteEstime  nbClientAvant   debutService    finService  commentaire     etat    etudiants_id 
 /************************** Création du ticket ******************/
 
 
 
 //**************************** Stockage des infos pour la géolocalisation *********************
-    if ($request->genre == 'H') {
+   $etudiant = etudiant::find($request->idEtu);
+
+    if ($etudiant->genre == 'H') {
        $genre = "Mr.";
    } else {
        $genre = "Mme.";
    }
         clientsLocation::create([
-            'clientId' => $dernierclient->id, // Pour le update
-            'clientNumero' => $dernierclient->numero, // Pour reconnecte
+            'clientId' => $etudiant->id, // Pour le update
+            'clientNumero' => $etudiant->numero, // Pour reconnecte
             'clientTicket' => $ticket,  // Pour reconnecte et infos
-            'nom' => $request->nom,  // Pour infos
-            'prenom' => $request->prenom,  // Pour infos
+            'nom' => $etudiant->nom,  // Pour infos
+            'prenom' => $etudiant->prenom,  // Pour infos
             'genre' => $genre,  // Pour infos
             'nbClientAvant' => $request->nbClientAvant, // Pour infos. Sera mis à jours
             'tAttenteEstime' => $request->tAttenteEstime // Pour infos. Sera mis à jours
@@ -462,19 +489,30 @@ $dernierclient = clients::latest()->first();
 
 
     // nom     prenom  genre   numero  nce     ticket_id   servit  created_at  updated_at 
-    $nom = $request->nom; 
+/*    $nom = $request->nom; 
     $prenom = $request->prenom;  
     $nbClientAvant = $request->nbClientAvant; 
     $tAttenteEstime = $request->tAttenteEstime;
     $ticket; 
-
+*/
    
    session_start();
-    $_SESSION['idClient']= $dernierclient->id;
+    $_SESSION['idClient']= $etudiant->id;
 
-    $infosClient = clientsLocation::where('clientId','=',$_SESSION['idClient'])->first();
+    $infosClient = clientsLocation::where('clientId','=',$_SESSION['idClient'])
+                                    ->where('clientTicket', 'like', ''.$request->nomGuichet.'-%')
+                                    ->first(); /*latest*/
+
+
+       $fichier = fopen('temporaires/IpEsp8266.txt', 'r');
+
+        $ipESP = fgets($fichier);
+        $ipESP = preg_replace("#\n|\t|\r#","",$ipESP);
+        fclose($fichier);
+
+
     // dd($_SESSION['idClient']);
-        return view('clientTicket', compact('infosClient'));
+        return view('clientTicket', compact('infosClient','ipESP'));
     }
 
 // infosClient ==> clientId clientNumero clientTicket nom prenom genre nbClientAvant tAttenteEstime
@@ -490,7 +528,7 @@ $dernierclient = clients::latest()->first();
     {
 
 
-        $listeGuichet = guichets::all();
+        $listeGuichet = guichet::all();
 
 
 
@@ -520,10 +558,10 @@ $dernierclient = clients::latest()->first();
 
 
 /********** ON RECUPERE LES CLIENTS ET LEUR TICKTE DONT LE NOM-TICKET COMMENCE PAR A- servit ******/
-       $nbClient = clients::whereHas(
-        'tickets' , function($query) use ($nomGuichet) {
+       $nbClient = etudiant::whereHas(
+        'bilanEtudiants' , function($query) use ($nomGuichet) {
             $query->where('ticket', 'like', ''.$nomGuichet.'-%');
-        })->where('created_at', '>', $dd.' 00:00:00')->with('tickets')
+        })->where('created_at', '>', $dd.' 00:00:00')->with('bilanEtudiants')
           ->where('servit', '=', 0)->get();
 /********** ON RECUPERE LES CLIENTS ET LEUR TICKTE DONT LE NOM-TICKET COMMENCE PAR A- servit ******/
 
@@ -605,6 +643,52 @@ $dernierclient = clients::latest()->first();
 
 
 
+
+
+
+
+
+    /**
+     * La connexion de l'étudiant
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function clientConnexion()
+    {
+        return view('formulaires.connexionClient');
+    }
+
+
+
+
+    /**
+     * Vérification des paramètres de connexion de l'étudiant
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function Connexion(Request $request)
+    {
+        $etuExiste = etudiant::where('nce','=',$request->nce)->first();
+        // dd($etuExiste);
+        if ($etuExiste != NULL) {
+            if (isset($_SESSION['sessionClient'])) {
+                session_destroy();
+            } else {
+                session_start();
+            $_SESSION['sessionClient']= $etuExiste->id;
+            }
+            
+            
+            return redirect()->route('demandeEtudiant',$etuExiste->id);
+        } else {
+            return back()->withErrors(['Désoler! NCE incorrecte ou Vous n\'etes pas étudiant!']);
+            
+        }
+        
+        
+
+        return view('formulaires.connexionClient');
+    }
 
 
 

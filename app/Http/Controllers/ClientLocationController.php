@@ -98,18 +98,20 @@ class ClientLocationController extends Controller
      */
     public function ReconnectionClient(Request $request)
     {
+
         $infosClient = clientsLocation::where('clientNumero','=', $request->numero)
                                   ->where('clientTicket','=', $request->ticket)
                                   ->get()
                                   ->first();
         // dd($infosClient->created_at); infosClient
         if ($infosClient == null ) {
-            ?> <script type="text/javascript">
+            ?><!--  <script type="text/javascript">
                 alert('Il semble que ce ticket ne vous appartient pas !');
-            </script>
+            </script> -->
             <?php
 
-            return redirect()->route('clientBienvenue');
+            // return redirect()->route('clientBienvenue');
+            return back()->withErrors('Il semble que ce ticket ne vous appartient pas !');
         } else {
             session_start();
             $_SESSION['idClient'] = $infosClient->clientId;
@@ -139,8 +141,11 @@ class ClientLocationController extends Controller
      */
     public function ApiTempsRestantReel($idClient)
     {
+$dd = date("Y-m-d");
 
-     $donneesClient = clientsLocation::where('clientId','=', $idClient)->first();
+     $donneesClient = clientsLocation::where('clientId','=', $idClient)
+                                       ->where('created_at', '>', $dd.' 00:00:00')
+                                       ->first();
      // dd($donneesClient->nbClientAvant);
      $infosClients = array();
      $infosClients[0] = $donneesClient->nbClientAvant;
@@ -256,22 +261,30 @@ class ClientLocationController extends Controller
         return redirect('/connexion')->withErrors([
             'email' => "Vous devez être connecté pour voir cette page.",
         ]);
-        }*/
-
+        }
+*/
 
             $data = clientsLocation::where('clientId','=',$idClient)->first();
-            // dd($data);
+            
             // echo "Le id==".$idClient."==";
             // S'il est ligne dans dans les 20 dernières minutes
             $temps_actuel = date('U');
             $tempsEcouler = $temps_actuel - strtotime($data->updated_at);
+            // echo '<br>temps_actuel= '.$temps_actuel;
+            // echo '<br>updated_at= '.strtotime($data->updated_at);
+
+            // echo '<br>distance= '.$data->distance;
+            $LaDistance = round($data->distance);
+            $LaDistance = intval($LaDistance);
+
+            // dd($LaDistance);
             if ($tempsEcouler < 20) {
 
-                // Il est en ligne. S'il est à coté, on le prend
+                // Il est en ligne. S'il est à coté, on le prend 05 84 01 84 40 N 07 69 11 99 15
                 if ($data->distance < 100) {
-                    return "Dans la file ! dd=".$data->distance."m";
+                    return "Dans la file ! dd=".$LaDistance."m";
                 } else {
-                    return "Pas dans la file ! dd=".$data->distance."m";
+                    return "Pas dans la file ! dd=".$LaDistance."m";
                 }
                 
             } else {
@@ -283,6 +296,8 @@ class ClientLocationController extends Controller
                     // return 'Non Connecté !'.$tempsEcouler;
                     return 'Non Connecté !';
                 }
+
+                // return '?????';
             }
 
 

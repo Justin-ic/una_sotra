@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
@@ -6,15 +6,9 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/bootstrap/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('images/styleBienvenue.css') }}">
 
-
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"> -->
-<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
-
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script> -->
-
 	<title>una_Scolatité</title>
 </head>
-<body>
+<body> -->
 
 <!-- xxxxxxxxxxxxxxxx  nav bar xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
 <!-- <a href="{{route('clientBienvenue')}}">clientBienvenue</a>
@@ -24,7 +18,7 @@
 
 
 
-
+<!-- 
 <header  class="">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -44,21 +38,7 @@
           <li class="nav-item"> 
               <a href="clientInfoFile">Infos files </a>
           </li>
-          <!-- <li class="nav-item">
-              <a class="nav-link" href="{{route('guichets.index')}}">Guichets</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="{{route('descriptions.index')}}">Descriptions</a> 
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="{{route('bilan_clients.index')}}">Bilan clients</a> 
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="clientBienvenue">clientBienvenue</a> 
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="AdminVewClientLocation">AdminVewClientLocation</a> 
-          </li> -->
+
       </ul>
       <span class="navbar-text">
         <form class="d-flex">
@@ -70,7 +50,7 @@
 </div>
 </nav>
 </header>
-
+ -->
 
 
 
@@ -81,14 +61,31 @@
 <!-- xxxxxxxxxxxxxxxx  nav bar xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
 	
 
-	<h1 class="MCenter">Bienvenue à UNA_SCOLARITE!</h1>
-	<div class="row MCenter">
-		
-	</div>
+@extends('layouts.app2')
 
+@section('contenu')
+
+<style type="text/css">
+    body{
+    /*background-image: url('imgBienvenue.jpg');*/
+    /*background-repeat: no-repeat;*/
+    background-color: #dee9ff;
+}
+</style>
+
+	<h1 class="MCenter">Bienvenue à UNA_SCOLARITE!</h1>
+
+      <div class="row MCenter d-flex justify-content-center ">
+    <?php if ($errors->any()): ?>
+      <div class="col-12 col-md-6 bg-danger bg-opacity-50 MCenter ">
+        {{$errors->first()}}
+      </div>
+    <?php endif ?>
+  </div>
 	<div class="row MCenter separateur">
 		<div class="col-12 separateur"></div>
 	</div>
+
 <!-- 
    <div class="row d-flex justify-content-center">
    		<div class="col-12 col-md-6">
@@ -155,8 +152,8 @@
 </div>
 
  -->
-<div class="container">
- <div class="row d-flex justify-content-center">
+<div class="container-fluid">
+ <div class="row d-flex justify-content-center ">
  	<div class="col-12 col-md-6  contour zone_reconnect">
  		<div class="row">
  			<div class="col-12 CB_entete">
@@ -184,7 +181,7 @@
                                 		<div class="col-12 d-flex justify-content-center ">
                                 			<div class="row MCenter"> 
                                 				<?php foreach ($liste as $service): ?>
-                                					<a href="autoEnregistreClient/{{$service->id}} ">
+                                					<a href="{{route('autoEnregistreClient',[$service->id,$idEtu])}}">
                                                         <div class="col-12  service">
                                 						{{$service->nom}}
                                 					    </div>
@@ -244,15 +241,8 @@
 
 
 
+@endsection
 
-	<!-- popper pour dropdown et doit être placer avant les bootstraps.js-->
-	<!-- <script type="text/javascript" src="{{  asset('styles/js/popper.min.js')  }}"></script>  -->
-	<!-- <script type="text/javascript" src="{{  asset('styles/js/bootstrap.min.js')  }}"></script> -->
-	<script type="text/javascript" src="{{  asset('styles/js/jquery3.4.1.js')  }}"></script>
-	<script type="text/javascript" src="{{  asset('styles/bootstrap/bootstrap.bundle.min.js')  }}"></script>
-
-	<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script> -->
-
-</body>
-</html>
+<!-- </body>
+</html> -->
 

@@ -25,7 +25,7 @@
                 @csrf 
                 <div class="form-group">
                     <b>Lettre du guichet:</b>
-                    <input class="form-control" required type="text" maxlength="1"  name="lettre_guichet">
+                    <input class="form-control" required type="text" maxlength="1"  name="lettre_guichet"  value="{{old('lettre_guichet')}}">
                 </div>
 
                 <div class="form-group">

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\guichets;
-use App\Models\services;
-use App\Models\personnels;
+use App\Models\guichet;
+use App\Models\service;
+use App\Models\personnel;
 
 class guichetsController extends Controller
 {
@@ -16,7 +16,7 @@ class guichetsController extends Controller
      */
      public function index() 
     {
-        $guichet = guichets::with('service', 'personnel')->get(); 
+        $guichet = guichet::with('service', 'personnel')->get(); 
         // service et personnel sont les noms de  méthode du model guichets
         // dd($guichet);
         // $guichet = guichetsController::latest()->paginate(5);
@@ -30,15 +30,15 @@ class guichetsController extends Controller
      */
     public function create()
     {
-        $listeService = services::all(); 
-        $listePersonnel = personnels::where('type','=',"personnel")->get();
+        $listeService = service::all(); 
+        $listePersonnel = personnel::where('type','=',"personnel")->get();
 
         $i=0;$personnelLibre=null; // Initialisé à null au cas où il n'iy a pas de personnel
                                     // On prend null pour pouvoir le transforme en un un tableau
        
         foreach ($listePersonnel as $personnel) {
             $idp = $personnel->id;
-            $guichet = guichets::where('personnel_id','=',$idp)->get();
+            $guichet = guichet::where('personnel_id','=',$idp)->get();
 
             if (count($guichet) == 0) {
                 // Il n'a pas de gichet encror donc on peut le prendre
@@ -51,7 +51,7 @@ class guichetsController extends Controller
 
         foreach ($listeService as $service) {
             $ids = $service->id;
-            $guichet = guichets::where('service_id','=',$ids)->get();
+            $guichet = guichet::where('service_id','=',$ids)->get();
 
             if (count($guichet) == 0) {
                 // Il n'a pas de gichet encror donc on peut le prendre
@@ -101,14 +101,14 @@ Chaque ligne du guichet a un seul personnel associé.
 
 // lettre_guichet  service_id  personnel_id    created_at  updated_at  
         $l=strtoupper($request->lettre_guichet);
-        $La_lettre= guichets::where('lettre_guichet', '=', $l)->first();
+        $La_lettre= guichet::where('lettre_guichet', '=', $l)->first();
         // dd($La_lettre); // Retourne un objet
         if ($La_lettre != null) {
-            $listeService = services::all();
-            $listePersonnel = personnels::where('type','=',"personnel")->get();
+            $listeService = service::all();
+            $listePersonnel = personnel::where('type','=',"personnel")->get();
             return view('formulaires.guichets_creer', compact('listeService','listePersonnel'));
         } else {
-            guichets::create([
+            guichet::create([
                 'lettre_guichet' => strtoupper($request->lettre_guichet),
                 'service_id' => $request->service_id,
                 'personnel_id' => $request->personnel_id
@@ -128,7 +128,7 @@ Chaque ligne du guichet a un seul personnel associé.
      */
     public function show($id)
     {
-      $guichet = guichets::with('service', 'personnel')->findOrFail($id);
+      $guichet = guichet::with('service', 'personnel')->findOrFail($id);
         // $guichet = guichetsController::latest()->paginate(5);
 
       return view('detail_guichet',compact('guichet'));
@@ -144,11 +144,11 @@ Chaque ligne du guichet a un seul personnel associé.
      */
     public function edit($id)
     {
-        $listeService = services::all();
-        $listePersonnel = personnels::with('guichet')->where('type','=',"personnel")->get();
+        $listeService = service::all();
+        $listePersonnel = personnel::with('guichet')->where('type','=',"personnel")->get();
         // dd($listePersonnel);
         // guichet pour accéder au service et personnel qui était là 
-        $guichet = guichets::with('service', 'personnel')->findOrFail($id); 
+        $guichet = guichet::with('service', 'personnel')->findOrFail($id); 
         return view('formulaires.guichets_modif',compact('guichet', 'listeService', 'listePersonnel'));
         
     }
@@ -170,16 +170,16 @@ Chaque ligne du guichet a un seul personnel associé.
 
 // lettre_guichet  service_id  personnel_id    created_at  updated_at  
         $l=strtoupper($request->lettre_guichet);
-        $La_lettre= guichets::where('lettre_guichet', '=', $l)->first();
+        $La_lettre= guichet::where('lettre_guichet', '=', $l)->first();
         // dd($La_lettre); // Retourne un objet
         if ($La_lettre != null) {
-            $listeService = services::all();
-            $listePersonnel = personnels::all();
+            $listeService = service::all();
+            $listePersonnel = personnel::all();
             // guichet pour accéder au service et personnel qui était là 
-            $guichet = guichets::with('service', 'personnel')->findOrFail($id);
+            $guichet = guichet::with('service', 'personnel')->findOrFail($id);
             return view('formulaires.guichets_modif', compact('guichet', 'listeService','listePersonnel'));
         } else {
-            $guichet = guichets::find($request->id);
+            $guichet = guichet::find($request->id);
             $guichet->update([
                 'lettre_guichet' => strtoupper($request->lettre_guichet),
                 'service_id' => $request->service_id,
@@ -202,7 +202,7 @@ Chaque ligne du guichet a un seul personnel associé.
      */
     public function destroy($id)
     {
-        $guichet = guichets::find($id)->delete();
+        $guichet = guichet::find($id)->delete();
         return redirect()->route('guichets.index')->with('message');
     }
 }

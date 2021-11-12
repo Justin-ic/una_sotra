@@ -1,79 +1,44 @@
-
+<!-- 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
-	<!-- http-equiv="refresh" content="30" -->
+	//http-equiv="refresh" content="30"
 	<meta  name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/bootstrap/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('images/styleBienvenue.css') }}">
 
-	<title>una_Scolatité</title>
+	<title>una_Scolatité</title> -->
+
+
+
+@extends('layouts.app2')
+
+@section('contenu')
+
+<style type="text/css">
+    body{
+    /*background-image: url('imgBienvenue.jpg');*/
+    /*background-repeat: no-repeat;*/
+    background-color: #dee9ff;
+}
+</style>
+
+
+<!-- ********************** Client info File **************************************** -->
+  <script type="text/javascript" src="{{  asset('styles/js/clientInfoFile.js')  }}"></script> 
+<!-- ********************** Client info File **************************************** -->
 
 <!-- xxxxxxxxxxxxxxxxxxxx le timine xxxxxxxxxxxxxxxxxxxxxxxxxx -->
-<script type="text/javascript">
-	function horloge()
-	{
-        var tt = new Date().toLocaleTimeString();// hh:mm:ss
-        
-        document.getElementById("timer").innerHTML = tt;
-        setTimeout(horloge, 1000); // mise à jour du contenu "timer" toutes les secondes
-    }
 
-
-
-var iii=0;
-    function APIclientInfoFile(){
-iii++;
-    	var xhttp = new XMLHttpRequest();
-    	xhttp.onreadystatechange = function() {
-    		if (this.readyState == 4 && this.status == 200) {
-		       // Typical action to be performed when the document is ready:
-		       var myArr = JSON.parse(this.responseText); /* Je transforme la réponse en array()*/
-		       var i;
-		       var div=''; /* Il faut forcement l'initialiser*/
-		       // console.log(myArr[0].nom);
-
-		       for(i = 0; i < myArr.length; i++) {
-		       	 
-	 div += '<div class="row  contourLigneFile">'+ iii +'s<!-- Début Une ligne de détail d appel -->';
-	 div += '	<div class="col-12">';
-	 div += '		<div class="row">';
-	 div += '		<div class="col-12 d-flex justify-content-center" style="font-size: 30px; font-weight: bold;">';
-	 div += '		Guichet '+ myArr[i].nom +': ==>  '+ myArr[i].nbClient +'</div>';
-	 div += '		</div>';
-	 div += '	</div>';
-	 div += '</div><!-- fin Une ligne de détail d appel -->';
-	 div += '';
-	 div += '';
-
-		       }
-		       document.getElementById("reponseAPI").innerHTML = div;
-		       setTimeout(APIclientInfoFile, 1000); // mise à jour du contenu "timer" toutes les secondes
-		   }
-		};
-		xhttp.open("GET", "{{route('APIclientInfoFile')}}", true);
-		xhttp.send();
-	}
-
-
-</script> 
  
 <!-- xxxxxxxxxxxxxxxxxxxx le timine xxxxxxxxxxxxxxxxxxxxxxxxxx -->
 
 
 </head>
-<body onload="horloge(), APIclientInfoFile()">
+<!-- <body onload="horloge(), APIclientInfoFile()"> -->
 
 <div class="container-fluid">
-
-
-<!-- xxxxxxxxxxxxxxxx  nav bar xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
-<a href="{{route('clientBienvenue')}}">clientBienvenue</a>
-<a href="clientAppele">clientAppele</a>
-<a href="clientInfoFile">clientInfoFile</a>
-<a href="interfaeGuichetPersonnel"> interfaeGuichetPersonnel</a>
-<!-- xxxxxxxxxxxxxxxx  nav bar xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
 
 
 <div class="row" style="">
@@ -101,7 +66,7 @@ iii++;
 
 
 <div class="row">
-	<div class="col-8" style="background-color: red; padding: 0px;">
+	<div class="col-8" style="/*background-color: red;*/ padding: 0px;">
 		<div class="row">
 			<div class="col-12" style="">
 			<!-- <div class="col-12" style=" height: 500px; margin: 0px; padding:0px;"> -->
@@ -119,21 +84,21 @@ iii++;
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="{{ asset('images/imgPub.jpg') }}" class="d-block w-100" alt="..." style=" height: 500px;">
+      <img src="{{ asset('images/pub/imgPub1.jpg') }}" class="d-block w-100" alt="..." style=" height: 500px;">
 <!--       <div class="carousel-caption d-none d-md-block">
         <h5>First slide label</h5>
         <p>Some representative placeholder content for the first slide.</p>
       </div> -->
     </div>
     <div class="carousel-item">
-      <img src="{{ asset('images/imgPub.jpg') }}" class="d-block w-100" alt="..." style=" height: 500px;">
+      <img src="{{ asset('images/pub/imgPub2.jpg') }}" class="d-block w-100" alt="..." style=" height: 500px;">
 <!--       <div class="carousel-caption d-none d-md-block">
         <h5>Second slide label</h5>
         <p>Some representative placeholder content for the second slide.</p>
       </div> -->
     </div>
     <div class="carousel-item">
-      <img src="{{ asset('images/imgPub.jpg') }}" class="d-block w-100" alt="..." style=" height: 500px;">
+      <img src="{{ asset('images/pub/imgPub3.jpg') }}" class="d-block w-100" alt="..." style=" height: 500px;">
   <!--     <div class="carousel-caption d-none d-md-block">
         <h5>Third slide label</h5>
         <p>Some representative placeholder content for the third slide.</p>
@@ -189,13 +154,10 @@ iii++;
 
 </div>
 
-	<!-- popper pour dropdown et doit être placer avant les bootstraps.js-->
-	<script type="text/javascript" src="{{  asset('styles/js/popper.min.js')  }}"></script> 
-	<script type="text/javascript" src="{{  asset('styles/js/jquery3.4.1.js')  }}"></script>
-	<script type="text/javascript" src="{{  asset('styles/js/bootstrap.min.js')  }}"></script>
-
-</body>
-</html>
+<script type="text/javascript">
+	horloge(); APIclientInfoFile();
+</script>
+@endsection
 
 
 

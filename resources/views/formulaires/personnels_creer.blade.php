@@ -12,27 +12,27 @@
             @csrf
             <div class="form-group">
                 <b>Nom:</b>
-                <input class="form-control" required type="text" name="nom">
+                <input class="form-control" required type="text" name="nom"  value="{{old('nom')}}">
             </div>
 
             <div class="form-group">
                 <b>Prénom:</b>
-                <input class="form-control" required type="text" name="prenom">
+                <input class="form-control" required type="text" name="prenom"  value="{{old('prenom')}}">
             </div>
 
             <div class="form-group">
                 <b>Date de naissance:</b>
-                <input class="form-control" required type="date" name="dateNaissance">
+                <input class="form-control" required type="date" name="dateNaissance"  value="{{old('dateNaissance')}}">
             </div>
 
             <div class="form-group">
                 <b>User:</b>
-                <input class="form-control" required type="text" name="user">
+                <input class="form-control" required type="text" name="user"  value="{{old('user')}}">
             </div>
 
             <div class="form-group">
                 <b>Choisir un mot de passe:</b>
-                <input class="form-control" required type="password" value="" name="pass">
+                <input class="form-control" required type="password" value="" name="pass"  value="">
             </div>
 
             <div class="form-group">

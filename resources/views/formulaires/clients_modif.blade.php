@@ -32,35 +32,37 @@ die($ss);
             </div>
 
             <div class="form-group">
-                <b>Numero:</b>
-                <input class="form-control" required type="number"  value="{{$client->numero}}" name="numero" id="numero">
+                <b>Prénom:</b>
+                <input class="form-control" required type="text"  value="{{$client->prenom}}" name="prenom">
             </div>
 
             <div class="form-group">
-                <b>Commentaire:</b>
-                <input class="form-control" required type="text" value="{{$client->commentaire}}" name="commentaire">
+                <b>Genre:</b>
+                <input class="form-control" required type="text"  value="{{$client->genre}}" name="genre">
             </div>
-
+            <div class="form-group">
+                <b>Numéro:</b>
+                <input class="form-control" required type="text"  value="{{$client->numero}}" name="numero">
+            </div>
 
             <div class="form-group">
-                    <b>Service:</b>
-                    <select class="form-control" required name="service_id">
-                        <option value="" ></option>
-                        <?php foreach ($listeService as $service): ?>
-                            <?php if ($client->service->id == $service->id): ?>
-                                <option value="{{$service->id}}" selected >{{$service->nom}}</option>
-                            <?php else: ?>
-                                <option value="{{$service->id}}" >{{$service->nom}}</option>
-                            <?php endif ?>
-                        <?php endforeach ?>
-                    </select>
+                <b>nce:</b>
+                <input class="form-control" required type="text"  value="{{$client->nce}}" name="nce" id="numero">
             </div>
+
+            <div class="form-group">
+                <b>dateNaissance:</b>
+                <input class="form-control" required type="text" value="{{$client->dateNaissance}}" name="dateNaissance">
+            </div>
+
+<!-- nom     prenom  genre   numero  nce     dateNaissance -->
+
 
             <!-- <input  type="hidden"  value="{{$client->id}}" name="id"> -->
 
             <button type="submit" class="btn btn-success">Modifier</button> 
             
-            <a href="{{route('home')}}"><button type="button" class="btn btn-primary">Retour</button></a>
+            <a href="{{route('clients.index')}}"><button type="button" class="btn btn-primary">Retour</button></a>
         </form>
     </div>
     
@@ -70,3 +72,5 @@ die($ss);
 @endsection
 
 <!-- nom     numero  commentaire     service_id  created_at  updated_at   -->
+
+

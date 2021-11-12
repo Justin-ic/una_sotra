@@ -4,8 +4,13 @@
 
 
 
+
+<div class="row d-flex justify-content-center align-items-center">
+    <div class="col-12 col-md-8">
+        
+
 <div class="table-responsive">
-    <h1 class="MCenter">La liste des services de l'entreprise</h1>
+    <h1 class="MCenter">La liste des services de la scolarité</h1>
     <table class="table table-bordered table-striped">
         <thead>
             <tr class="MCenter">
@@ -21,18 +26,18 @@
 
  ?></pre> -->
         <tbody>
-            <?php $i=1; if ($liste->count() > 0): ?>
+            <?php $i=1; if ($liste->count() > 0): if (isset($_GET['page'])) { $i=$_GET['page']*5 - 4;}  ?>
                 <?php foreach ($liste as $service): ?>
             <tr  class="MCenter">
                 <td><?=$i++ ?></td>
                 <td>{{$service->nom}}</td>
                 <td>{{$service->created_at->format('d/m/Y')}}</td>
                 <td>
-                    <a href="{{route('services.edit', $service->id)}}"><button class="btn btn-success">Modifier <span class="fas fa-edit"></span> </button>
+                    <a href="{{route('services.edit', $service->id)}}"><button class="btn btn-success modif_sup">Modif <span class="fas fa-edit"></span></button>
                     </a>
                 </td>
                 <td>
-                    <a href="{{route('destroy_service',$service->id)}}"><button class="btn btn-danger">Supprimer <span class="fas fa-times-circle"></button></a>
+                    <a href="{{route('destroy_service',$service->id)}}"><button class="btn btn-danger modif_sup">Sup <span class="fas fa-times-circle"></span></button></a>
                 </td>
 
             </tr> 
@@ -54,6 +59,9 @@
 
 </div>
 
+    </div> <!-- fin  -->
+</div> <!-- fin row -->
+<!-- 
 <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
     <li class="page-item disabled">
@@ -66,7 +74,7 @@
       <a class="page-link" href="#">Next</a>
     </li>
   </ul>
-</nav>
+</nav> -->
 
 
 
@@ -83,7 +91,7 @@
 
 
 
-<br>
+<!-- <br>
 <span>
     {{$liste->links()}}
 </span>
@@ -94,5 +102,5 @@ svg.w-5 {
     display: inline;
 }
 </style>
-<br><br>
+<br><br> -->
 @endsection   

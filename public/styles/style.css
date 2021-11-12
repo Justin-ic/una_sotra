@@ -11,3 +11,33 @@
     background-color: rgb(187, 210, 225);
     text-align: center;
 }
+
+.modif_sup{
+    padding: 3px;
+}
+
+a{
+    text-decoration: none;
+}
+
+.contour{
+    border: 1px solid black;
+}
+
+.deroulant:hover{
+    cursor: pointer;
+}
+
+
+
+.divRadio{
+    margin: 10px;
+}
+
+.labelRadio1{
+    font-size: 25px;
+}
+.labelRadio2{
+    font-size: 25px;
+    margin-left: 10px;
+}

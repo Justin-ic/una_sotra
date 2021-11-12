@@ -11,6 +11,3 @@ class clientsLocation extends Model
 
     protected $fillable= ['clientId', 'clientNumero', 'clientTicket','nbClientAvant','tAttenteEstime','nom','prenom','genre','clientLatitude', 'clientLongitude','distance'];
 }
-
-
-
