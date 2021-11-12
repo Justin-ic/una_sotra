@@ -189,10 +189,10 @@ nbClientServit -->
 	    var idClient = document.getElementById("idClient").value; // Ne doit pas être dans le if
 
 				// URL En production
-		   url = "http://glacial-everglades-43629.herokuapp.com/APIEnLigne/"+idClient;
 
 
 		   url = 'http://localhost/una_sotra/public/APIEnLigne/'+idClient;
+		   url = "http://glacial-everglades-43629.herokuapp.com/APIEnLigne/"+idClient;
 		   console.log(url);
 
 	   xhttp.open("GET", url, true);
