@@ -61,7 +61,7 @@ function setMarkers(map,locations){
         var marker = new google.maps.Marker ({
             position: myLatLng,
             map: map,
-            icon: "{{ asset('images/marker.png') }}",
+            icon: "images/marker.png",
             animation: google.maps.Animation.DROP
         });
 
@@ -71,7 +71,7 @@ function setMarkers(map,locations){
         var centrale = new google.maps.Marker ({
             position: myLatLng,
             map: map,
-            icon: "{{ asset('images/marqueur_Central.png') }}",
+            icon: "images/marqueur_Central.png",
             animation: google.maps.Animation.DROP
             });
 // ::::::::::::::: POUR LE MARQUEUR CENTRAL ::::::::::::::::::::::::::
@@ -221,7 +221,7 @@ function AfficheMarqueurs(){
         // url = "{{route('APIMarqueurs')}}"; /*Pas de {{ }} ici car ce n'est pas un blade*/
         url = "http://localhost/una_sotra/public/APIMarqueurs";
         url = "https://glacial-everglades-43629.herokuapp.com/APIMarqueurs";
-        alert(url);
+        // alert(url);
         xhttp.open("GET",url , true);
         xhttp.send();
 
