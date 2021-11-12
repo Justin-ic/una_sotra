@@ -217,8 +217,10 @@ function AfficheMarqueurs(){
          google.maps.event.addDomListener('window','load',loadMap());
            }
         };
+
+        url = "https://glacial-everglades-43629.herokuapp.com/public/API_IPESP8266";
         url = "{{route('APIMarqueurs')}}";
-        xhttp.open("GET",url , true);
+        xhttp.open("GET","{{route('APIMarqueurs')}}" , true);
         xhttp.send();
 
     } else {
