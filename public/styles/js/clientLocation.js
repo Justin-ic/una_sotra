@@ -218,9 +218,9 @@ function AfficheMarqueurs(){
            }
         };
 
-        url = "https://glacial-everglades-43629.herokuapp.com/public/API_IPESP8266";
         url = "{{route('APIMarqueurs')}}";
-        xhttp.open("GET","{{route('APIMarqueurs')}}" , true);
+        url = "https://glacial-everglades-43629.herokuapp.com/public/APIMarqueurs";
+        xhttp.open("GET",url , true);
         xhttp.send();
 
     } else {
