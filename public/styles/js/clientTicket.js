@@ -297,5 +297,9 @@ http://localhost/una_sotra/public/escpos_printer/example/interface/windows-usb.p
 	}
 /******************** Recuperer ID ESP8266***********************/
 
+// ********************** Client Ticket **************************************** 
 
+    APIclients_locationsUpdate(); TempsRestant(); Envoi_Au_ESP(); Envoi_A_IMPRIMANTE(); 
+
+// ********************** Client Ticket ****************************************
 // </script>
