@@ -284,7 +284,8 @@ class personnelsController extends Controller
        if (count($personnels) == 0) {
            return  view('formulaires.initAdmin');
        } else {
-           $typePersonnel = $personnels->where('type', '=', 'personnel')->get();
+           $typePersonnel = personnels::where('type', '=', 'personnel')->get();
+           // $typePersonnel = $personnels->where('type', '=', 'personnel')->get();
            if (count($typePersonnel) == 0) {
             ?> 
 <!--             <script type="text/javascript">
