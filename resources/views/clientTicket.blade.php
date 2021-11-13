@@ -205,7 +205,7 @@ idClient:
 		
 		<div class="col-12 col-md-6 service MCenter">Temps d’attente estimé à l'arrivé: <b>{{$infosClient->tAttenteEstime}} </b></div>
 
-		<div class="col-12 col-md-6 service MCenter"><!-- Temps d’attente restant: --> <b><span id="Trestant"></span></b></div>
+		<div class="col-12 col-md-6 service MCenter">Temps d’attente restant réel: <b><span id="Trestant"></span></b></div>
 
 		<div class="col-12 col-md-6 service MCenter">Votre ticket: <b>{{$infosClient->clientTicket}} </b></div>
 	</div>

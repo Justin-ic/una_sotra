@@ -1,23 +1,19 @@
 <?php session_start(); ?>
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/bootstrap/bootstrap.min.css') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}"/>
 	<link rel="stylesheet" type="text/css" href="{{ asset('images/styleBienvenue.css') }}">
 
 	<title>una_scolarite</title>
 </head>
 <body>
- -->
 
 
 
-
-@extends('layouts.app')
-
-@section('contenu')
 
 
 <style type="text/css">
@@ -74,10 +70,9 @@
 
 </div>
 
-@endsection
 
-<!-- </body>
-</html> -->
+</body>
+</html>
 
 
 

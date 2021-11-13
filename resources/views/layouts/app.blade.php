@@ -9,6 +9,10 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/fontawesome/css/all.css') }}">
 
   <link rel="stylesheet" type="text/css" href="{{ asset('images/styleBienvenue.css') }}">
+  
+  <!-- Matérial designe -->
+  <!-- <link rel="stylesheet" href="{{  asset('styles/MDB5/ css/mdb.min.css')  }}" /> -->
+
 
 	<title>una_scolarite</title>
 
@@ -99,6 +103,12 @@ function horloge()
 
   <!-- popper pour dropdown et doit être placer avant les bootstraps.js-->
 
+
+  
+<!-- ********************** Matérial designe**************************************** -->
+    <!-- <script type="text/javascript" src="{{  asset('styles/MDB5/js/mdb.min.js')  }}"></script> -->
+<!-- ********************** Matérial designe **************************************** -->
+
   <script type="text/javascript" src="{{  asset('styles/js/popper.min.js')  }}"></script> 
   <script type="text/javascript" src="{{  asset('styles/js/jquery3.4.1.js')  }}"></script>
   <script type="text/javascript" src="{{  asset('styles/js/bootstrap.min.js')  }}"></script>
@@ -112,7 +122,6 @@ function horloge()
 <!-- ********************** Client Demande **************************************** -->
   <script type="text/javascript" src="{{  asset('styles/bootstrap/bootstrap.bundle.min.js')  }}"></script>
 <!-- ********************** Client Demande **************************************** -->
-
 
   
 <!-- ********************** Client info File **************************************** -->

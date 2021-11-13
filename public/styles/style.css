@@ -8,7 +8,7 @@
 .BienvenusAdmin{
     width: 100%;
     height: 90vh;
-    background-color: rgb(187, 210, 225);
+    
     text-align: center;
 }
 
@@ -40,4 +40,26 @@ a{
 .labelRadio2{
     font-size: 25px;
     margin-left: 10px;
+}
+
+
+
+.faServit{
+    font-size: 20px;
+    background-color: transparent;
+    color: green;
+}
+
+.faNonServit{
+    font-size: 20px;
+    background-color: transparent;
+    color: red;
+}
+
+.modal-dialog {
+    max-width: 1000px;
+}
+
+.modal-header{
+    background-color: #39c0ed !important;
 }

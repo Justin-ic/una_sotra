@@ -30,6 +30,9 @@
        } 
        
        $secondes2 = round($secondes % 60); 
+
+       $minutes = ($minutes<10) ? "0".$minutes : $minutes ;
+       $secondes2 = ($secondes2<10) ? "0".$secondes2 : $secondes2 ;
       
        $TimeFinal = "$heures".":"."$minutes".":"."$secondes2"; 
        return $TimeFinal; 

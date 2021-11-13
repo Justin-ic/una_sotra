@@ -4,6 +4,11 @@
 @extends('layouts.app')
 @section('contenu')
 
+<style type="text/css">
+	body{
+		background-color: rgb(187, 210, 225);
+	}
+</style>
 <div class="BienvenusAdmin  d-flex justify-content-center align-items-center">
 	<h1>Bienvénus Administrateur </h1>
 </div>

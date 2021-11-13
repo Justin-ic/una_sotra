@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\bilanClients;
+use App\Models\bilanEtudiant;
 
 
 class bilanClientController extends Controller
@@ -15,7 +15,9 @@ class bilanClientController extends Controller
      */
      public function index() 
     {
-        $liste = bilanClients::with('clients')->latest()->paginate(5);
+        $liste = bilanEtudiant::with('etudiant', 'service')->latest()->simplePaginate(5);
+
+        // dd($liste);
         return view('bilanClient', compact('liste'));
     }
 // clients_id  etat    commentaire     tempsArrive     debutService    finService  created_at  updated_at  
@@ -26,7 +28,7 @@ class bilanClientController extends Controller
      */
     public function create()
     {
-        $liste = bilanClients::with('clients')->latest()->paginate(5);
+        $liste = bilanEtudiant::with('clients')->latest()->paginate(5);
         return view('formulaires.bilanClients_creer', compact('liste'));
     }
 

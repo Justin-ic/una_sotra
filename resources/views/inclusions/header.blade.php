@@ -19,9 +19,7 @@
                 </span>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                   <li><a class="dropdown-item" href="{{route('clients.index')}}">Tous</a></li>
-                  <li><a class="dropdown-item" href="#">Servit</a></li>
-                  <li><a class="dropdown-item" href="#">Client du jour</a></li>
-                  <li><a class="dropdown-item" href="#">Bilant Général</a></li>
+                  <li><a class="dropdown-item" href="{{route('bilan_clients.index')}}">Bilant Général</a></li>
                 </ul>
               </span>
 

@@ -7,7 +7,7 @@
 
 <div class="table-responsive" style="margin: 10px;">
     <h1 class="MCenter">La liste des étudiants en attente</h1>
-    <table class="table table-bordered" id="MonTableau">
+    <table class="table table-bordered table-striped" id="MonTableau">
         <thead>
             <tr class="MCenter">
                 <th>N°</th>

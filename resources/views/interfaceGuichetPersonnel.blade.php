@@ -29,7 +29,8 @@
 
 
 </head>
-<body  onload="horloge(), debutService(), APIClientEnLigne()">
+<body  onload="horloge(), APIClientEnLigne()">
+<!-- <body  onload="horloge(), debutService(), APIClientEnLigne()"> -->
 
 
 <!-- 
@@ -149,7 +150,16 @@ nbClientServit -->
 
 <!-- <div id="debutService"></div>
 <div id="finService"></div> -->
-<input type="text" name="debutService" id="debutService">
+
+<?php $debut = localtime(); 
+$heure = ($debut[2] < 10) ? "0".$debut[2] : $debut[2] ;
+$min = ($debut[1] < 10) ? "0".$debut[1] : $debut[1] ;
+$sec = ($debut[0] < 10) ? "0".$debut[0] : $debut[0] ;
+
+$debut = $heure.':'.$min.':'. $sec;
+// dd($debut);
+ ?>
+<input value="<?=$debut?>" type="text" name="debutService" id="debutService">
 <!-- <input type="text" name="finService" id="finService">  On va recuperer le temps dans le controller-->
 <!--  C'est le numéro du client que nous allons appeler.  -->
 

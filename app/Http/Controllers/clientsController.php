@@ -195,7 +195,15 @@ class clientsController extends Controller
     {
 
 // dd($request->numeroClintSuivant);
-        $finService = date('H:m:s');
+$fin = localtime(); 
+$heure = ($fin[2] < 10) ? "0".$fin[2] : $fin[2] ;
+$min = ($fin[1] < 10) ? "0".$fin[1] : $fin[1] ;
+$sec = ($fin[0] < 10) ? "0".$fin[0] : $fin[0] ;
+
+$finService = $heure.':'.$min.':'. $sec;
+// dd($debut);
+
+        // $finService = date('H:m:s'); Ce n'est pas la bonne méthode
         request()->validate([
             // 'commentaireserveur' => 'required', //pas obligatoire
             'debutService' => 'required',

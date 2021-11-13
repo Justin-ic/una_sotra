@@ -42,16 +42,8 @@
        
        $secondes2 = round($secondes % 60); 
       
-      if ($heures==0) {
-          $heures ="00";
-      } 
-      if ($minutes < 10) {
-           $minutes = "0".$minutes;
-       }
-
-      if ($secondes2 < 10) {
-           $secondes2 = "0".$secondes2;
-       } 
+      $minutes = ($minutes<10) ? "0".$minutes : $minutes ;
+       $secondes2 = ($secondes2<10) ? "0".$secondes2 : $secondes2 ;
       
       
        $TimeFinal = "$heures".":"."$minutes".":"."$secondes2"; 
